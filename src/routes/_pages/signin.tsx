@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import type { FormProps } from "antd";
 import { Button, Form, Input, message } from "antd";
 import axios from "axios";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/_pages/signin")({
   component: Login,
@@ -14,6 +15,17 @@ type FieldType = {
 
 function Login() {
   const navigate = useNavigate();
+  useEffect(() => {
+    let isAuth = JSON.parse(localStorage.getItem("user") || "{}");
+    if (isAuth && isAuth !== null) {
+      navigate({
+        to: "/$userId",
+        params: {
+          userId: isAuth.id,
+        },
+      });
+    }
+  }, []);
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     axios
       .get("http://localhost:3333/users", {

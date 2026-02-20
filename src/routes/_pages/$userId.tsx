@@ -15,9 +15,9 @@ import { LogoutOutlined } from "@ant-design/icons";
 import { useNavigate } from "@tanstack/react-router";
 import dayjs, { Dayjs } from "dayjs";
 import Calender from "@/components/calender";
-import { useParams } from '@tanstack/react-router'
+import { useParams } from "@tanstack/react-router";
 
-const { Content, Sider , Header } = Layout;
+const { Content, Sider } = Layout;
 
 type User = {
   id: string;
@@ -47,17 +47,18 @@ export const Route = createFileRoute("/_pages/$userId")({
 });
 
 function DashboardPage() {
-  const params = useParams( { from: '/_pages/$userId' })
-  console.log(params.userId)
-  if(params.userId === "hr1"){
-    params.userId = ""
+  const params = useParams({ from: "/_pages/$userId" });
+  if (params.userId === "hr1") {
+    params.userId = "";
   }
   const navigate = useNavigate();
   const loggedUser: User = JSON.parse(localStorage.getItem("user") || "{}");
   const [collapsed, setCollapsed] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [selectedEmployeeId, setSelectedEmployeeId] = useState<string>(params.userId);
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState<string>(
+    params.userId,
+  );
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
@@ -68,7 +69,7 @@ function DashboardPage() {
     });
     refreshTasks();
   }, []);
-
+  
   const refreshTasks = () => {
     axios.get(base_url + "/tasks").then((res) => {
       setTasks(res.data);
@@ -136,64 +137,66 @@ function DashboardPage() {
       ? tasks.filter((task) => task.assignedTo === selectedEmployeeId)
       : tasks.filter((task) => task.assignedTo === loggedUser.id);
 
-  return (<Layout style={{ minHeight: "100vh" }}>
-        <Sider
-          theme="light"
-          collapsible
-          collapsed={collapsed}
-          onCollapse={setCollapsed}
-        >
-          <Menu
-            items={[
-              {
-                key: "logout",
-                icon: <LogoutOutlined />,
-                label: "Logout",
-              },
-            ]}
-            onClick={handleLogout}
-          />
-        </Sider>
+  return (
+    <Layout style={{ minHeight: "100vh" }}>
+      <Sider
+        theme="light"
+        collapsible
+        collapsed={collapsed}
+        onCollapse={setCollapsed}
+      >
+        <Menu
+          items={[
+            {
+              key: "logout",
+              icon: <LogoutOutlined />,
+              label: "Logout",
+            },
+          ]}
+          onClick={handleLogout}
+        />
+      </Sider>
 
-        <Layout>
-          <Content style={{ margin: 24 }}>
-            {loggedUser.role === "hr" && (
-              <Select
-                allowClear
-                value={selectedEmployeeId || undefined}
-                placeholder="Select Employee"
-                style={{ width: 220, marginBottom: 20 }}
-                onChange={handleEmployeeChange}
-                options={
-                  users
-                    .filter((u) => u.role === "employee")
-                    .map((emp) => ({
-                      label: emp.name,
-                      value: String(emp.id),
-                    })) || null
-                }
-              />
-            )}
+      <Layout>
+        <Content style={{ margin: 24 }}>
+          {loggedUser.role === "hr" && (
+            <Select
+              allowClear
+              value={selectedEmployeeId || undefined}
+              placeholder="Select Employee"
+              style={{ width: 220, marginBottom: 20 }}
+              onChange={handleEmployeeChange}
+              options={
+                users
+                  .filter((u) => u.role === "employee")
+                  .map((emp) => ({
+                    label: emp.name,
+                    value: String(emp.id),
+                  })) || null
+              }
+            />
+          )}
 
-            <Calender tasks={filteredTasks} onSelectDate={onSelectDate} />
+          <Calender tasks={filteredTasks} onSelectDate={onSelectDate} />
 
-            <Modal
-              title="Assign Task"
-              open={isModalOpen}
-              onCancel={() => setIsModalOpen(false)}
-              footer={null}
-            >
-              <Form form={form} onFinish={onFinish}>
-                <Form.Item name="taskTitle" rules={[{ required: true }]}>
-                  <Input placeholder="Task title" />
-                </Form.Item>
+          <Modal
+            title="Assign Task"
+            open={isModalOpen}
+            onCancel={() => setIsModalOpen(false)}
+            footer={null}
+          >
+            <Form form={form} onFinish={onFinish}>
+              <Form.Item name="taskTitle" rules={[{ required: true }]}>
+                <Input placeholder="Task title" />
+              </Form.Item>
 
-                <Button htmlType="submit" type="primary" block>
-                  Assign Task
-                </Button>
-              </Form>
-            </Modal>
-          </Content>
-        </Layout>
-      </Layout>);
+              <Button htmlType="submit" type="primary" block>
+                Assign Task
+              </Button>
+            </Form>
+          </Modal>
+        </Content>
+      </Layout>
+    </Layout>
+  );
 }
