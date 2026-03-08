@@ -1,4 +1,3 @@
-import React from "react";
 import { Calendar } from "antd";
 import type { CalendarProps } from "antd";
 import dayjs from "dayjs";
@@ -19,25 +18,15 @@ type Props = {
   onSelectDate?: (date: Dayjs) => void;
 };
 
-const SELF_ASSIGNED_COLOR = { bg: "#d1fae5", text: "#047857", border: "#6ee7b7" }; // green
-const HR_ASSIGNED_COLOR = { bg: "#dbeafe", text: "#1d4ed8", border: "#93c5fd" }; // blue
-const COMPLETED_COLOR = { bg: "#f3f4f6", text: "#9ca3af", border: "#d1d5db" }; // grey
-const OVERDUE_COLOR = { bg: "#fee2e2", text: "#b91c1c", border: "#fca5a5" }; // red
+const SELF_ASSIGNED_COLOR = { bg: "#d1fae5", text: "#047857", border: "#6ee7b7" };
+const HR_ASSIGNED_COLOR = { bg: "#dbeafe", text: "#1d4ed8", border: "#93c5fd" };
+const COMPLETED_COLOR = { bg: "#f3f4f6", text: "#9ca3af", border: "#d1d5db" };
+const OVERDUE_COLOR = { bg: "#fee2e2", text: "#b91c1c", border: "#fca5a5" };
 
 function getColorForTask(task: Task) {
-  // Completed tasks are always grey
-  if (task.status === "completed") {
-    return COMPLETED_COLOR;
-  }
-  // Overdue: deadline has passed and not completed
-  if (task.deadline && dayjs(task.deadline).isBefore(dayjs())) {
-    return OVERDUE_COLOR;
-  }
-  // Self-assigned: assignedBy equals assignedTo (employee assigned to themselves)
-  if (task.assignedBy && task.assignedBy === task.assignedTo) {
-    return SELF_ASSIGNED_COLOR;
-  }
-  // HR-assigned or fallback
+  if (task.status === "completed") return COMPLETED_COLOR;
+  if (task.deadline && dayjs(task.deadline).isBefore(dayjs())) return OVERDUE_COLOR;
+  if (task.assignedBy && task.assignedBy === task.assignedTo) return SELF_ASSIGNED_COLOR;
   return HR_ASSIGNED_COLOR;
 }
 
@@ -50,7 +39,6 @@ const Calender: React.FC<Props> = ({ tasks, onSelectDate }) => {
   const cellRender: CalendarProps<Dayjs>["cellRender"] = (current, info) => {
     if (info.type === "date") {
       const dayTasks = getListData(current);
-
       return (
         <div className="flex flex-col gap-0.5">
           {dayTasks.map((task, index) => {

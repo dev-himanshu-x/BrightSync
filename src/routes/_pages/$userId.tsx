@@ -47,8 +47,10 @@ const base_url = "http://localhost:3333";
 
 export const Route = createFileRoute("/_pages/$userId")({
   beforeLoad: () => {
+    if (typeof window === "undefined") {
+      throw redirect({ to: "/signin" });
+    }
     const user = JSON.parse(localStorage.getItem("user") || "{}");
-
     if (!user.id) {
       throw redirect({ to: "/signin" });
     }
@@ -92,18 +94,13 @@ function DashboardPage() {
   };
 
   const handleEmployeeChange = (value?: string) => {
-    if (!value) {
-      return;
-    }
-
+    if (!value) return;
     const selectedUser = users.find((u) => u.id === value);
     if (!selectedUser) return;
     setSelectedEmployeeId(value);
     navigate({
       to: "/$userId",
-      params: {
-        userId: selectedUser.id,
-      },
+      params: { userId: selectedUser.id },
     });
   };
 
@@ -201,20 +198,17 @@ function DashboardPage() {
       ? tasks.filter((task) => task.assignedTo === selectedEmployeeId)
       : tasks.filter((task) => task.assignedTo === loggedUser.id);
 
-  const upcomingTasks = filteredTasks
-    .sort((a, b) => dayjs(a.assignedDate).diff(dayjs(b.assignedDate)));
+  const upcomingTasks = filteredTasks.sort((a, b) =>
+    dayjs(a.assignedDate).diff(dayjs(b.assignedDate)),
+  );
 
   const getTaskColor = (task: Task) => {
-    if (task.status === "completed") {
-      return { bg: "#f3f4f6", border: "#d1d5db" }; // grey
-    }
-    if (task.deadline && dayjs(task.deadline).isBefore(dayjs())) {
-      return { bg: "#fee2e2", border: "#fca5a5" }; // red
-    }
-    if (task.assignedBy && task.assignedBy === task.assignedTo) {
-      return { bg: "#d1fae5", border: "#6ee7b7" }; // green - self assigned
-    }
-    return { bg: "#dbeafe", border: "#93c5fd" }; // blue - HR assigned
+    if (task.status === "completed") return { bg: "#f3f4f6", border: "#d1d5db" };
+    if (task.deadline && dayjs(task.deadline).isBefore(dayjs()))
+      return { bg: "#fee2e2", border: "#fca5a5" };
+    if (task.assignedBy && task.assignedBy === task.assignedTo)
+      return { bg: "#d1fae5", border: "#6ee7b7" };
+    return { bg: "#dbeafe", border: "#93c5fd" };
   };
 
   const profileMenuItems = [
@@ -228,10 +222,8 @@ function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Top Navbar */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="flex items-center gap-6 px-6 h-16 max-w-[1440px] mx-auto">
-          {/* Left - Logo */}
           <div className="flex-1 min-w-0 flex items-center gap-2">
             <div
               className="flex items-center justify-center rounded-lg"
@@ -250,7 +242,6 @@ function DashboardPage() {
             </span>
           </div>
 
-          {/* Right - Profile */}
           <Dropdown
             menu={{
               items: profileMenuItems,
@@ -285,16 +276,12 @@ function DashboardPage() {
         </div>
       </header>
 
-      {/* Main Content */}
       <div className="flex flex-col lg:flex-row gap-6 p-6 max-w-[1440px] mx-auto lg:items-start">
-        {/* Calendar Section */}
         <div className="flex-1 min-w-0">
           <Calender tasks={filteredTasks} onSelectDate={onSelectDate} />
         </div>
 
-        {/* Right Sidebar - matches calendar height */}
         <div className="w-full lg:w-80 shrink-0 flex flex-col gap-4 lg:max-h-[calc(100vh-6rem)] lg:sticky lg:top-[5rem]">
-          {/* Employee Select - for HR only */}
           {loggedUser.role === "hr" && (
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
               <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 block">
@@ -317,7 +304,6 @@ function DashboardPage() {
             </div>
           )}
 
-          {/* Upcoming Tasks */}
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm flex-1 min-h-0 flex flex-col">
             <div className="px-4 pt-4 pb-3 border-b border-gray-100">
               <h3 className="text-base font-semibold text-gray-800">
@@ -329,7 +315,6 @@ function DashboardPage() {
             </div>
 
             <div className="p-4 flex-1 overflow-y-auto">
-
               {upcomingTasks.length === 0 ? (
                 <p className="text-sm text-gray-400 text-center py-8">
                   No upcoming tasks
@@ -456,7 +441,6 @@ function DashboardPage() {
         </div>
       </div>
 
-      {/* Add Task Modal */}
       <Modal
         title="Assign Task"
         open={isModalOpen}
@@ -497,7 +481,6 @@ function DashboardPage() {
         </Form>
       </Modal>
 
-      {/* Edit Task Modal - HR only */}
       <Modal
         title="Edit Task"
         open={isEditModalOpen}
