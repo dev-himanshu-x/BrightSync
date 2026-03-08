@@ -1466,6 +1466,7 @@ const Scripts = () => {
 };
 export {
   HeadContent as H,
+  Link as L,
   RouterProvider as R,
   Scripts as S,
   createRootRoute as a,

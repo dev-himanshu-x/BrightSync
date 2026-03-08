@@ -1,27 +1,27 @@
 import { r as reactExports, a as React } from "./react.mjs";
-import { C as CSSMotion, M as MotionProvider, a as CSSMotionList } from "./rc-component__motion.mjs";
+import { R as RefResizeObserver } from "./rc-component__resize-observer.mjs";
+import { p as pickAttrs, u as useMemo, i as isEqual, m as merge, r as render, w as wrapperRaf, a as unmount, c as composeRef, b as useEvent, s as supportRef, g as getNodeRef, d as isVisible, t as toArray$1, e as useComposeRef, f as useLayoutEffect, o as omit, h as useSafeState, j as canUseDom, k as useControlledState, l as getDOM, n as useId, q as get, v as set, x as triggerFocus } from "./rc-component__util.mjs";
 import { c as clsx } from "./clsx.mjs";
 import { c as createTheme, u as useCacheToken, a as unit, b as useStyleRegister, S as StyleContext, K as Keyframe } from "./ant-design__cssinjs.mjs";
 import { g as genStyleUtils, m as merge$1 } from "./ant-design__cssinjs-utils.mjs";
-import { D as Divider, M as MenuItem$1, u as useFullPath, S as SubMenu$1, E as ExportMenu, a as MenuItemGroup } from "./rc-component__menu.mjs";
-import { R as RefIcon, I as IconContext, a as RefIcon$1, b as RefIcon$2, c as RefIcon$3, d as RefIcon$4, e as RefIcon$5, f as RefIcon$6, g as RefIcon$7, h as RefIcon$8, i as RefIcon$9, j as RefIcon$a, k as RefIcon$b, l as RefIcon$c, m as RefIcon$d, n as RefIcon$e, o as RefIcon$f } from "./ant-design__icons.mjs";
-import { p as pickAttrs, u as useMemo, i as isEqual, m as merge, r as render, w as wrapperRaf, a as unmount, c as composeRef, b as useEvent, s as supportRef, g as getNodeRef, d as isVisible, t as toArray$1, e as useComposeRef, f as useLayoutEffect, o as omit, h as useSafeState, j as canUseDom, k as useControlledState, l as getDOM, n as useId, q as get, v as set, x as triggerFocus } from "./rc-component__util.mjs";
-import { F as FastColor } from "./ant-design__fast-color.mjs";
+import { P as Popup, T as Tooltip$1 } from "./rc-component__tooltip.mjs";
 import { l as locale$2, R as RefPanelPicker, g as generateConfig } from "./rc-component__picker.mjs";
 import { C as Checkbox } from "./rc-component__checkbox.mjs";
 import { T as TypedSelect, O as Option, a as OptGroup } from "./rc-component__select.mjs";
+import { F as FastColor } from "./ant-design__fast-color.mjs";
+import { R as RefIcon, I as IconContext, a as RefIcon$1, b as RefIcon$2, c as RefIcon$3, d as RefIcon$4, e as RefIcon$5, f as RefIcon$6, g as RefIcon$7, h as RefIcon$8, i as RefIcon$9, j as RefIcon$a, k as RefIcon$b } from "./ant-design__icons.mjs";
 import { _ as _toConsumableArray, a as _createClass, b as _classCallCheck } from "./babel__runtime.mjs";
+import { C as CSSMotion, M as MotionProvider, a as CSSMotionList } from "./rc-component__motion.mjs";
 import { F as FormProvider$1, u as useForm$1, R as RefForm, C as Context, L as ListContext, W as WrapperField, a as List, b as useWatch } from "./rc-component__form.mjs";
 import { e } from "./scroll-into-view-if-needed.mjs";
-import { P as Popup, T as Tooltip$1 } from "./rc-component__tooltip.mjs";
 import { I as Input$2 } from "./rc-component__input.mjs";
 import { T as TextArea$1 } from "./rc-component__textarea.mjs";
 import { N as Notify, u as useNotification, a as NotificationProvider } from "./rc-component__notification.mjs";
+import { D as DialogWrap, P as Panel } from "./rc-component__dialog.mjs";
 import { l as locale$3 } from "./rc-component__pagination.mjs";
 import { U as UniqueProvider$1 } from "./rc-component__trigger.mjs";
 import { g as generate, p as presetPrimaryColors, a as presetPalettes } from "./ant-design__colors.mjs";
 import { C as Color } from "./rc-component__color-picker.mjs";
-import { D as DialogWrap, P as Panel } from "./rc-component__dialog.mjs";
 const WarningContext = /* @__PURE__ */ reactExports.createContext({});
 const defaultPrefixCls = "ant";
 const defaultIconPrefixCls = "anticon";
@@ -2198,7 +2198,7 @@ const prepareComponentToken$c = (token) => ({
   contentBg: token.colorBgElevated,
   contentPadding: `${(token.controlHeightLG - token.fontSize * token.lineHeight) / 2}px ${token.paddingSM}px`
 });
-const useStyle$l = genStyleHooks("Message", (token) => {
+const useStyle$j = genStyleHooks("Message", (token) => {
   const combinedToken = merge$1(token, {
     height: 150
   });
@@ -2238,7 +2238,7 @@ const PureContent = (props) => {
     style: styles?.content
   }, children));
 };
-const PurePanel$4 = (props) => {
+const PurePanel$5 = (props) => {
   const {
     prefixCls: staticPrefixCls,
     className,
@@ -2259,7 +2259,7 @@ const PurePanel$4 = (props) => {
   } = useComponentConfig("message");
   const prefixCls = staticPrefixCls || getPrefixCls("message");
   const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$l(prefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$j(prefixCls, rootCls);
   const [mergedClassNames, mergedStyles] = useMergeSemantic([contextClassNames, messageClassNames], [contextStyles, styles], {
     props
   });
@@ -2309,7 +2309,7 @@ const Wrapper = ({
   prefixCls
 }) => {
   const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$l(prefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$j(prefixCls, rootCls);
   return /* @__PURE__ */ reactExports.createElement(NotificationProvider, {
     classNames: {
       list: clsx(hashId, cssVarCls, rootCls)
@@ -2591,7 +2591,7 @@ const genWaveStyle = (token) => {
     }
   };
 };
-const useStyle$k = genComponentStyleHook("Wave", genWaveStyle);
+const useStyle$i = genComponentStyleHook("Wave", genWaveStyle);
 const TARGET_CLS = `${defaultPrefixCls}-wave-target`;
 function isValidWaveColor(color) {
   return color && typeof color === "string" && color !== "#fff" && color !== "#ffffff" && color !== "rgb(255, 255, 255)" && color !== "rgba(255, 255, 255, 1)" && !/rgba\((?:\d*, ){3}0\)/.test(color) && // any transparent rgba color
@@ -2771,7 +2771,7 @@ const Wave = (props) => {
   } = reactExports.useContext(ConfigContext);
   const containerRef = reactExports.useRef(null);
   const prefixCls = getPrefixCls("wave");
-  const hashId = useStyle$k(prefixCls);
+  const hashId = useStyle$i(prefixCls);
   const showWave = useWave(containerRef, clsx(prefixCls, hashId), component, colorSource);
   React.useEffect(() => {
     const node = containerRef.current;
@@ -2834,7 +2834,7 @@ const genSpaceCompactStyle = (token) => {
     }
   };
 };
-const useStyle$j = genStyleHooks(["Space", "Compact"], (token) => [genSpaceCompactStyle(token)], () => ({}), {
+const useStyle$h = genStyleHooks(["Space", "Compact"], (token) => [genSpaceCompactStyle(token)], () => ({}), {
   // Space component don't apply extra font style
   // https://github.com/ant-design/ant-design/issues/40315
   resetStyle: false
@@ -2901,7 +2901,7 @@ const Compact$1 = (props) => {
   const [mergedOrientation, mergedVertical] = useOrientation(orientation, vertical, direction);
   const mergedSize = useSize((ctx) => size ?? ctx);
   const prefixCls = getPrefixCls("space-compact", customizePrefixCls);
-  const [hashId] = useStyle$j(prefixCls);
+  const [hashId] = useStyle$h(prefixCls);
   const clx = clsx(prefixCls, hashId, {
     [`${prefixCls}-rtl`]: directionConfig === "rtl",
     [`${prefixCls}-block`]: block,
@@ -3146,7 +3146,7 @@ const genButtonBorderStyle = (buttonTypeCls, borderColor) => ({
     }
   }
 });
-const genGroupStyle$1 = (token) => {
+const genGroupStyle$2 = (token) => {
   const {
     componentCls,
     fontSize,
@@ -4396,7 +4396,7 @@ const genBlockButtonStyle = (token) => {
     }
   };
 };
-const useStyle$i = genStyleHooks("Button", (token) => {
+const useStyle$g = genStyleHooks("Button", (token) => {
   const buttonToken = prepareToken$3(token);
   return [
     // Shared
@@ -4410,7 +4410,7 @@ const useStyle$i = genStyleHooks("Button", (token) => {
     // Variant
     genVariantStyle(buttonToken),
     // Button Group
-    genGroupStyle$1(buttonToken)
+    genGroupStyle$2(buttonToken)
   ];
 }, prepareComponentToken$b, {
   unitless: {
@@ -4685,7 +4685,7 @@ const InternalCompoundedButton = /* @__PURE__ */ React.forwardRef((props, ref) =
   const mergedColorText = isDanger ? "dangerous" : mergedColor;
   const mergedInsertSpace = autoInsertSpace ?? contextAutoInsertSpace ?? true;
   const prefixCls = getPrefixCls("btn", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$i(prefixCls);
+  const [hashId, cssVarCls] = useStyle$g(prefixCls);
   const disabled = reactExports.useContext(DisabledContext);
   const mergedDisabled = customDisabled ?? disabled;
   const groupSize = reactExports.useContext(GroupSizeContext);
@@ -5295,7 +5295,7 @@ const genSkeletonElementButton = (token) => {
     ...genSkeletonElementButtonShape(token, controlHeightSM, `${skeletonButtonCls}-sm`)
   };
 };
-const genBaseStyle$1 = (token) => {
+const genBaseStyle$4 = (token) => {
   const {
     componentCls,
     skeletonAvatarCls,
@@ -5444,7 +5444,7 @@ const prepareComponentToken$a = (token) => {
     paragraphLiHeight: token.controlHeight / 2
   };
 };
-const useStyle$h = genStyleHooks("Skeleton", (token) => {
+const useStyle$f = genStyleHooks("Skeleton", (token) => {
   const {
     componentCls,
     calc
@@ -5463,7 +5463,7 @@ const useStyle$h = genStyleHooks("Skeleton", (token) => {
     skeletonLoadingBackground: `linear-gradient(90deg, ${token.gradientFromColor} 25%, ${token.gradientToColor} 37%, ${token.gradientFromColor} 63%)`,
     skeletonLoadingMotionDuration: "1.4s"
   });
-  return genBaseStyle$1(skeletonToken);
+  return genBaseStyle$4(skeletonToken);
 }, prepareComponentToken$a, {
   deprecatedTokens: [["color", "gradientFromColor"], ["colorGradientEnd", "gradientToColor"]]
 });
@@ -5484,7 +5484,7 @@ const SkeletonAvatar = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$h(prefixCls);
+  const [hashId, cssVarCls] = useStyle$f(prefixCls);
   const cls = clsx(prefixCls, `${prefixCls}-element`, {
     [`${prefixCls}-active`]: active
   }, classNames?.root, className, rootClassName, hashId, cssVarCls);
@@ -5520,7 +5520,7 @@ const SkeletonButton = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$h(prefixCls);
+  const [hashId, cssVarCls] = useStyle$f(prefixCls);
   const cls = clsx(prefixCls, `${prefixCls}-element`, {
     [`${prefixCls}-active`]: active,
     [`${prefixCls}-block`]: block
@@ -5555,7 +5555,7 @@ const SkeletonNode = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$h(prefixCls);
+  const [hashId, cssVarCls] = useStyle$f(prefixCls);
   const cls = clsx(prefixCls, `${prefixCls}-element`, {
     [`${prefixCls}-active`]: active
   }, hashId, classNames?.root, className, rootClassName, cssVarCls);
@@ -5604,7 +5604,7 @@ const SkeletonInput = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$h(prefixCls);
+  const [hashId, cssVarCls] = useStyle$f(prefixCls);
   const cls = clsx(prefixCls, `${prefixCls}-element`, {
     [`${prefixCls}-active`]: active,
     [`${prefixCls}-block`]: block
@@ -5742,7 +5742,7 @@ const Skeleton = (props) => {
     styles: contextStyles
   } = useComponentConfig("skeleton");
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$h(prefixCls);
+  const [hashId, cssVarCls] = useStyle$f(prefixCls);
   const mergedProps = {
     ...props,
     avatar,
@@ -5882,7 +5882,7 @@ function renderCloseIcon(prefixCls, closeIcon) {
     className: `${prefixCls}-close-icon`
   }));
 }
-const Footer$1 = (props) => {
+const Footer = (props) => {
   const {
     okText,
     okType = "primary",
@@ -6398,7 +6398,7 @@ const prepareComponentToken$9 = (token) => ({
   confirmBtnsMarginTop: token.wireframe ? token.marginLG : token.marginSM,
   mask: true
 });
-const useStyle$g = genStyleHooks("Modal", (token) => {
+const useStyle$e = genStyleHooks("Modal", (token) => {
   const modalToken = prepareToken$2(token);
   return [genModalStyle(modalToken), genRTLStyle(modalToken), genModalMaskStyle(modalToken), initZoomMotion(modalToken, "zoom"), genResponsiveWidthStyle(modalToken)];
 }, prepareComponentToken$9, {
@@ -6492,12 +6492,12 @@ const Modal$1 = (props) => {
     onClose?.();
   };
   const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$g(prefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$e(prefixCls, rootCls);
   const wrapClassNameExtended = clsx(wrapClassName, {
     [`${prefixCls}-centered`]: centered ?? contextCentered,
     [`${prefixCls}-wrap-rtl`]: direction === "rtl"
   });
-  const dialogFooter = footer !== null && !loading ? /* @__PURE__ */ reactExports.createElement(Footer$1, {
+  const dialogFooter = footer !== null && !loading ? /* @__PURE__ */ reactExports.createElement(Footer, {
     ...props,
     okButtonProps: {
       ...contextOkButtonProps,
@@ -7400,7 +7400,7 @@ const genSharedEmptyStyle = (token) => {
     }
   };
 };
-const useStyle$f = genStyleHooks("Empty", (token) => {
+const useStyle$d = genStyleHooks("Empty", (token) => {
   const {
     componentCls,
     controlHeightLG,
@@ -7440,7 +7440,7 @@ const Empty = (props) => {
     image: contextImage
   } = useComponentConfig("empty");
   const prefixCls = getPrefixCls("empty", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$f(prefixCls);
+  const [hashId, cssVarCls] = useStyle$d(prefixCls);
   const [mergedClassNames, mergedStyles] = useMergeSemantic([contextClassNames, classNames], [contextStyles, styles], {
     props
   });
@@ -8284,7 +8284,7 @@ const prepareComponentToken$8 = (token) => {
     selectAffixPadding: paddingXXS
   };
 };
-const genBaseStyle = (token) => {
+const genBaseStyle$3 = (token) => {
   const {
     antCls,
     componentCls,
@@ -8381,7 +8381,7 @@ const genSelectStyle = (token) => {
     // ==                       LTR                       ==
     // =====================================================
     // Base
-    genBaseStyle(token),
+    genBaseStyle$3(token),
     // Dropdown
     genSingleStyle(token),
     // =====================================================
@@ -8691,11 +8691,11 @@ const InternalSelect = (props, ref) => {
   });
 };
 const Select = /* @__PURE__ */ reactExports.forwardRef(InternalSelect);
-const PurePanel$3 = genPurePanel(Select, "popupAlign");
+const PurePanel$4 = genPurePanel(Select, "popupAlign");
 Select.SECRET_COMBOBOX_MODE_DO_NOT_USE = SECRET_COMBOBOX_MODE_DO_NOT_USE;
 Select.Option = Option;
 Select.OptGroup = OptGroup;
-Select._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$3;
+Select._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$4;
 const responsiveArray = ["xxxl", "xxl", "xl", "lg", "md", "sm", "xs"];
 const responsiveArrayReversed = [].concat(responsiveArray).reverse();
 const getResponsiveMap = (token) => ({
@@ -8809,6 +8809,288 @@ function useBreakpoint(refreshOnChange = true, defaultScreens = {}) {
   }, []);
   return screensRef.current;
 }
+const AvatarContext = /* @__PURE__ */ reactExports.createContext({});
+const genBaseStyle$2 = (token) => {
+  const {
+    antCls,
+    componentCls,
+    iconCls,
+    avatarBg,
+    avatarColor,
+    containerSize,
+    containerSizeLG,
+    containerSizeSM,
+    textFontSize,
+    textFontSizeLG,
+    textFontSizeSM,
+    iconFontSize,
+    iconFontSizeLG,
+    iconFontSizeSM,
+    borderRadius,
+    borderRadiusLG,
+    borderRadiusSM,
+    lineWidth,
+    lineType
+  } = token;
+  const avatarSizeStyle = (size, fontSize, iconFontSize2, radius) => ({
+    width: size,
+    height: size,
+    borderRadius: "50%",
+    fontSize,
+    [`&${componentCls}-square`]: {
+      borderRadius: radius
+    },
+    [`&${componentCls}-icon`]: {
+      fontSize: iconFontSize2,
+      [`> ${iconCls}`]: {
+        margin: 0
+      }
+    }
+  });
+  return {
+    [componentCls]: {
+      ...resetComponent(token),
+      position: "relative",
+      display: "inline-flex",
+      justifyContent: "center",
+      alignItems: "center",
+      overflow: "hidden",
+      color: avatarColor,
+      whiteSpace: "nowrap",
+      textAlign: "center",
+      verticalAlign: "middle",
+      background: avatarBg,
+      border: `${unit(lineWidth)} ${lineType} transparent`,
+      "&-image": {
+        background: "transparent"
+      },
+      [`${antCls}-image-img`]: {
+        display: "block"
+      },
+      ...avatarSizeStyle(containerSize, textFontSize, iconFontSize, borderRadius),
+      "&-lg": {
+        ...avatarSizeStyle(containerSizeLG, textFontSizeLG, iconFontSizeLG, borderRadiusLG)
+      },
+      "&-sm": {
+        ...avatarSizeStyle(containerSizeSM, textFontSizeSM, iconFontSizeSM, borderRadiusSM)
+      },
+      "> img": {
+        display: "block",
+        width: "100%",
+        height: "100%",
+        objectFit: "cover"
+      }
+    }
+  };
+};
+const genGroupStyle$1 = (token) => {
+  const {
+    componentCls,
+    groupBorderColor,
+    groupOverlapping,
+    groupSpace
+  } = token;
+  return {
+    [`${componentCls}-group`]: {
+      display: "inline-flex",
+      [componentCls]: {
+        borderColor: groupBorderColor
+      },
+      "> *:not(:first-child)": {
+        marginInlineStart: groupOverlapping
+      }
+    },
+    [`${componentCls}-group-popover`]: {
+      [`${componentCls} + ${componentCls}`]: {
+        marginInlineStart: groupSpace
+      }
+    }
+  };
+};
+const prepareComponentToken$7 = (token) => {
+  const {
+    controlHeight,
+    controlHeightLG,
+    controlHeightSM,
+    fontSize,
+    fontSizeLG,
+    fontSizeXL,
+    fontSizeHeading3,
+    marginXS,
+    marginXXS,
+    colorBorderBg
+  } = token;
+  return {
+    containerSize: controlHeight,
+    containerSizeLG: controlHeightLG,
+    containerSizeSM: controlHeightSM,
+    textFontSize: fontSize,
+    textFontSizeLG: fontSize,
+    textFontSizeSM: fontSize,
+    iconFontSize: Math.round((fontSizeLG + fontSizeXL) / 2),
+    iconFontSizeLG: fontSizeHeading3,
+    iconFontSizeSM: fontSize,
+    groupSpace: marginXXS,
+    groupOverlapping: -marginXS,
+    groupBorderColor: colorBorderBg
+  };
+};
+const useStyle$c = genStyleHooks("Avatar", (token) => {
+  const {
+    colorTextLightSolid,
+    colorTextPlaceholder
+  } = token;
+  const avatarToken = merge$1(token, {
+    avatarBg: colorTextPlaceholder,
+    avatarColor: colorTextLightSolid
+  });
+  return [genBaseStyle$2(avatarToken), genGroupStyle$1(avatarToken)];
+}, prepareComponentToken$7);
+const Avatar$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
+  const {
+    prefixCls: customizePrefixCls,
+    shape,
+    size: customSize,
+    src,
+    srcSet,
+    icon,
+    className,
+    rootClassName,
+    style,
+    alt,
+    draggable,
+    children,
+    crossOrigin,
+    gap = 4,
+    onError,
+    ...others
+  } = props;
+  const [scale, setScale] = reactExports.useState(1);
+  const [mounted, setMounted] = reactExports.useState(false);
+  const [isImgExist, setIsImgExist] = reactExports.useState(true);
+  const avatarNodeRef = reactExports.useRef(null);
+  const avatarChildrenRef = reactExports.useRef(null);
+  const avatarNodeMergedRef = composeRef(ref, avatarNodeRef);
+  const {
+    getPrefixCls,
+    className: contextClassName,
+    style: contextStyle
+  } = useComponentConfig("avatar");
+  const avatarCtx = reactExports.useContext(AvatarContext);
+  const setScaleParam = () => {
+    if (!avatarChildrenRef.current || !avatarNodeRef.current) {
+      return;
+    }
+    const childrenWidth = avatarChildrenRef.current.offsetWidth;
+    const nodeWidth = avatarNodeRef.current.offsetWidth;
+    if (childrenWidth !== 0 && nodeWidth !== 0) {
+      if (gap * 2 < nodeWidth) {
+        setScale(nodeWidth - gap * 2 < childrenWidth ? (nodeWidth - gap * 2) / childrenWidth : 1);
+      }
+    }
+  };
+  reactExports.useEffect(() => {
+    setMounted(true);
+  }, []);
+  reactExports.useEffect(() => {
+    setIsImgExist(true);
+    setScale(1);
+  }, [src]);
+  reactExports.useEffect(setScaleParam, [gap]);
+  const handleImgLoadError = () => {
+    const errorFlag = onError?.();
+    if (errorFlag !== false) {
+      setIsImgExist(false);
+    }
+  };
+  const size = useSize((ctxSize) => customSize ?? avatarCtx?.size ?? ctxSize ?? "medium");
+  const needResponsive = Object.keys(typeof size === "object" ? size || {} : {}).some((key) => responsiveArray.includes(key));
+  const screens = useBreakpoint(needResponsive);
+  const responsiveSizeStyle = reactExports.useMemo(() => {
+    if (typeof size !== "object") {
+      return {};
+    }
+    const currentBreakpoint = responsiveArray.find((screen) => screens[screen]);
+    const currentSize = size[currentBreakpoint];
+    return currentSize ? {
+      width: currentSize,
+      height: currentSize,
+      fontSize: currentSize && (icon || children) ? currentSize / 2 : 18
+    } : {};
+  }, [screens, size, icon, children]);
+  const prefixCls = getPrefixCls("avatar", customizePrefixCls);
+  const rootCls = useCSSVarCls(prefixCls);
+  const [hashId, cssVarCls] = useStyle$c(prefixCls, rootCls);
+  const sizeCls = clsx({
+    [`${prefixCls}-lg`]: size === "large",
+    [`${prefixCls}-sm`]: size === "small"
+  });
+  const hasImageElement = /* @__PURE__ */ reactExports.isValidElement(src);
+  const mergedShape = shape || avatarCtx?.shape || "circle";
+  const classString = clsx(prefixCls, sizeCls, contextClassName, `${prefixCls}-${mergedShape}`, {
+    [`${prefixCls}-image`]: hasImageElement || src && isImgExist,
+    [`${prefixCls}-icon`]: !!icon
+  }, cssVarCls, rootCls, className, rootClassName, hashId);
+  const sizeStyle = typeof size === "number" ? {
+    width: size,
+    height: size,
+    fontSize: icon ? size / 2 : 18
+  } : {};
+  let childrenToRender;
+  if (typeof src === "string" && isImgExist) {
+    childrenToRender = /* @__PURE__ */ reactExports.createElement("img", {
+      src,
+      draggable,
+      srcSet,
+      onError: handleImgLoadError,
+      alt,
+      crossOrigin
+    });
+  } else if (hasImageElement) {
+    childrenToRender = src;
+  } else if (icon) {
+    childrenToRender = icon;
+  } else if (mounted || scale !== 1) {
+    const transformString = `scale(${scale})`;
+    const childrenStyle = {
+      msTransform: transformString,
+      WebkitTransform: transformString,
+      transform: transformString
+    };
+    childrenToRender = /* @__PURE__ */ reactExports.createElement(RefResizeObserver, {
+      onResize: setScaleParam
+    }, /* @__PURE__ */ reactExports.createElement("span", {
+      className: `${prefixCls}-string`,
+      ref: avatarChildrenRef,
+      style: childrenStyle
+    }, children));
+  } else {
+    childrenToRender = /* @__PURE__ */ reactExports.createElement("span", {
+      className: `${prefixCls}-string`,
+      style: {
+        opacity: 0
+      },
+      ref: avatarChildrenRef
+    }, children);
+  }
+  return /* @__PURE__ */ reactExports.createElement("span", {
+    ...others,
+    style: {
+      ...sizeStyle,
+      ...responsiveSizeStyle,
+      ...contextStyle,
+      ...style
+    },
+    className: classString,
+    ref: avatarNodeMergedRef
+  }, childrenToRender);
+});
+const getRenderPropValue = (propValue) => {
+  if (!propValue) {
+    return null;
+  }
+  return typeof propValue === "function" ? propValue() : propValue;
+};
 function getArrowToken(token) {
   const {
     sizePopupArrow,
@@ -9237,7 +9519,7 @@ const useMergedArrow = (providedArrow, providedContextArrow) => {
     };
   }, [providedArrow, providedContextArrow]);
 };
-const FALL_BACK_ORIGIN = "50%";
+const FALL_BACK_ORIGIN$1 = "50%";
 const genTooltipStyle = (token) => {
   const {
     calc,
@@ -9275,7 +9557,7 @@ const genTooltipStyle = (token) => {
   const sharedTransformOrigin = {
     // When use `autoArrow`, origin will follow the arrow position
     [varName("valid-offset-x")]: varRef("arrow-offset-x", "var(--arrow-x)"),
-    transformOrigin: [varRef("valid-offset-x", FALL_BACK_ORIGIN), `var(--arrow-y, ${FALL_BACK_ORIGIN})`].join(" ")
+    transformOrigin: [varRef("valid-offset-x", FALL_BACK_ORIGIN$1), `var(--arrow-y, ${FALL_BACK_ORIGIN$1})`].join(" ")
   };
   return [
     {
@@ -9360,7 +9642,7 @@ const genTooltipStyle = (token) => {
     }
   ];
 };
-const prepareComponentToken$7 = (token) => ({
+const prepareComponentToken$6 = (token) => ({
   zIndexPopup: token.zIndexPopupBase + 70,
   maxWidth: 250,
   ...getArrowOffsetToken({
@@ -9371,7 +9653,7 @@ const prepareComponentToken$7 = (token) => ({
     borderRadiusOuter: Math.min(token.borderRadiusOuter, 4)
   }))
 });
-const useStyle$e = (prefixCls, rootCls, injectStyle = true) => {
+const useStyle$b = (prefixCls, rootCls, injectStyle = true) => {
   const useStyle2 = genStyleHooks("Tooltip", (token) => {
     const {
       borderRadius,
@@ -9387,7 +9669,7 @@ const useStyle$e = (prefixCls, rootCls, injectStyle = true) => {
       tooltipBg: colorBgSpotlight
     });
     return [genTooltipStyle(TooltipToken), initZoomMotion(token, "zoom-big-fast")];
-  }, prepareComponentToken$7, {
+  }, prepareComponentToken$6, {
     resetStyle: false,
     // Popover use Tooltip as internal component. We do not need to handle this.
     injectStyle
@@ -9395,11 +9677,15 @@ const useStyle$e = (prefixCls, rootCls, injectStyle = true) => {
   return useStyle2(prefixCls, rootCls);
 };
 const inverseColors = PresetColors.map((color) => `${color}-inverse`);
+const PresetStatusColors = ["success", "processing", "error", "default", "warning"];
 function isPresetColor(color, includeInverse = true) {
   if (includeInverse) {
     return [].concat(_toConsumableArray(inverseColors), _toConsumableArray(PresetColors)).includes(color);
   }
   return PresetColors.includes(color);
+}
+function isPresetStatusColor(color) {
+  return PresetStatusColors.includes(color);
 }
 const parseColor = (rootPrefixCls, prefixCls, color) => {
   const isInternalColor = isPresetColor(color);
@@ -9423,7 +9709,7 @@ const parseColor = (rootPrefixCls, prefixCls, color) => {
     arrowStyle
   };
 };
-const PurePanel$2 = (props) => {
+const PurePanel$3 = (props) => {
   const {
     prefixCls: customizePrefixCls,
     className,
@@ -9440,7 +9726,7 @@ const PurePanel$2 = (props) => {
   const prefixCls = getPrefixCls("tooltip", customizePrefixCls);
   const rootPrefixCls = getPrefixCls();
   const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$e(prefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$b(prefixCls, rootCls);
   const colorInfo = parseColor(rootPrefixCls, prefixCls, color);
   const arrowContentStyle = colorInfo.arrowStyle;
   const innerStyles = reactExports.useMemo(() => {
@@ -9583,7 +9869,7 @@ const InternalTooltip = /* @__PURE__ */ reactExports.forwardRef((props, ref) => 
   const childProps = child.props;
   const childCls = !childProps.className || typeof childProps.className === "string" ? clsx(childProps.className, openClassName || `${prefixCls}-open`) : childProps.className;
   const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$e(prefixCls, rootCls, !injectFromPopover);
+  const [hashId, cssVarCls] = useStyle$b(prefixCls, rootCls, !injectFromPopover);
   const colorInfo = parseColor(rootPrefixCls, prefixCls, color);
   const arrowContentStyle = colorInfo.arrowStyle;
   const themeCls = clsx(rootCls, hashId, cssVarCls);
@@ -9646,2535 +9932,423 @@ const InternalTooltip = /* @__PURE__ */ reactExports.forwardRef((props, ref) => 
   }, content);
 });
 const Tooltip = InternalTooltip;
-Tooltip._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$2;
+Tooltip._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$3;
 Tooltip.UniqueProvider = UniqueProvider;
-const UnitNumber = (props) => {
-  const {
-    prefixCls,
-    value,
-    current,
-    offset = 0
-  } = props;
-  let style;
-  if (offset) {
-    style = {
-      position: "absolute",
-      top: `${offset}00%`,
-      left: 0
-    };
-  }
-  return /* @__PURE__ */ reactExports.createElement("span", {
-    style,
-    className: clsx(`${prefixCls}-only-unit`, {
-      current
-    })
-  }, value);
-};
-function getOffset(start, end, unit2) {
-  let index = start;
-  let offset = 0;
-  while ((index + 10) % 10 !== end) {
-    index += unit2;
-    offset += unit2;
-  }
-  return offset;
-}
-const SingleNumber = (props) => {
-  const {
-    prefixCls,
-    count: originCount,
-    value: originValue
-  } = props;
-  const value = Number(originValue);
-  const count = Math.abs(originCount);
-  const [prevValue, setPrevValue] = reactExports.useState(value);
-  const [prevCount, setPrevCount] = reactExports.useState(count);
-  const onTransitionEnd = () => {
-    setPrevValue(value);
-    setPrevCount(count);
-  };
-  reactExports.useEffect(() => {
-    const timer = setTimeout(onTransitionEnd, 1e3);
-    return () => clearTimeout(timer);
-  }, [value]);
-  let unitNodes;
-  let offsetStyle;
-  if (prevValue === value || Number.isNaN(value) || Number.isNaN(prevValue)) {
-    unitNodes = [/* @__PURE__ */ reactExports.createElement(UnitNumber, {
-      ...props,
-      key: value,
-      current: true
-    })];
-    offsetStyle = {
-      transition: "none"
-    };
-  } else {
-    unitNodes = [];
-    const end = value + 10;
-    const unitNumberList = [];
-    for (let index = value; index <= end; index += 1) {
-      unitNumberList.push(index);
-    }
-    const unit2 = prevCount < count ? 1 : -1;
-    const prevIndex = unitNumberList.findIndex((n) => n % 10 === prevValue);
-    const cutUnitNumberList = unit2 < 0 ? unitNumberList.slice(0, prevIndex + 1) : unitNumberList.slice(prevIndex);
-    unitNodes = cutUnitNumberList.map((n, index) => {
-      const singleUnit = n % 10;
-      return /* @__PURE__ */ reactExports.createElement(UnitNumber, {
-        ...props,
-        key: n,
-        value: singleUnit,
-        offset: unit2 < 0 ? index - prevIndex : index,
-        current: index === prevIndex
-      });
-    });
-    offsetStyle = {
-      transform: `translateY(${-getOffset(prevValue, value, unit2)}00%)`
-    };
-  }
-  return /* @__PURE__ */ reactExports.createElement("span", {
-    className: `${prefixCls}-only`,
-    style: offsetStyle,
-    onTransitionEnd
-  }, unitNodes);
-};
-const ScrollNumber = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
-  const {
-    prefixCls: customizePrefixCls,
-    count,
-    className,
-    motionClassName,
-    style,
-    title,
-    show,
-    component: Component = "sup",
-    children,
-    ...restProps
-  } = props;
-  const {
-    getPrefixCls
-  } = reactExports.useContext(ConfigContext);
-  const prefixCls = getPrefixCls("scroll-number", customizePrefixCls);
-  const newProps = {
-    ...restProps,
-    "data-show": show,
-    style,
-    className: clsx(prefixCls, className, motionClassName),
-    title
-  };
-  let numberNodes = count;
-  if (count && Number(count) % 1 === 0) {
-    const numberList = String(count).split("");
-    numberNodes = /* @__PURE__ */ reactExports.createElement("bdi", null, numberList.map((num, i) => /* @__PURE__ */ reactExports.createElement(SingleNumber, {
-      prefixCls,
-      count: Number(count),
-      value: num,
-      // eslint-disable-next-line react/no-array-index-key
-      key: numberList.length - i
-    })));
-  }
-  if (style?.borderColor) {
-    newProps.style = {
-      ...style,
-      boxShadow: `0 0 0 1px ${style.borderColor} inset`
-    };
-  }
-  if (children) {
-    return cloneElement(children, (oriProps) => ({
-      className: clsx(`${prefixCls}-custom-component`, oriProps?.className, motionClassName)
-    }));
-  }
-  return /* @__PURE__ */ reactExports.createElement(Component, {
-    ...newProps,
-    ref
-  }, numberNodes);
-});
-const antStatusProcessing = new Keyframe("antStatusProcessing", {
-  "0%": {
-    transform: "scale(0.8)",
-    opacity: 0.5
-  },
-  "100%": {
-    transform: "scale(2.4)",
-    opacity: 0
-  }
-});
-const antZoomBadgeIn = new Keyframe("antZoomBadgeIn", {
-  "0%": {
-    transform: "scale(0) translate(50%, -50%)",
-    opacity: 0
-  },
-  "100%": {
-    transform: "scale(1) translate(50%, -50%)"
-  }
-});
-const antZoomBadgeOut = new Keyframe("antZoomBadgeOut", {
-  "0%": {
-    transform: "scale(1) translate(50%, -50%)"
-  },
-  "100%": {
-    transform: "scale(0) translate(50%, -50%)",
-    opacity: 0
-  }
-});
-const antNoWrapperZoomBadgeIn = new Keyframe("antNoWrapperZoomBadgeIn", {
-  "0%": {
-    transform: "scale(0)",
-    opacity: 0
-  },
-  "100%": {
-    transform: "scale(1)"
-  }
-});
-const antNoWrapperZoomBadgeOut = new Keyframe("antNoWrapperZoomBadgeOut", {
-  "0%": {
-    transform: "scale(1)"
-  },
-  "100%": {
-    transform: "scale(0)",
-    opacity: 0
-  }
-});
-const antBadgeLoadingCircle = new Keyframe("antBadgeLoadingCircle", {
-  "0%": {
-    transformOrigin: "50%"
-  },
-  "100%": {
-    transform: "translate(50%, -50%) rotate(360deg)",
-    transformOrigin: "50%"
-  }
-});
-const genSharedBadgeStyle = (token) => {
+const FALL_BACK_ORIGIN = "50%";
+const genBaseStyle$1 = (token) => {
   const {
     componentCls,
-    iconCls,
-    antCls,
-    badgeShadowSize,
-    textFontSize,
-    textFontSizeSM,
-    statusSize,
-    dotSize,
-    textFontWeight,
-    indicatorHeight,
-    indicatorHeightSM,
-    marginXS,
-    calc
+    popoverColor,
+    titleMinWidth,
+    fontWeightStrong,
+    innerPadding,
+    boxShadowSecondary,
+    colorTextHeading,
+    borderRadiusLG,
+    zIndexPopup,
+    titleMarginBottom,
+    colorBgElevated,
+    popoverBg,
+    titleBorderBottom,
+    innerContentPadding,
+    titlePadding,
+    antCls
   } = token;
-  const numberPrefixCls = `${antCls}-scroll-number`;
-  const colorPreset = genPresetColor(token, (colorKey, {
-    darkColor
-  }) => ({
-    [`&${componentCls} ${componentCls}-color-${colorKey}`]: {
-      background: darkColor,
-      [`&:not(${componentCls}-count)`]: {
-        color: darkColor
-      },
-      "a:hover &": {
-        background: darkColor
-      }
-    }
-  }));
-  return {
-    [componentCls]: {
-      ...resetComponent(token),
-      position: "relative",
-      display: "inline-block",
-      width: "fit-content",
-      lineHeight: 1,
-      [`${componentCls}-count`]: {
-        display: "inline-flex",
-        justifyContent: "center",
-        zIndex: token.indicatorZIndex,
-        minWidth: indicatorHeight,
-        height: indicatorHeight,
-        color: token.badgeTextColor,
-        fontWeight: textFontWeight,
-        fontSize: textFontSize,
-        lineHeight: unit(indicatorHeight),
-        whiteSpace: "nowrap",
-        textAlign: "center",
-        background: token.badgeColor,
-        borderRadius: calc(indicatorHeight).div(2).equal(),
-        boxShadow: `0 0 0 ${unit(badgeShadowSize)} ${token.badgeShadowColor}`,
-        transition: `background-color ${token.motionDurationMid}`,
-        a: {
-          color: token.badgeTextColor
-        },
-        "a:hover": {
-          color: token.badgeTextColor
-        },
-        "a:hover &": {
-          background: token.badgeColorHover
-        }
-      },
-      [`${componentCls}-count-sm`]: {
-        minWidth: indicatorHeightSM,
-        height: indicatorHeightSM,
-        fontSize: textFontSizeSM,
-        lineHeight: unit(indicatorHeightSM),
-        borderRadius: calc(indicatorHeightSM).div(2).equal()
-      },
-      [`${componentCls}-multiple-words`]: {
-        padding: `0 ${unit(token.paddingXS)}`,
-        bdi: {
-          unicodeBidi: "plaintext"
-        }
-      },
-      [`${componentCls}-dot`]: {
-        zIndex: token.indicatorZIndex,
-        width: dotSize,
-        minWidth: dotSize,
-        height: dotSize,
-        background: token.badgeColor,
-        borderRadius: "100%",
-        boxShadow: `0 0 0 ${unit(badgeShadowSize)} ${token.badgeShadowColor}`
-      },
-      [`${componentCls}-count, ${componentCls}-dot, ${numberPrefixCls}-custom-component`]: {
+  const [varName, varRef] = genCssVar(antCls, "tooltip");
+  return [
+    {
+      [componentCls]: {
+        ...resetComponent(token),
         position: "absolute",
         top: 0,
-        insetInlineEnd: 0,
-        transform: "translate(50%, -50%)",
-        transformOrigin: "100% 0%",
-        [`&${iconCls}-spin`]: {
-          animationName: antBadgeLoadingCircle,
-          animationDuration: "1s",
-          animationIterationCount: "infinite",
-          animationTimingFunction: "linear"
-        }
-      },
-      [`&${componentCls}-status`]: {
-        lineHeight: "inherit",
-        verticalAlign: "baseline",
-        [`${componentCls}-status-dot`]: {
-          position: "relative",
-          top: -1,
-          // Magic number, but seems better experience
-          display: "inline-block",
-          width: statusSize,
-          height: statusSize,
-          verticalAlign: "middle",
-          borderRadius: "50%"
+        // use `left` to fix https://github.com/ant-design/ant-design/issues/39195
+        left: {
+          _skip_check_: true,
+          value: 0
         },
-        [`${componentCls}-status-success`]: {
-          backgroundColor: token.colorSuccess
+        zIndex: zIndexPopup,
+        fontWeight: "normal",
+        whiteSpace: "normal",
+        textAlign: "start",
+        cursor: "auto",
+        userSelect: "text",
+        // When use `autoArrow`, origin will follow the arrow position
+        [varName("valid-offset-x")]: varRef("arrow-offset-x", "var(--arrow-x)"),
+        transformOrigin: [varRef("valid-offset-x", FALL_BACK_ORIGIN), `var(--arrow-y, ${FALL_BACK_ORIGIN})`].join(" "),
+        [varName("arrow-background-color")]: colorBgElevated,
+        width: "max-content",
+        maxWidth: "100vw",
+        "&-rtl": {
+          direction: "rtl"
         },
-        [`${componentCls}-status-processing`]: {
-          overflow: "visible",
-          color: token.colorInfo,
-          backgroundColor: token.colorInfo,
-          borderColor: "currentcolor",
-          "&::after": {
-            position: "absolute",
-            top: 0,
-            insetInlineStart: 0,
-            width: "100%",
-            height: "100%",
-            borderWidth: badgeShadowSize,
-            borderStyle: "solid",
-            borderColor: "inherit",
-            borderRadius: "50%",
-            animationName: antStatusProcessing,
-            animationDuration: token.badgeProcessingDuration,
-            animationIterationCount: "infinite",
-            animationTimingFunction: "ease-in-out",
-            content: '""'
-          }
+        "&-hidden": {
+          display: "none"
         },
-        [`${componentCls}-status-default`]: {
-          backgroundColor: token.colorTextPlaceholder
+        [`${componentCls}-content`]: {
+          position: "relative"
         },
-        [`${componentCls}-status-error`]: {
-          backgroundColor: token.colorError
+        [`${componentCls}-container`]: {
+          backgroundColor: popoverBg,
+          backgroundClip: "padding-box",
+          borderRadius: borderRadiusLG,
+          boxShadow: boxShadowSecondary,
+          padding: innerPadding
         },
-        [`${componentCls}-status-warning`]: {
-          backgroundColor: token.colorWarning
+        [`${componentCls}-title`]: {
+          minWidth: titleMinWidth,
+          marginBottom: titleMarginBottom,
+          color: colorTextHeading,
+          fontWeight: fontWeightStrong,
+          borderBottom: titleBorderBottom,
+          padding: titlePadding
         },
-        [`${componentCls}-status-text`]: {
-          marginInlineStart: marginXS,
-          color: token.colorText,
-          fontSize: token.fontSize
-        }
-      },
-      ...colorPreset,
-      [`${componentCls}-zoom-appear, ${componentCls}-zoom-enter`]: {
-        animationName: antZoomBadgeIn,
-        animationDuration: token.motionDurationSlow,
-        animationTimingFunction: token.motionEaseOutBack,
-        animationFillMode: "both"
-      },
-      [`${componentCls}-zoom-leave`]: {
-        animationName: antZoomBadgeOut,
-        animationDuration: token.motionDurationSlow,
-        animationTimingFunction: token.motionEaseOutBack,
-        animationFillMode: "both"
-      },
-      [`&${componentCls}-not-a-wrapper`]: {
-        [`${componentCls}-zoom-appear, ${componentCls}-zoom-enter`]: {
-          animationName: antNoWrapperZoomBadgeIn,
-          animationDuration: token.motionDurationSlow,
-          animationTimingFunction: token.motionEaseOutBack
-        },
-        [`${componentCls}-zoom-leave`]: {
-          animationName: antNoWrapperZoomBadgeOut,
-          animationDuration: token.motionDurationSlow,
-          animationTimingFunction: token.motionEaseOutBack
-        },
-        [`&:not(${componentCls}-status)`]: {
-          verticalAlign: "middle"
-        },
-        [`${numberPrefixCls}-custom-component, ${componentCls}-count`]: {
-          transform: "none"
-        },
-        [`${numberPrefixCls}-custom-component, ${numberPrefixCls}`]: {
-          position: "relative",
-          top: "auto",
-          display: "block",
-          transformOrigin: "50% 50%"
-        }
-      },
-      [numberPrefixCls]: {
-        overflow: "hidden",
-        transition: `all ${token.motionDurationMid} ${token.motionEaseOutBack}`,
-        [`${numberPrefixCls}-only`]: {
-          position: "relative",
-          display: "inline-block",
-          height: indicatorHeight,
-          transition: `all ${token.motionDurationSlow} ${token.motionEaseOutBack}`,
-          WebkitTransformStyle: "preserve-3d",
-          WebkitBackfaceVisibility: "hidden",
-          [`> p${numberPrefixCls}-only-unit`]: {
-            height: indicatorHeight,
-            margin: 0,
-            WebkitTransformStyle: "preserve-3d",
-            WebkitBackfaceVisibility: "hidden"
-          }
-        },
-        [`${numberPrefixCls}-symbol`]: {
-          verticalAlign: "top"
-        }
-      },
-      // ====================== RTL =======================
-      "&-rtl": {
-        direction: "rtl",
-        [`${componentCls}-count, ${componentCls}-dot, ${numberPrefixCls}-custom-component`]: {
-          transform: "translate(-50%, -50%)"
+        [`${componentCls}-content`]: {
+          color: popoverColor,
+          padding: innerContentPadding
         }
       }
-    }
-  };
-};
-const prepareToken$1 = (token) => {
-  const {
-    fontHeight,
-    lineWidth,
-    marginXS,
-    colorBorderBg
-  } = token;
-  const badgeFontHeight = fontHeight;
-  const badgeShadowSize = lineWidth;
-  const badgeTextColor = token.colorTextLightSolid;
-  const badgeColor = token.colorError;
-  const badgeColorHover = token.colorErrorHover;
-  const badgeToken = merge$1(token, {
-    badgeFontHeight,
-    badgeShadowSize,
-    badgeTextColor,
-    badgeColor,
-    badgeColorHover,
-    badgeShadowColor: colorBorderBg,
-    badgeProcessingDuration: "1.2s",
-    badgeRibbonOffset: marginXS,
-    // Follow token just by Design. Not related with token
-    badgeRibbonCornerTransform: "scaleY(0.75)",
-    badgeRibbonCornerFilter: `brightness(75%)`
-  });
-  return badgeToken;
-};
-const prepareComponentToken$6 = (token) => {
-  const {
-    fontSize,
-    lineHeight,
-    fontSizeSM,
-    lineWidth
-  } = token;
-  return {
-    indicatorZIndex: "auto",
-    indicatorHeight: Math.round(fontSize * lineHeight) - 2 * lineWidth,
-    indicatorHeightSM: fontSize,
-    dotSize: fontSizeSM / 2,
-    textFontSize: fontSizeSM,
-    textFontSizeSM: fontSizeSM,
-    textFontWeight: "normal",
-    statusSize: fontSizeSM / 2
-  };
-};
-const useStyle$d = genStyleHooks("Badge", (token) => {
-  const badgeToken = prepareToken$1(token);
-  return genSharedBadgeStyle(badgeToken);
-}, prepareComponentToken$6);
-const Badge$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
-  const {
-    prefixCls: customizePrefixCls,
-    scrollNumberPrefixCls: customizeScrollNumberPrefixCls,
-    children,
-    status,
-    text,
-    color,
-    count = null,
-    overflowCount = 99,
-    dot = false,
-    size = "default",
-    title,
-    offset,
-    style,
-    className,
-    rootClassName,
-    classNames,
-    styles,
-    showZero = false,
-    ...restProps
-  } = props;
-  const {
-    getPrefixCls,
-    direction,
-    className: contextClassName,
-    style: contextStyle,
-    classNames: contextClassNames,
-    styles: contextStyles
-  } = useComponentConfig("badge");
-  const prefixCls = getPrefixCls("badge", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$d(prefixCls);
-  const mergedProps = {
-    ...props,
-    overflowCount,
-    size,
-    dot,
-    showZero
-  };
-  const [mergedClassNames, mergedStyles] = useMergeSemantic([contextClassNames, classNames], [contextStyles, styles], {
-    props: mergedProps
-  });
-  const numberedDisplayCount = count > overflowCount ? `${overflowCount}+` : count;
-  const isZero = numberedDisplayCount === "0" || numberedDisplayCount === 0 || text === "0" || text === 0;
-  const ignoreCount = count === null || isZero && !showZero;
-  const hasStatus = (isNonNullable(status) || isNonNullable(color)) && ignoreCount;
-  const hasStatusValue = isNonNullable(status) || !isZero;
-  const showAsDot = dot && !isZero;
-  const mergedCount = showAsDot ? "" : numberedDisplayCount;
-  const isHidden = reactExports.useMemo(() => {
-    const isEmpty = (!isNonNullable(mergedCount) || mergedCount === "") && (!isNonNullable(text) || text === "");
-    return (isEmpty || isZero && !showZero) && !showAsDot;
-  }, [mergedCount, isZero, showZero, showAsDot, text]);
-  const countRef = reactExports.useRef(count);
-  if (!isHidden) {
-    countRef.current = count;
-  }
-  const livingCount = countRef.current;
-  const displayCountRef = reactExports.useRef(mergedCount);
-  if (!isHidden) {
-    displayCountRef.current = mergedCount;
-  }
-  const displayCount = displayCountRef.current;
-  const isDotRef = reactExports.useRef(showAsDot);
-  if (!isHidden) {
-    isDotRef.current = showAsDot;
-  }
-  const mergedStyle = reactExports.useMemo(() => {
-    if (!offset) {
-      return {
-        ...contextStyle,
-        ...style
-      };
-    }
-    const horizontalOffset = Number.parseInt(offset[0], 10);
-    const offsetStyle = {
-      marginTop: offset[1],
-      insetInlineEnd: -horizontalOffset
-    };
-    return {
-      ...offsetStyle,
-      ...contextStyle,
-      ...style
-    };
-  }, [offset, style, contextStyle]);
-  const titleNode = title ?? (typeof livingCount === "string" || typeof livingCount === "number" ? livingCount : void 0);
-  const showStatusTextNode = !isHidden && (text === 0 ? showZero : !!text && text !== true);
-  const statusTextNode = !showStatusTextNode ? null : /* @__PURE__ */ reactExports.createElement("span", {
-    className: `${prefixCls}-status-text`
-  }, text);
-  const displayNode = !livingCount || typeof livingCount !== "object" ? void 0 : cloneElement(livingCount, (oriProps) => ({
-    style: {
-      ...mergedStyle,
-      ...oriProps.style
-    }
-  }));
-  const isInternalColor = isPresetColor(color, false);
-  const statusCls = clsx(mergedClassNames.indicator, {
-    [`${prefixCls}-status-dot`]: hasStatus,
-    [`${prefixCls}-status-${status}`]: !!status,
-    [`${prefixCls}-color-${color}`]: isInternalColor
-  });
-  const statusStyle = {};
-  if (color && !isInternalColor) {
-    statusStyle.color = color;
-    statusStyle.background = color;
-  }
-  const badgeClassName = clsx(prefixCls, {
-    [`${prefixCls}-status`]: hasStatus,
-    [`${prefixCls}-not-a-wrapper`]: !children,
-    [`${prefixCls}-rtl`]: direction === "rtl"
-  }, className, rootClassName, contextClassName, mergedClassNames.root, hashId, cssVarCls);
-  if (!children && hasStatus && (text || hasStatusValue || !ignoreCount)) {
-    const statusTextColor = mergedStyle.color;
-    return /* @__PURE__ */ reactExports.createElement("span", {
-      ref,
-      ...restProps,
-      className: badgeClassName,
-      style: {
-        ...mergedStyles.root,
-        ...mergedStyle
-      }
-    }, /* @__PURE__ */ reactExports.createElement("span", {
-      className: statusCls,
-      style: {
-        ...mergedStyles.indicator,
-        ...statusStyle
-      }
-    }), showStatusTextNode && /* @__PURE__ */ reactExports.createElement("span", {
-      style: {
-        color: statusTextColor
-      },
-      className: `${prefixCls}-status-text`
-    }, text));
-  }
-  return /* @__PURE__ */ reactExports.createElement("span", {
-    ref,
-    ...restProps,
-    className: badgeClassName,
-    style: mergedStyles.root
-  }, children, /* @__PURE__ */ reactExports.createElement(CSSMotion, {
-    visible: !isHidden,
-    motionName: `${prefixCls}-zoom`,
-    motionAppear: false,
-    motionDeadline: 1e3
-  }, ({
-    className: motionClassName
-  }) => {
-    const scrollNumberPrefixCls = getPrefixCls("scroll-number", customizeScrollNumberPrefixCls);
-    const isDot = isDotRef.current;
-    const scrollNumberCls = clsx(mergedClassNames.indicator, {
-      [`${prefixCls}-dot`]: isDot,
-      [`${prefixCls}-count`]: !isDot,
-      [`${prefixCls}-count-sm`]: size === "small",
-      [`${prefixCls}-multiple-words`]: !isDot && displayCount && displayCount.toString().length > 1,
-      [`${prefixCls}-status-${status}`]: !!status,
-      [`${prefixCls}-color-${color}`]: isInternalColor
-    });
-    let scrollNumberStyle = {
-      ...mergedStyles.indicator,
-      ...mergedStyle
-    };
-    if (color && !isInternalColor) {
-      scrollNumberStyle = scrollNumberStyle || {};
-      scrollNumberStyle.background = color;
-    }
-    return /* @__PURE__ */ reactExports.createElement(ScrollNumber, {
-      prefixCls: scrollNumberPrefixCls,
-      show: !isHidden,
-      motionClassName,
-      className: scrollNumberCls,
-      count: displayCount,
-      title: titleNode,
-      style: scrollNumberStyle,
-      key: "scrollNumber"
-    }, displayNode);
-  }), statusTextNode);
-});
-const genRibbonStyle = (token) => {
-  const {
-    antCls,
-    badgeFontHeight,
-    marginXS,
-    badgeRibbonOffset,
-    calc
-  } = token;
-  const ribbonPrefixCls = `${antCls}-ribbon`;
-  const ribbonWrapperPrefixCls = `${antCls}-ribbon-wrapper`;
-  const statusRibbonPreset = genPresetColor(token, (colorKey, {
-    darkColor
-  }) => ({
-    [`&${ribbonPrefixCls}-color-${colorKey}`]: {
-      background: darkColor,
-      color: darkColor
-    }
-  }));
-  return {
-    [ribbonWrapperPrefixCls]: {
-      position: "relative"
     },
-    [ribbonPrefixCls]: {
-      ...resetComponent(token),
-      position: "absolute",
-      top: marginXS,
-      padding: `0 ${unit(token.paddingXS)}`,
-      color: token.colorPrimary,
-      lineHeight: unit(badgeFontHeight),
-      whiteSpace: "nowrap",
-      backgroundColor: token.colorPrimary,
-      borderRadius: token.borderRadiusSM,
-      [`${ribbonPrefixCls}-content`]: {
-        color: token.badgeTextColor
-      },
-      [`${ribbonPrefixCls}-corner`]: {
-        position: "absolute",
-        top: "100%",
-        width: badgeRibbonOffset,
-        height: badgeRibbonOffset,
-        color: "currentcolor",
-        border: `${unit(calc(badgeRibbonOffset).div(2).equal())} solid`,
-        transform: token.badgeRibbonCornerTransform,
-        transformOrigin: "top",
-        filter: token.badgeRibbonCornerFilter
-      },
-      ...statusRibbonPreset,
-      [`&${ribbonPrefixCls}-placement-end`]: {
-        insetInlineEnd: calc(badgeRibbonOffset).mul(-1).equal(),
-        borderEndEndRadius: 0,
-        [`${ribbonPrefixCls}-corner`]: {
-          insetInlineEnd: 0,
-          borderInlineEndColor: "transparent",
-          borderBlockEndColor: "transparent"
-        }
-      },
-      [`&${ribbonPrefixCls}-placement-start`]: {
-        insetInlineStart: calc(badgeRibbonOffset).mul(-1).equal(),
-        borderEndStartRadius: 0,
-        [`${ribbonPrefixCls}-corner`]: {
-          insetInlineStart: 0,
-          borderBlockEndColor: "transparent",
-          borderInlineStartColor: "transparent"
-        }
-      },
-      // ====================== RTL =======================
-      "&-rtl": {
-        direction: "rtl"
+    // Arrow Style
+    getArrowStyle(token, varRef("arrow-background-color")),
+    // Pure Render
+    {
+      [`${componentCls}-pure`]: {
+        position: "relative",
+        maxWidth: "none",
+        margin: token.sizePopupArrow,
+        display: "inline-block"
       }
     }
-  };
+  ];
 };
-const useStyle$c = genStyleHooks(["Badge", "Ribbon"], (token) => {
-  const badgeToken = prepareToken$1(token);
-  return genRibbonStyle(badgeToken);
-}, prepareComponentToken$6);
-const Ribbon = (props) => {
+const genColorStyle = (token) => {
   const {
-    className,
-    prefixCls: customizePrefixCls,
-    style,
-    color,
-    children,
-    text,
-    placement = "end",
-    rootClassName,
-    styles,
-    classNames: ribbonClassNames
-  } = props;
-  const {
-    getPrefixCls,
-    direction,
-    className: contextClassName,
-    style: contextStyle,
-    classNames: contextClassNames,
-    styles: contextStyles
-  } = useComponentConfig("ribbon");
-  const prefixCls = getPrefixCls("ribbon", customizePrefixCls);
-  const wrapperCls = `${prefixCls}-wrapper`;
-  const [hashId, cssVarCls] = useStyle$c(prefixCls, wrapperCls);
-  const mergedProps = {
-    ...props,
-    placement
-  };
-  const [mergedClassNames, mergedStyles] = useMergeSemantic([contextClassNames, ribbonClassNames], [contextStyles, styles], {
-    props: mergedProps
-  });
-  const colorInPreset = isPresetColor(color, false);
-  const ribbonCls = clsx(prefixCls, `${prefixCls}-placement-${placement}`, {
-    [`${prefixCls}-rtl`]: direction === "rtl",
-    [`${prefixCls}-color-${color}`]: colorInPreset
-  }, className, contextClassName, mergedClassNames.indicator);
-  const colorStyle = {};
-  const cornerColorStyle = {};
-  if (color && !colorInPreset) {
-    colorStyle.background = color;
-    cornerColorStyle.color = color;
-  }
-  return /* @__PURE__ */ reactExports.createElement("div", {
-    className: clsx(wrapperCls, rootClassName, hashId, cssVarCls, mergedClassNames.root),
-    style: mergedStyles.root
-  }, children, /* @__PURE__ */ reactExports.createElement("div", {
-    className: clsx(ribbonCls, hashId),
-    style: {
-      ...colorStyle,
-      ...mergedStyles.indicator,
-      ...contextStyle,
-      ...style
-    }
-  }, /* @__PURE__ */ reactExports.createElement("span", {
-    className: clsx(`${prefixCls}-content`, mergedClassNames.content),
-    style: mergedStyles.content
-  }, text), /* @__PURE__ */ reactExports.createElement("div", {
-    className: `${prefixCls}-corner`,
-    style: cornerColorStyle
-  })));
-};
-const Badge = Badge$1;
-Badge.Ribbon = Ribbon;
-const LayoutContext = /* @__PURE__ */ reactExports.createContext({
-  siderHook: {
-    addSider: () => null,
-    removeSider: () => null
-  }
-});
-const genLayoutStyle = (token) => {
-  const {
-    antCls,
-    // .ant
     componentCls,
-    // .ant-layout
-    colorText,
-    footerBg,
-    headerHeight,
-    headerPadding,
-    headerColor,
-    footerPadding,
-    fontSize,
-    bodyBg,
-    headerBg
+    antCls
   } = token;
+  const [varName] = genCssVar(antCls, "tooltip");
   return {
-    [componentCls]: {
-      display: "flex",
-      flex: "auto",
-      flexDirection: "column",
-      /* fix firefox can't set height smaller than content on flex item */
-      minHeight: 0,
-      background: bodyBg,
-      "&, *": {
-        boxSizing: "border-box"
-      },
-      [`&${componentCls}-has-sider`]: {
-        flexDirection: "row",
-        [`> ${componentCls}, > ${componentCls}-content`]: {
-          // https://segmentfault.com/a/1190000019498300
-          width: 0
+    [componentCls]: PresetColors.map((colorKey) => {
+      const lightColor = token[`${colorKey}6`];
+      return {
+        [`&${componentCls}-${colorKey}`]: {
+          [varName("arrow-background-color")]: lightColor,
+          [`${componentCls}-inner`]: {
+            backgroundColor: lightColor
+          },
+          [`${componentCls}-arrow`]: {
+            background: "transparent"
+          }
         }
-      },
-      [`${componentCls}-header, &${componentCls}-footer`]: {
-        flex: "0 0 auto"
-      },
-      // RTL
-      "&-rtl": {
-        direction: "rtl"
-      }
-    },
-    // ==================== Header ====================
-    [`${componentCls}-header`]: {
-      height: headerHeight,
-      padding: headerPadding,
-      color: headerColor,
-      lineHeight: unit(headerHeight),
-      background: headerBg,
-      // Other components/menu/style/index.less line:686
-      // Integration with header element so menu items have the same height
-      [`${antCls}-menu`]: {
-        lineHeight: "inherit"
-      }
-    },
-    // ==================== Footer ====================
-    [`${componentCls}-footer`]: {
-      padding: footerPadding,
-      color: colorText,
-      fontSize,
-      background: footerBg
-    },
-    // =================== Content ====================
-    [`${componentCls}-content`]: {
-      flex: "auto",
-      color: colorText,
-      // fix firefox can't set height smaller than content on flex item
-      minHeight: 0
-    }
+      };
+    })
   };
 };
 const prepareComponentToken$5 = (token) => {
   const {
-    colorBgLayout,
+    lineWidth,
     controlHeight,
-    controlHeightLG,
-    colorText,
-    controlHeightSM,
-    marginXXS,
-    colorTextLightSolid,
-    colorBgContainer
-  } = token;
-  const paddingInline = controlHeightLG * 1.25;
-  return {
-    // Deprecated
-    colorBgHeader: "#001529",
-    colorBgBody: colorBgLayout,
-    colorBgTrigger: "#002140",
-    bodyBg: colorBgLayout,
-    headerBg: "#001529",
-    headerHeight: controlHeight * 2,
-    headerPadding: `0 ${paddingInline}px`,
-    headerColor: colorText,
-    footerPadding: `${controlHeightSM}px ${paddingInline}px`,
-    footerBg: colorBgLayout,
-    siderBg: "#001529",
-    triggerHeight: controlHeightLG + marginXXS * 2,
-    triggerBg: "#002140",
-    triggerColor: colorTextLightSolid,
-    zeroTriggerWidth: controlHeightLG,
-    zeroTriggerHeight: controlHeightLG,
-    lightSiderBg: colorBgContainer,
-    lightTriggerBg: colorBgContainer,
-    lightTriggerColor: colorText
-  };
-};
-const DEPRECATED_TOKENS = [["colorBgBody", "bodyBg"], ["colorBgHeader", "headerBg"], ["colorBgTrigger", "triggerBg"]];
-const useStyle$b = genStyleHooks("Layout", genLayoutStyle, prepareComponentToken$5, {
-  deprecatedTokens: DEPRECATED_TOKENS
-});
-const genSiderStyle = (token) => {
-  const {
-    componentCls,
-    siderBg,
-    motionDurationMid,
-    motionDurationSlow,
-    antCls,
-    triggerHeight,
-    triggerColor,
-    triggerBg,
-    headerHeight,
-    zeroTriggerWidth,
-    zeroTriggerHeight,
+    fontHeight,
+    padding,
+    wireframe,
+    zIndexPopupBase,
     borderRadiusLG,
-    lightSiderBg,
-    lightTriggerColor,
-    lightTriggerBg,
-    bodyBg
+    marginXS,
+    lineType,
+    colorSplit,
+    paddingSM
   } = token;
+  const titlePaddingBlockDist = controlHeight - fontHeight;
+  const popoverTitlePaddingBlockTop = titlePaddingBlockDist / 2;
+  const popoverTitlePaddingBlockBottom = titlePaddingBlockDist / 2 - lineWidth;
+  const popoverPaddingHorizontal = padding;
   return {
-    [componentCls]: {
-      position: "relative",
-      // fix firefox can't set width smaller than content on flex item
-      minWidth: 0,
-      background: siderBg,
-      transition: `all ${motionDurationMid}, background 0s`,
-      "&-has-trigger": {
-        paddingBottom: triggerHeight
-      },
-      "&-right": {
-        order: 1
-      },
-      [`${componentCls}-children`]: {
-        height: "100%",
-        // Hack for fixing margin collapse bug
-        // https://github.com/ant-design/ant-design/issues/7967
-        // solution from https://stackoverflow.com/a/33132624/3040605
-        marginTop: -0.1,
-        paddingTop: 0.1,
-        [`${antCls}-menu${antCls}-menu-inline-collapsed`]: {
-          width: "auto"
-        }
-      },
-      [`&-zero-width ${componentCls}-children`]: {
-        overflow: "hidden"
-      },
-      [`${componentCls}-trigger`]: {
-        position: "fixed",
-        bottom: 0,
-        zIndex: 1,
-        height: triggerHeight,
-        color: triggerColor,
-        lineHeight: unit(triggerHeight),
-        textAlign: "center",
-        background: triggerBg,
-        cursor: "pointer",
-        transition: `all ${motionDurationMid}`
-      },
-      [`${componentCls}-zero-width-trigger`]: {
-        position: "absolute",
-        top: headerHeight,
-        insetInlineEnd: token.calc(zeroTriggerWidth).mul(-1).equal(),
-        zIndex: 1,
-        width: zeroTriggerWidth,
-        height: zeroTriggerHeight,
-        color: triggerColor,
-        fontSize: token.fontSizeXL,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: siderBg,
-        borderRadius: `0 ${unit(borderRadiusLG)} ${unit(borderRadiusLG)} 0`,
-        cursor: "pointer",
-        transition: `background-color ${motionDurationSlow} ease`,
-        "&::after": {
-          position: "absolute",
-          inset: 0,
-          background: "transparent",
-          transition: `all ${motionDurationSlow}`,
-          content: '""'
-        },
-        "&:hover::after": {
-          background: `rgba(255, 255, 255, 0.2)`
-        },
-        "&-right": {
-          insetInlineStart: token.calc(zeroTriggerWidth).mul(-1).equal(),
-          borderRadius: `${unit(borderRadiusLG)} 0 0 ${unit(borderRadiusLG)}`
-        }
-      },
-      // Light
-      "&-light": {
-        background: lightSiderBg,
-        [`${componentCls}-trigger`]: {
-          color: lightTriggerColor,
-          background: lightTriggerBg
-        },
-        [`${componentCls}-zero-width-trigger`]: {
-          color: lightTriggerColor,
-          background: lightTriggerBg,
-          border: `1px solid ${bodyBg}`,
-          // Safe to modify to any other color
-          borderInlineStart: 0
-        }
-      }
-    }
+    titleMinWidth: 177,
+    zIndexPopup: zIndexPopupBase + 30,
+    ...getArrowToken(token),
+    ...getArrowOffsetToken({
+      contentRadius: borderRadiusLG,
+      limitVerticalRadius: true
+    }),
+    // internal
+    innerPadding: wireframe ? 0 : 12,
+    titleMarginBottom: wireframe ? 0 : marginXS,
+    titlePadding: wireframe ? `${popoverTitlePaddingBlockTop}px ${popoverPaddingHorizontal}px ${popoverTitlePaddingBlockBottom}px` : 0,
+    titleBorderBottom: wireframe ? `${lineWidth}px ${lineType} ${colorSplit}` : "none",
+    innerContentPadding: wireframe ? `${paddingSM}px ${popoverPaddingHorizontal}px` : 0
   };
 };
-const useStyle$a = genStyleHooks(["Layout", "Sider"], genSiderStyle, prepareComponentToken$5, {
-  deprecatedTokens: DEPRECATED_TOKENS
-});
-const dimensionMaxMap = {
-  xs: "479.98px",
-  sm: "575.98px",
-  md: "767.98px",
-  lg: "991.98px",
-  xl: "1199.98px",
-  xxl: "1599.98px",
-  xxxl: `1839.98px`
-};
-const isNumeric = (val) => !Number.isNaN(Number.parseFloat(val)) && Number.isFinite(Number(val));
-const SiderContext = /* @__PURE__ */ reactExports.createContext({});
-const generateId = /* @__PURE__ */ (() => {
-  let i = 0;
-  return (prefix = "") => {
-    i += 1;
-    return `${prefix}${i}`;
-  };
-})();
-const Sider = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
+const useStyle$a = genStyleHooks("Popover", (token) => {
   const {
-    prefixCls: customizePrefixCls,
-    className,
-    trigger,
-    children,
-    defaultCollapsed = false,
-    theme = "dark",
-    style = {},
-    collapsible = false,
-    reverseArrow = false,
-    width = 200,
-    collapsedWidth = 80,
-    zeroWidthTriggerStyle,
-    breakpoint,
-    onCollapse,
-    onBreakpoint,
-    ...otherProps
+    colorBgElevated,
+    colorText
+  } = token;
+  const popoverToken = merge$1(token, {
+    popoverBg: colorBgElevated,
+    popoverColor: colorText
+  });
+  return [genBaseStyle$1(popoverToken), genColorStyle(popoverToken), initZoomMotion(popoverToken, "zoom-big")];
+}, prepareComponentToken$5, {
+  resetStyle: false,
+  deprecatedTokens: [["width", "titleMinWidth"], ["minWidth", "titleMinWidth"]]
+});
+const Overlay = (props) => {
+  const {
+    title,
+    content,
+    prefixCls,
+    classNames,
+    styles
   } = props;
+  if (!title && !content) {
+    return null;
+  }
+  return /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, title && /* @__PURE__ */ reactExports.createElement("div", {
+    className: clsx(`${prefixCls}-title`, classNames?.title),
+    style: styles?.title
+  }, title), content && /* @__PURE__ */ reactExports.createElement("div", {
+    className: clsx(`${prefixCls}-content`, classNames?.content),
+    style: styles?.content
+  }, content));
+};
+const RawPurePanel = (props) => {
   const {
-    siderHook
-  } = reactExports.useContext(LayoutContext);
-  const [collapsed, setCollapsed] = reactExports.useState("collapsed" in props ? props.collapsed : defaultCollapsed);
-  const [below, setBelow] = reactExports.useState(false);
-  reactExports.useEffect(() => {
-    if ("collapsed" in props) {
-      setCollapsed(props.collapsed);
-    }
-  }, [props.collapsed]);
-  const handleSetCollapsed = (value, type) => {
-    if (!("collapsed" in props)) {
-      setCollapsed(value);
-    }
-    onCollapse?.(value, type);
+    hashId,
+    prefixCls,
+    className,
+    style,
+    placement = "top",
+    title,
+    content,
+    children,
+    classNames,
+    styles
+  } = props;
+  const titleNode = getRenderPropValue(title);
+  const contentNode = getRenderPropValue(content);
+  const mergedProps = {
+    ...props,
+    placement
   };
-  const {
-    getPrefixCls,
-    direction
-  } = reactExports.useContext(ConfigContext);
-  const prefixCls = getPrefixCls("layout-sider", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$a(prefixCls);
-  const responsiveHandlerRef = reactExports.useRef(null);
-  responsiveHandlerRef.current = (mql) => {
-    setBelow(mql.matches);
-    onBreakpoint?.(mql.matches);
-    if (collapsed !== mql.matches) {
-      handleSetCollapsed(mql.matches, "responsive");
-    }
-  };
-  reactExports.useEffect(() => {
-    function responsiveHandler(mql2) {
-      return responsiveHandlerRef.current?.(mql2);
-    }
-    let mql;
-    if (typeof window?.matchMedia !== "undefined" && breakpoint && breakpoint in dimensionMaxMap) {
-      mql = window.matchMedia(`screen and (max-width: ${dimensionMaxMap[breakpoint]})`);
-      if (typeof mql?.addEventListener === "function") {
-        mql.addEventListener("change", responsiveHandler);
-      }
-      responsiveHandler(mql);
-    }
-    return () => {
-      if (typeof mql?.removeEventListener === "function") {
-        mql.removeEventListener("change", responsiveHandler);
-      }
-    };
-  }, [breakpoint]);
-  reactExports.useEffect(() => {
-    const uniqueId = generateId("ant-sider-");
-    siderHook.addSider(uniqueId);
-    return () => siderHook.removeSider(uniqueId);
-  }, []);
-  const toggle = () => {
-    handleSetCollapsed(!collapsed, "clickTrigger");
-  };
-  const divProps = omit(otherProps, ["collapsed"]);
-  const rawWidth = collapsed ? collapsedWidth : width;
-  const siderWidth = isNumeric(rawWidth) ? `${rawWidth}px` : String(rawWidth);
-  const zeroWidthTrigger = Number.parseFloat(String(collapsedWidth || 0)) === 0 ? /* @__PURE__ */ reactExports.createElement("span", {
-    onClick: toggle,
-    className: clsx(`${prefixCls}-zero-width-trigger`, `${prefixCls}-zero-width-trigger-${reverseArrow ? "right" : "left"}`),
-    style: zeroWidthTriggerStyle
-  }, trigger || /* @__PURE__ */ reactExports.createElement(RefIcon$9, null)) : null;
-  const reverseIcon = direction === "rtl" === !reverseArrow;
-  const iconObj = {
-    expanded: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$b, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$a, null),
-    collapsed: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$a, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$b, null)
-  };
-  const status = collapsed ? "collapsed" : "expanded";
-  const defaultTrigger = iconObj[status];
-  const triggerDom = trigger !== null ? zeroWidthTrigger || /* @__PURE__ */ reactExports.createElement("div", {
-    className: `${prefixCls}-trigger`,
-    onClick: toggle,
-    style: {
-      width: siderWidth
-    }
-  }, trigger || defaultTrigger) : null;
-  const divStyle = {
-    ...style,
-    flex: `0 0 ${siderWidth}`,
-    maxWidth: siderWidth,
-    // Fix width transition bug in IE11
-    minWidth: siderWidth,
-    // https://github.com/ant-design/ant-design/issues/6349
-    width: siderWidth
-  };
-  const siderCls = clsx(prefixCls, `${prefixCls}-${theme}`, {
-    [`${prefixCls}-collapsed`]: !!collapsed,
-    [`${prefixCls}-has-trigger`]: collapsible && trigger !== null && !zeroWidthTrigger,
-    [`${prefixCls}-below`]: !!below,
-    [`${prefixCls}-zero-width`]: Number.parseFloat(siderWidth) === 0
-  }, className, hashId, cssVarCls);
-  const contextValue = reactExports.useMemo(() => ({
-    siderCollapsed: collapsed
-  }), [collapsed]);
-  return /* @__PURE__ */ reactExports.createElement(SiderContext.Provider, {
-    value: contextValue
-  }, /* @__PURE__ */ reactExports.createElement("aside", {
-    className: siderCls,
-    ...divProps,
-    style: divStyle,
-    ref
+  const [mergedClassNames, mergedStyles] = useMergeSemantic([classNames], [styles], {
+    props: mergedProps
+  });
+  const rootClassName = clsx(hashId, prefixCls, `${prefixCls}-pure`, `${prefixCls}-placement-${placement}`, className);
+  return /* @__PURE__ */ reactExports.createElement("div", {
+    className: rootClassName,
+    style
   }, /* @__PURE__ */ reactExports.createElement("div", {
-    className: `${prefixCls}-children`
-  }, children), collapsible || below && zeroWidthTrigger ? triggerDom : null));
-});
-const MenuContext = /* @__PURE__ */ reactExports.createContext({
-  prefixCls: "",
-  firstLevel: true,
-  inlineCollapsed: false,
-  styles: null,
-  classNames: null
-});
-const MenuDivider = (props) => {
+    className: `${prefixCls}-arrow`
+  }), /* @__PURE__ */ reactExports.createElement(Popup, {
+    ...props,
+    className: hashId,
+    prefixCls,
+    classNames: mergedClassNames,
+    styles: mergedStyles
+  }, children || /* @__PURE__ */ reactExports.createElement(Overlay, {
+    prefixCls,
+    title: titleNode,
+    content: contentNode,
+    classNames: mergedClassNames,
+    styles: mergedStyles
+  })));
+};
+const PurePanel$2 = (props) => {
   const {
     prefixCls: customizePrefixCls,
     className,
-    dashed,
     ...restProps
   } = props;
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
-  const prefixCls = getPrefixCls("menu", customizePrefixCls);
-  const classString = clsx({
-    [`${prefixCls}-item-divider-dashed`]: !!dashed
-  }, className);
-  return /* @__PURE__ */ reactExports.createElement(Divider, {
-    className: classString,
-    ...restProps
+  const prefixCls = getPrefixCls("popover", customizePrefixCls);
+  const [hashId, cssVarCls] = useStyle$a(prefixCls);
+  return /* @__PURE__ */ reactExports.createElement(RawPurePanel, {
+    ...restProps,
+    prefixCls,
+    hashId,
+    className: clsx(className, cssVarCls)
   });
 };
-const MenuItem = (props) => {
-  const {
-    className,
-    children,
-    icon,
-    title,
-    danger,
-    extra
-  } = props;
-  const {
-    prefixCls,
-    firstLevel,
-    direction,
-    disableMenuItemTitleTooltip,
-    tooltip,
-    inlineCollapsed: isInlineCollapsed,
-    styles,
-    classNames
-  } = reactExports.useContext(MenuContext);
-  const renderItemChildren = (inlineCollapsed) => {
-    const label = children?.[0];
-    const wrapNode = /* @__PURE__ */ reactExports.createElement("span", {
-      className: clsx(`${prefixCls}-title-content`, firstLevel ? classNames?.itemContent : classNames?.subMenu?.itemContent, {
-        [`${prefixCls}-title-content-with-extra`]: !!extra || extra === 0
-      }),
-      style: firstLevel ? styles?.itemContent : styles?.subMenu?.itemContent
-    }, children);
-    if (!icon || /* @__PURE__ */ reactExports.isValidElement(children) && children.type === "span") {
-      if (children && inlineCollapsed && firstLevel && typeof label === "string") {
-        return /* @__PURE__ */ reactExports.createElement("div", {
-          className: `${prefixCls}-inline-collapsed-noicon`
-        }, label.charAt(0));
-      }
-    }
-    return wrapNode;
-  };
-  const {
-    siderCollapsed
-  } = reactExports.useContext(SiderContext);
-  let tooltipTitle = title;
-  if (typeof title === "undefined") {
-    tooltipTitle = firstLevel ? children : "";
-  } else if (title === false) {
-    tooltipTitle = "";
-  }
-  const tooltipConfig = tooltip === false ? void 0 : tooltip;
-  const mergedTooltipTitle = tooltipConfig && tooltipConfig.title !== void 0 ? tooltipConfig.title : tooltipTitle;
-  const tooltipProps = {
-    ...tooltipConfig ?? null,
-    title: mergedTooltipTitle
-  };
-  if (!siderCollapsed && !isInlineCollapsed) {
-    tooltipProps.title = null;
-    tooltipProps.open = false;
-  }
-  const childrenLength = toArray$1(children).length;
-  let returnNode = /* @__PURE__ */ reactExports.createElement(MenuItem$1, {
-    ...omit(props, ["title", "icon", "danger"]),
-    className: clsx(firstLevel ? classNames?.item : classNames?.subMenu?.item, {
-      [`${prefixCls}-item-danger`]: danger,
-      [`${prefixCls}-item-only-child`]: (icon ? childrenLength + 1 : childrenLength) === 1
-    }, className),
-    style: {
-      ...firstLevel ? styles?.item : styles?.subMenu?.item,
-      ...props.style
-    },
-    title: typeof title === "string" ? title : void 0
-  }, cloneElement(icon, (oriProps) => ({
-    className: clsx(`${prefixCls}-item-icon`, firstLevel ? classNames?.itemIcon : classNames?.subMenu?.itemIcon, oriProps.className),
-    style: {
-      ...firstLevel ? styles?.itemIcon : styles?.subMenu?.itemIcon,
-      ...oriProps.style
-    }
-  })), renderItemChildren(isInlineCollapsed));
-  if (!disableMenuItemTitleTooltip && tooltip !== false) {
-    const mergedTooltipPlacement = tooltipConfig && tooltipConfig.placement ? tooltipConfig.placement : direction === "rtl" ? "left" : "right";
-    const baseTooltipClassName = `${prefixCls}-inline-collapsed-tooltip`;
-    const mergeTooltipRootClassName = (classNames2) => ({
-      ...classNames2,
-      root: clsx(baseTooltipClassName, classNames2?.root)
-    });
-    const mergedTooltipClassNames = tooltipConfig && typeof tooltipConfig.classNames === "function" ? (info) => {
-      const resolvedClassNames = tooltipConfig.classNames(info);
-      return mergeTooltipRootClassName(resolvedClassNames);
-    } : mergeTooltipRootClassName(tooltipConfig?.classNames);
-    returnNode = /* @__PURE__ */ reactExports.createElement(Tooltip, {
-      ...tooltipProps,
-      placement: mergedTooltipPlacement,
-      classNames: mergedTooltipClassNames
-    }, returnNode);
-  }
-  return returnNode;
-};
-const OverrideContext = /* @__PURE__ */ reactExports.createContext(null);
-const getHorizontalStyle = (token) => {
-  const {
-    componentCls,
-    motionDurationSlow,
-    horizontalLineHeight,
-    colorSplit,
-    lineWidth,
-    lineType,
-    itemPaddingInline
-  } = token;
-  return {
-    [`${componentCls}-horizontal`]: {
-      lineHeight: horizontalLineHeight,
-      border: 0,
-      borderBottom: `${unit(lineWidth)} ${lineType} ${colorSplit}`,
-      boxShadow: "none",
-      "&::after": {
-        display: "block",
-        clear: "both",
-        height: 0,
-        content: '"\\20"'
-      },
-      // ======================= Item =======================
-      [`${componentCls}-item, ${componentCls}-submenu`]: {
-        position: "relative",
-        display: "inline-block",
-        verticalAlign: "bottom",
-        paddingInline: itemPaddingInline
-      },
-      [`> ${componentCls}-item:hover,
-        > ${componentCls}-item-active,
-        > ${componentCls}-submenu ${componentCls}-submenu-title:hover`]: {
-        backgroundColor: "transparent"
-      },
-      [`${componentCls}-item, ${componentCls}-submenu-title`]: {
-        transition: [`border-color`, `background-color`].map((prop) => `${prop} ${motionDurationSlow}`).join(",")
-      },
-      // ===================== Sub Menu =====================
-      [`${componentCls}-submenu-arrow`]: {
-        display: "none"
-      }
-    }
-  };
-};
-const getRTLStyle = ({
-  componentCls,
-  menuArrowOffset,
-  calc
-}) => ({
-  [`${componentCls}-rtl`]: {
-    direction: "rtl"
-  },
-  [`${componentCls}-submenu-rtl`]: {
-    transformOrigin: "100% 0"
-  },
-  // Vertical Arrow
-  [`${componentCls}-rtl${componentCls}-vertical,
-    ${componentCls}-submenu-rtl ${componentCls}-vertical`]: {
-    [`${componentCls}-submenu-arrow`]: {
-      "&::before": {
-        transform: `rotate(-45deg) translateY(${unit(calc(menuArrowOffset).mul(-1).equal())})`
-      },
-      "&::after": {
-        transform: `rotate(45deg) translateY(${unit(menuArrowOffset)})`
-      }
-    }
-  }
-});
-const accessibilityFocus = (token) => genFocusOutline(token);
-const getThemeStyle = (token, themeSuffix) => {
-  const {
-    componentCls,
-    itemColor,
-    itemSelectedColor,
-    subMenuItemSelectedColor,
-    groupTitleColor,
-    itemBg,
-    subMenuItemBg,
-    itemSelectedBg,
-    activeBarHeight,
-    activeBarWidth,
-    activeBarBorderWidth,
-    motionDurationSlow,
-    motionEaseInOut,
-    motionEaseOut,
-    itemPaddingInline,
-    motionDurationMid,
-    itemHoverColor,
-    lineType,
-    colorSplit,
-    // Disabled
-    itemDisabledColor,
-    // Danger
-    dangerItemColor,
-    dangerItemHoverColor,
-    dangerItemSelectedColor,
-    dangerItemActiveBg,
-    dangerItemSelectedBg,
-    // Bg
-    popupBg,
-    itemHoverBg,
-    itemActiveBg,
-    menuSubMenuBg,
-    // Horizontal
-    horizontalItemSelectedColor,
-    horizontalItemSelectedBg,
-    horizontalItemBorderRadius,
-    horizontalItemHoverBg
-  } = token;
-  return {
-    [`${componentCls}-${themeSuffix}, ${componentCls}-${themeSuffix} > ${componentCls}`]: {
-      color: itemColor,
-      background: itemBg,
-      [`&${componentCls}-root:focus-visible`]: {
-        ...accessibilityFocus(token)
-      },
-      // ======================== Item ========================
-      [`${componentCls}-item`]: {
-        "&-group-title, &-extra": {
-          color: groupTitleColor
-        }
-      },
-      [`${componentCls}-submenu-selected > ${componentCls}-submenu-title`]: {
-        color: subMenuItemSelectedColor
-      },
-      [`${componentCls}-item, ${componentCls}-submenu-title`]: {
-        color: itemColor,
-        [`&:not(${componentCls}-item-disabled):focus-visible`]: {
-          ...accessibilityFocus(token)
-        }
-      },
-      // Disabled
-      [`${componentCls}-item-disabled, ${componentCls}-submenu-disabled`]: {
-        color: `${itemDisabledColor} !important`
-      },
-      // Hover
-      [`${componentCls}-item:not(${componentCls}-item-selected):not(${componentCls}-submenu-selected)`]: {
-        [`&:hover, > ${componentCls}-submenu-title:hover`]: {
-          color: itemHoverColor
-        }
-      },
-      [`&:not(${componentCls}-horizontal)`]: {
-        [`${componentCls}-item:not(${componentCls}-item-selected)`]: {
-          "&:hover": {
-            backgroundColor: itemHoverBg
-          },
-          "&:active": {
-            backgroundColor: itemActiveBg
-          }
-        },
-        [`${componentCls}-submenu-title`]: {
-          "&:hover": {
-            backgroundColor: itemHoverBg
-          },
-          "&:active": {
-            backgroundColor: itemActiveBg
-          }
-        }
-      },
-      // Danger - only Item has
-      [`${componentCls}-item-danger`]: {
-        color: dangerItemColor,
-        [`&${componentCls}-item:hover`]: {
-          [`&:not(${componentCls}-item-selected):not(${componentCls}-submenu-selected)`]: {
-            color: dangerItemHoverColor
-          }
-        },
-        [`&${componentCls}-item:active`]: {
-          background: dangerItemActiveBg
-        }
-      },
-      [`${componentCls}-item a`]: {
-        "&, &:hover": {
-          color: "inherit"
-        }
-      },
-      [`${componentCls}-item-selected`]: {
-        color: itemSelectedColor,
-        // Danger
-        [`&${componentCls}-item-danger`]: {
-          color: dangerItemSelectedColor
-        },
-        "a, a:hover": {
-          color: "inherit"
-        }
-      },
-      [`& ${componentCls}-item-selected`]: {
-        backgroundColor: itemSelectedBg,
-        // Danger
-        [`&${componentCls}-item-danger`]: {
-          backgroundColor: dangerItemSelectedBg
-        }
-      },
-      [`&${componentCls}-submenu > ${componentCls}`]: {
-        backgroundColor: menuSubMenuBg
-      },
-      // ===== 设置浮层的颜色 =======
-      // ！dark 模式会被popupBg 会被rest 为 darkPopupBg
-      [`&${componentCls}-popup > ${componentCls}`]: {
-        backgroundColor: popupBg
-      },
-      [`&${componentCls}-submenu-popup > ${componentCls}`]: {
-        backgroundColor: popupBg
-      },
-      // ===== 设置浮层的颜色 end =======
-      // ====================== Horizontal ======================
-      [`&${componentCls}-horizontal`]: {
-        ...themeSuffix === "dark" ? {
-          borderBottom: 0
-        } : {},
-        [`> ${componentCls}-item, > ${componentCls}-submenu`]: {
-          top: activeBarBorderWidth,
-          marginTop: token.calc(activeBarBorderWidth).mul(-1).equal(),
-          marginBottom: 0,
-          borderRadius: horizontalItemBorderRadius,
-          "&::after": {
-            position: "absolute",
-            insetInline: itemPaddingInline,
-            bottom: 0,
-            borderBottom: `${unit(activeBarHeight)} solid transparent`,
-            transition: `border-color ${motionDurationSlow} ${motionEaseInOut}`,
-            content: '""'
-          },
-          "&:hover, &-active, &-open": {
-            background: horizontalItemHoverBg,
-            "&::after": {
-              borderBottomWidth: activeBarHeight,
-              borderBottomColor: horizontalItemSelectedColor
-            }
-          },
-          "&-selected": {
-            color: horizontalItemSelectedColor,
-            backgroundColor: horizontalItemSelectedBg,
-            "&:hover": {
-              backgroundColor: horizontalItemSelectedBg
-            },
-            "&::after": {
-              borderBottomWidth: activeBarHeight,
-              borderBottomColor: horizontalItemSelectedColor
-            }
-          }
-        }
-      },
-      // ================== Inline & Vertical ===================
-      //
-      [`&${componentCls}-root`]: {
-        [`&${componentCls}-inline, &${componentCls}-vertical`]: {
-          borderInlineEnd: `${unit(activeBarBorderWidth)} ${lineType} ${colorSplit}`
-        }
-      },
-      // ======================== Inline ========================
-      [`&${componentCls}-inline`]: {
-        // Sub
-        [`${componentCls}-sub${componentCls}-inline`]: {
-          background: subMenuItemBg
-        },
-        [`${componentCls}-item`]: {
-          position: "relative",
-          "&::after": {
-            position: "absolute",
-            insetBlock: 0,
-            insetInlineEnd: 0,
-            borderInlineEnd: `${unit(activeBarWidth)} solid ${itemSelectedColor}`,
-            transform: "scaleY(0.0001)",
-            opacity: 0,
-            transition: [`transform`, `opacity`].map((prop) => `${prop} ${motionDurationMid} ${motionEaseOut}`).join(","),
-            content: '""'
-          },
-          // Danger
-          [`&${componentCls}-item-danger`]: {
-            "&::after": {
-              borderInlineEndColor: dangerItemSelectedColor
-            }
-          }
-        },
-        [`${componentCls}-selected, ${componentCls}-item-selected`]: {
-          "&::after": {
-            transform: "scaleY(1)",
-            opacity: 1,
-            transition: [`transform`, `opacity`].map((prop) => `${prop} ${motionDurationMid} ${motionEaseInOut}`).join(",")
-          }
-        }
-      }
-    }
-  };
-};
-const getVerticalInlineStyle = (token) => {
-  const {
-    componentCls,
-    itemHeight,
-    itemMarginInline,
-    padding,
-    menuArrowSize,
-    marginXS,
-    itemMarginBlock,
-    itemWidth,
-    itemPaddingInline
-  } = token;
-  const paddingWithArrow = token.calc(menuArrowSize).add(padding).add(marginXS).equal();
-  return {
-    [`${componentCls}-item`]: {
-      position: "relative",
-      overflow: "hidden"
-    },
-    [`${componentCls}-item, ${componentCls}-submenu-title`]: {
-      height: itemHeight,
-      lineHeight: unit(itemHeight),
-      paddingInline: itemPaddingInline,
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      marginInline: itemMarginInline,
-      marginBlock: itemMarginBlock,
-      width: itemWidth
-    },
-    [`> ${componentCls}-item,
-            > ${componentCls}-submenu > ${componentCls}-submenu-title`]: {
-      height: itemHeight,
-      lineHeight: unit(itemHeight)
-    },
-    [`${componentCls}-item-group-list ${componentCls}-submenu-title,
-            ${componentCls}-submenu-title`]: {
-      paddingInlineEnd: paddingWithArrow
-    }
-  };
-};
-const getVerticalStyle = (token) => {
-  const {
-    componentCls,
-    iconCls,
-    itemHeight,
-    colorTextLightSolid,
-    dropdownWidth,
-    controlHeightLG,
-    motionEaseOut,
-    paddingXL,
-    itemMarginInline,
-    fontSizeLG,
-    motionDurationFast,
-    motionDurationSlow,
-    paddingXS,
-    boxShadowSecondary,
-    collapsedWidth,
-    collapsedIconSize
-  } = token;
-  const inlineItemStyle = {
-    height: itemHeight,
-    lineHeight: unit(itemHeight),
-    listStylePosition: "inside",
-    listStyleType: "disc"
-  };
-  return [
-    {
-      [componentCls]: {
-        "&-inline, &-vertical": {
-          [`&${componentCls}-root`]: {
-            boxShadow: "none"
-          },
-          ...getVerticalInlineStyle(token)
-        }
-      },
-      [`${componentCls}-submenu-popup`]: {
-        [`${componentCls}-vertical`]: {
-          ...getVerticalInlineStyle(token),
-          boxShadow: boxShadowSecondary
-        }
-      }
-    },
-    // Vertical only
-    {
-      [`${componentCls}-submenu-popup ${componentCls}-vertical${componentCls}-sub`]: {
-        minWidth: dropdownWidth,
-        maxHeight: `calc(100vh - ${unit(token.calc(controlHeightLG).mul(2.5).equal())})`,
-        padding: "0",
-        overflow: "hidden",
-        borderInlineEnd: 0,
-        // https://github.com/ant-design/ant-design/issues/22244
-        // https://github.com/ant-design/ant-design/issues/26812
-        "&:not([class*='-active'])": {
-          overflowX: "hidden",
-          overflowY: "auto"
-        }
-      }
-    },
-    // Inline Only
-    {
-      [`${componentCls}-inline`]: {
-        width: "100%",
-        // Motion enhance for first level
-        [`&${componentCls}-root`]: {
-          [`${componentCls}-item, ${componentCls}-submenu-title`]: {
-            display: "flex",
-            alignItems: "center",
-            transition: [`border-color ${motionDurationSlow}`, `background-color ${motionDurationSlow}`, `padding ${motionDurationFast} ${motionEaseOut}`].join(","),
-            [`> ${componentCls}-title-content`]: {
-              flex: "auto",
-              minWidth: 0,
-              overflow: "hidden",
-              textOverflow: "ellipsis"
-            },
-            "> *": {
-              flex: "none"
-            }
-          }
-        },
-        // >>>>> Sub
-        [`${componentCls}-sub${componentCls}-inline`]: {
-          padding: 0,
-          border: 0,
-          borderRadius: 0,
-          boxShadow: "none",
-          [`& > ${componentCls}-submenu > ${componentCls}-submenu-title`]: inlineItemStyle,
-          [`& ${componentCls}-item-group-title`]: {
-            paddingInlineStart: paddingXL
-          }
-        },
-        // >>>>> Item
-        [`${componentCls}-item`]: inlineItemStyle
-      }
-    },
-    // Inline Collapse Only
-    {
-      [`${componentCls}-inline-collapsed`]: {
-        width: collapsedWidth,
-        [`&${componentCls}-root`]: {
-          [`${componentCls}-item, ${componentCls}-submenu ${componentCls}-submenu-title`]: {
-            [`> ${componentCls}-inline-collapsed-noicon`]: {
-              fontSize: fontSizeLG,
-              textAlign: "center"
-            }
-          }
-        },
-        [`> ${componentCls}-item,
-          > ${componentCls}-item-group > ${componentCls}-item-group-list > ${componentCls}-item,
-          > ${componentCls}-item-group > ${componentCls}-item-group-list > ${componentCls}-submenu > ${componentCls}-submenu-title,
-          > ${componentCls}-submenu > ${componentCls}-submenu-title`]: {
-          insetInlineStart: 0,
-          paddingInline: `calc(50% - ${unit(token.calc(collapsedIconSize).div(2).equal())} - ${unit(itemMarginInline)})`,
-          textOverflow: "clip",
-          [`
-            ${componentCls}-submenu-arrow,
-            ${componentCls}-submenu-expand-icon
-          `]: {
-            opacity: 0
-          },
-          [`${componentCls}-item-icon, ${iconCls}`]: {
-            margin: 0,
-            fontSize: collapsedIconSize,
-            lineHeight: unit(itemHeight),
-            "+ span": {
-              display: "inline-block",
-              opacity: 0
-            }
-          }
-        },
-        [`${componentCls}-item-icon, ${iconCls}`]: {
-          display: "inline-block"
-        },
-        "&-tooltip": {
-          pointerEvents: "none",
-          [`${componentCls}-item-icon, ${iconCls}`]: {
-            display: "none"
-          },
-          "a, a:hover": {
-            color: colorTextLightSolid
-          }
-        },
-        [`${componentCls}-item-group-title`]: {
-          ...textEllipsis,
-          paddingInline: paddingXS
-        }
-      }
-    }
-  ];
-};
-const genMenuItemStyle = (token) => {
-  const {
-    componentCls,
-    motionDurationSlow,
-    motionDurationMid,
-    motionEaseInOut,
-    motionEaseOut,
-    iconCls,
-    iconSize,
-    iconMarginInlineEnd
-  } = token;
-  return {
-    // >>>>> Item
-    [`${componentCls}-item, ${componentCls}-submenu-title`]: {
-      position: "relative",
-      display: "block",
-      margin: 0,
-      whiteSpace: "nowrap",
-      cursor: "pointer",
-      transition: [`border-color ${motionDurationSlow}`, `background-color ${motionDurationSlow}`, `padding calc(${motionDurationSlow} + 0.1s) ${motionEaseInOut}`].join(","),
-      [`${componentCls}-item-icon, ${iconCls}`]: {
-        minWidth: iconSize,
-        fontSize: iconSize,
-        transition: [`font-size ${motionDurationMid} ${motionEaseOut}`, `margin ${motionDurationSlow} ${motionEaseInOut}`, `color ${motionDurationSlow}`].join(","),
-        "+ span": {
-          marginInlineStart: iconMarginInlineEnd,
-          opacity: 1,
-          transition: [`opacity ${motionDurationSlow} ${motionEaseInOut}`, `margin ${motionDurationSlow}`, `color ${motionDurationSlow}`].join(",")
-        }
-      },
-      [`${componentCls}-item-icon`]: {
-        ...resetIcon()
-      },
-      [`&${componentCls}-item-only-child`]: {
-        [`> ${iconCls}, > ${componentCls}-item-icon`]: {
-          marginInlineEnd: 0
-        }
-      }
-    },
-    // Disabled state sets text to gray and nukes hover/tab effects
-    [`${componentCls}-item-disabled, ${componentCls}-submenu-disabled`]: {
-      background: "none !important",
-      cursor: "not-allowed",
-      "&::after": {
-        borderColor: "transparent !important"
-      },
-      a: {
-        color: "inherit !important",
-        cursor: "not-allowed",
-        pointerEvents: "none"
-      },
-      [`> ${componentCls}-submenu-title`]: {
-        color: "inherit !important",
-        cursor: "not-allowed"
-      }
-    }
-  };
-};
-const genSubMenuArrowStyle = (token) => {
-  const {
-    componentCls,
-    motionDurationSlow,
-    motionEaseInOut,
-    borderRadius,
-    menuArrowSize,
-    menuArrowOffset
-  } = token;
-  return {
-    [`${componentCls}-submenu`]: {
-      "&-expand-icon, &-arrow": {
-        position: "absolute",
-        top: "50%",
-        insetInlineEnd: token.margin,
-        width: menuArrowSize,
-        color: "currentcolor",
-        transform: "translateY(-50%)",
-        transition: ["transform", "opacity"].map((prop) => `${prop} ${motionDurationSlow}`).join(",")
-      },
-      "&-arrow": {
-        // →
-        "&::before, &::after": {
-          position: "absolute",
-          width: token.calc(menuArrowSize).mul(0.6).equal(),
-          height: token.calc(menuArrowSize).mul(0.15).equal(),
-          backgroundColor: "currentcolor",
-          borderRadius,
-          transition: [`background-color`, `transform`, `top`, `color`].map((prop) => `${prop} ${motionDurationSlow} ${motionEaseInOut}`).join(","),
-          content: '""'
-        },
-        "&::before": {
-          transform: `rotate(45deg) translateY(${unit(token.calc(menuArrowOffset).mul(-1).equal())})`
-        },
-        "&::after": {
-          transform: `rotate(-45deg) translateY(${unit(menuArrowOffset)})`
-        }
-      }
-    }
-  };
-};
-const getBaseStyle = (token) => {
-  const {
-    antCls,
-    componentCls,
-    fontSize,
-    motionDurationSlow,
-    motionDurationMid,
-    motionEaseInOut,
-    paddingXS,
-    padding,
-    colorSplit,
-    lineWidth,
-    zIndexPopup,
-    borderRadiusLG,
-    subMenuItemBorderRadius,
-    menuArrowSize,
-    menuArrowOffset,
-    lineType,
-    groupTitleLineHeight,
-    groupTitleFontSize
-  } = token;
-  return [
-    // Misc
-    {
-      "": {
-        [componentCls]: {
-          ...clearFix(),
-          // Hidden
-          "&-hidden": {
-            display: "none"
-          }
-        }
-      },
-      [`${componentCls}-submenu-hidden`]: {
-        display: "none"
-      }
-    },
-    {
-      [componentCls]: {
-        ...resetComponent(token),
-        ...clearFix(),
-        marginBottom: 0,
-        paddingInlineStart: 0,
-        // Override default ul/ol
-        fontSize,
-        lineHeight: 0,
-        // Fix display inline-block gap
-        listStyle: "none",
-        outline: "none",
-        // Magic cubic here but smooth transition
-        transition: `width ${motionDurationSlow} cubic-bezier(0.2, 0, 0, 1) 0s`,
-        "ul, ol": {
-          margin: 0,
-          padding: 0,
-          listStyle: "none"
-        },
-        // Overflow ellipsis
-        "&-overflow": {
-          display: "flex",
-          [`${componentCls}-item`]: {
-            flex: "none"
-          }
-        },
-        [`${componentCls}-item, ${componentCls}-submenu, ${componentCls}-submenu-title`]: {
-          borderRadius: token.itemBorderRadius
-        },
-        [`${componentCls}-item-group-title`]: {
-          padding: `${unit(paddingXS)} ${unit(padding)}`,
-          fontSize: groupTitleFontSize,
-          lineHeight: groupTitleLineHeight,
-          transition: `all ${motionDurationSlow}`
-        },
-        [`&-horizontal ${componentCls}-submenu`]: {
-          transition: [`border-color`, `background-color`].map((prop) => `${prop} ${motionDurationSlow} ${motionEaseInOut}`).join(",")
-        },
-        [`${componentCls}-submenu, ${componentCls}-submenu-inline`]: {
-          transition: [`border-color ${motionDurationSlow}`, `background-color ${motionDurationSlow}`, `padding ${motionDurationMid}`].map((prop) => `${prop} ${motionEaseInOut}`).join(",")
-        },
-        [`${componentCls}-submenu ${componentCls}-sub`]: {
-          cursor: "initial",
-          transition: [`background-color`, `padding`].map((prop) => `${prop} ${motionDurationSlow} ${motionEaseInOut}`).join(",")
-        },
-        [`${componentCls}-title-content`]: {
-          transition: `color ${motionDurationSlow}`,
-          "&-with-extra": {
-            display: "inline-flex",
-            alignItems: "center",
-            width: "100%"
-          },
-          // https://github.com/ant-design/ant-design/issues/41143
-          [`> ${antCls}-typography-ellipsis-single-line`]: {
-            display: "inline",
-            verticalAlign: "unset"
-          },
-          [`${componentCls}-item-extra`]: {
-            marginInlineStart: "auto",
-            paddingInlineStart: token.padding
-          }
-        },
-        [`${componentCls}-item a`]: {
-          "&::before": {
-            position: "absolute",
-            inset: 0,
-            backgroundColor: "transparent",
-            content: '""'
-          }
-        },
-        // Removed a Badge related style seems it's safe
-        // https://github.com/ant-design/ant-design/issues/19809
-        // >>>>> Divider
-        [`${componentCls}-item-divider`]: {
-          overflow: "hidden",
-          lineHeight: 0,
-          borderColor: colorSplit,
-          borderStyle: lineType,
-          borderWidth: 0,
-          borderTopWidth: lineWidth,
-          marginBlock: lineWidth,
-          padding: 0,
-          "&-dashed": {
-            borderStyle: "dashed"
-          }
-        },
-        // Item
-        ...genMenuItemStyle(token),
-        [`${componentCls}-item-group`]: {
-          [`${componentCls}-item-group-list`]: {
-            margin: 0,
-            padding: 0,
-            [`${componentCls}-item, ${componentCls}-submenu-title`]: {
-              paddingInline: `${unit(token.calc(fontSize).mul(2).equal())} ${unit(padding)}`
-            }
-          }
-        },
-        // ======================= Sub Menu =======================
-        "&-submenu": {
-          "&-popup": {
-            position: "absolute",
-            zIndex: zIndexPopup,
-            borderRadius: borderRadiusLG,
-            boxShadow: "none",
-            transformOrigin: "0 0",
-            [`&${componentCls}-submenu`]: {
-              background: "transparent"
-            },
-            // https://github.com/ant-design/ant-design/issues/13955
-            "&::before": {
-              position: "absolute",
-              inset: 0,
-              zIndex: -1,
-              width: "100%",
-              height: "100%",
-              opacity: 0,
-              content: '""'
-            },
-            [`> ${componentCls}`]: {
-              borderRadius: borderRadiusLG,
-              ...genMenuItemStyle(token),
-              ...genSubMenuArrowStyle(token),
-              [`${componentCls}-item, ${componentCls}-submenu > ${componentCls}-submenu-title`]: {
-                borderRadius: subMenuItemBorderRadius
-              },
-              [`${componentCls}-submenu-title::after`]: {
-                transition: `transform ${motionDurationSlow} ${motionEaseInOut}`
-              }
-            }
-          },
-          [`
-          &-placement-leftTop,
-          &-placement-bottomRight,
-          `]: {
-            transformOrigin: "100% 0"
-          },
-          [`
-          &-placement-leftBottom,
-          &-placement-topRight,
-          `]: {
-            transformOrigin: "100% 100%"
-          },
-          [`
-          &-placement-rightBottom,
-          &-placement-topLeft,
-          `]: {
-            transformOrigin: "0 100%"
-          },
-          [`
-          &-placement-bottomLeft,
-          &-placement-rightTop,
-          `]: {
-            transformOrigin: "0 0"
-          },
-          [`
-          &-placement-leftTop,
-          &-placement-leftBottom
-          `]: {
-            paddingInlineEnd: token.paddingXS
-          },
-          [`
-          &-placement-rightTop,
-          &-placement-rightBottom
-          `]: {
-            paddingInlineStart: token.paddingXS
-          },
-          [`
-          &-placement-topRight,
-          &-placement-topLeft
-          `]: {
-            paddingBottom: token.paddingXS
-          },
-          [`
-          &-placement-bottomRight,
-          &-placement-bottomLeft
-          `]: {
-            paddingTop: token.paddingXS
-          }
-        },
-        ...genSubMenuArrowStyle(token),
-        [`&-inline-collapsed ${componentCls}-submenu-arrow,
-        &-inline ${componentCls}-submenu-arrow`]: {
-          // ↓
-          "&::before": {
-            transform: `rotate(-45deg) translateX(${unit(menuArrowOffset)})`
-          },
-          "&::after": {
-            transform: `rotate(45deg) translateX(${unit(token.calc(menuArrowOffset).mul(-1).equal())})`
-          }
-        },
-        [`${componentCls}-submenu-open${componentCls}-submenu-inline > ${componentCls}-submenu-title > ${componentCls}-submenu-arrow`]: {
-          // ↑
-          transform: `translateY(${unit(token.calc(menuArrowSize).mul(0.2).mul(-1).equal())})`,
-          "&::after": {
-            transform: `rotate(-45deg) translateX(${unit(token.calc(menuArrowOffset).mul(-1).equal())})`
-          },
-          "&::before": {
-            transform: `rotate(45deg) translateX(${unit(menuArrowOffset)})`
-          }
-        }
-      }
-    },
-    // Integration with header element so menu items have the same height
-    {
-      [`${antCls}-layout-header`]: {
-        [componentCls]: {
-          lineHeight: "inherit"
-        }
-      }
-    }
-  ];
-};
-const prepareComponentToken$4 = (token) => {
-  const {
-    colorPrimary,
-    colorError,
-    colorTextDisabled,
-    colorErrorBg,
-    colorText,
-    colorTextDescription,
-    colorBgContainer,
-    colorFillAlter,
-    colorFillContent,
-    lineWidth,
-    lineWidthBold,
-    controlItemBgActive,
-    colorBgTextHover,
-    controlHeightLG,
-    lineHeight,
-    colorBgElevated,
-    marginXXS,
-    padding,
-    fontSize,
-    controlHeightSM,
-    fontSizeLG,
-    colorTextLightSolid,
-    colorErrorHover
-  } = token;
-  const activeBarWidth = token.activeBarWidth ?? 0;
-  const activeBarBorderWidth = token.activeBarBorderWidth ?? lineWidth;
-  const itemMarginInline = token.itemMarginInline ?? token.marginXXS;
-  const colorTextDark = new FastColor(colorTextLightSolid).setA(0.65).toRgbString();
-  return {
-    dropdownWidth: 160,
-    zIndexPopup: token.zIndexPopupBase + 50,
-    radiusItem: token.borderRadiusLG,
-    itemBorderRadius: token.borderRadiusLG,
-    radiusSubMenuItem: token.borderRadiusSM,
-    subMenuItemBorderRadius: token.borderRadiusSM,
-    colorItemText: colorText,
-    itemColor: colorText,
-    colorItemTextHover: colorText,
-    itemHoverColor: colorText,
-    colorItemTextHoverHorizontal: colorPrimary,
-    horizontalItemHoverColor: colorPrimary,
-    colorGroupTitle: colorTextDescription,
-    groupTitleColor: colorTextDescription,
-    colorItemTextSelected: colorPrimary,
-    itemSelectedColor: colorPrimary,
-    subMenuItemSelectedColor: colorPrimary,
-    colorItemTextSelectedHorizontal: colorPrimary,
-    horizontalItemSelectedColor: colorPrimary,
-    colorItemBg: colorBgContainer,
-    itemBg: colorBgContainer,
-    colorItemBgHover: colorBgTextHover,
-    itemHoverBg: colorBgTextHover,
-    colorItemBgActive: colorFillContent,
-    itemActiveBg: controlItemBgActive,
-    colorSubItemBg: colorFillAlter,
-    subMenuItemBg: colorFillAlter,
-    colorItemBgSelected: controlItemBgActive,
-    itemSelectedBg: controlItemBgActive,
-    colorItemBgSelectedHorizontal: "transparent",
-    horizontalItemSelectedBg: "transparent",
-    colorActiveBarWidth: 0,
-    activeBarWidth,
-    colorActiveBarHeight: lineWidthBold,
-    activeBarHeight: lineWidthBold,
-    colorActiveBarBorderSize: lineWidth,
-    activeBarBorderWidth,
-    // Disabled
-    colorItemTextDisabled: colorTextDisabled,
-    itemDisabledColor: colorTextDisabled,
-    // Danger
-    colorDangerItemText: colorError,
-    dangerItemColor: colorError,
-    colorDangerItemTextHover: colorError,
-    dangerItemHoverColor: colorError,
-    colorDangerItemTextSelected: colorError,
-    dangerItemSelectedColor: colorError,
-    colorDangerItemBgActive: colorErrorBg,
-    dangerItemActiveBg: colorErrorBg,
-    colorDangerItemBgSelected: colorErrorBg,
-    dangerItemSelectedBg: colorErrorBg,
-    itemMarginInline,
-    horizontalItemBorderRadius: 0,
-    horizontalItemHoverBg: "transparent",
-    itemHeight: controlHeightLG,
-    groupTitleLineHeight: lineHeight,
-    collapsedWidth: controlHeightLG * 2,
-    popupBg: colorBgElevated,
-    itemMarginBlock: marginXXS,
-    itemPaddingInline: padding,
-    horizontalLineHeight: `${controlHeightLG * 1.15}px`,
-    iconSize: fontSize,
-    iconMarginInlineEnd: controlHeightSM - fontSize,
-    collapsedIconSize: fontSizeLG,
-    groupTitleFontSize: fontSize,
-    // Disabled
-    darkItemDisabledColor: new FastColor(colorTextLightSolid).setA(0.25).toRgbString(),
-    // Dark
-    darkItemColor: colorTextDark,
-    darkDangerItemColor: colorError,
-    darkItemBg: "#001529",
-    darkPopupBg: "#001529",
-    darkSubMenuItemBg: "#000c17",
-    darkItemSelectedColor: colorTextLightSolid,
-    darkItemSelectedBg: colorPrimary,
-    darkDangerItemSelectedBg: colorError,
-    darkItemHoverBg: "transparent",
-    darkGroupTitleColor: colorTextDark,
-    darkItemHoverColor: colorTextLightSolid,
-    darkDangerItemHoverColor: colorErrorHover,
-    darkDangerItemSelectedColor: colorTextLightSolid,
-    darkDangerItemActiveBg: colorError,
-    // internal
-    itemWidth: activeBarWidth ? `calc(100% + ${activeBarBorderWidth}px)` : `calc(100% - ${itemMarginInline * 2}px)`
-  };
-};
-const useStyle$9 = (prefixCls, rootCls = prefixCls, injectStyle = true) => {
-  const useStyle2 = genStyleHooks("Menu", (token) => {
-    const {
-      colorBgElevated,
-      controlHeightLG,
-      fontSize,
-      darkItemColor,
-      darkDangerItemColor,
-      darkItemBg,
-      darkSubMenuItemBg,
-      darkItemSelectedColor,
-      darkItemSelectedBg,
-      darkDangerItemSelectedBg,
-      darkItemHoverBg,
-      darkGroupTitleColor,
-      darkItemHoverColor,
-      darkItemDisabledColor,
-      darkDangerItemHoverColor,
-      darkDangerItemSelectedColor,
-      darkDangerItemActiveBg,
-      popupBg,
-      darkPopupBg
-    } = token;
-    const menuArrowSize = token.calc(fontSize).div(7).mul(5).equal();
-    const menuToken = merge$1(token, {
-      menuArrowSize,
-      menuHorizontalHeight: token.calc(controlHeightLG).mul(1.15).equal(),
-      menuArrowOffset: token.calc(menuArrowSize).mul(0.25).equal(),
-      menuSubMenuBg: colorBgElevated,
-      calc: token.calc,
-      popupBg
-    });
-    const menuDarkToken = merge$1(menuToken, {
-      itemColor: darkItemColor,
-      itemHoverColor: darkItemHoverColor,
-      groupTitleColor: darkGroupTitleColor,
-      itemSelectedColor: darkItemSelectedColor,
-      subMenuItemSelectedColor: darkItemSelectedColor,
-      itemBg: darkItemBg,
-      popupBg: darkPopupBg,
-      subMenuItemBg: darkSubMenuItemBg,
-      itemActiveBg: "transparent",
-      itemSelectedBg: darkItemSelectedBg,
-      activeBarHeight: 0,
-      activeBarBorderWidth: 0,
-      itemHoverBg: darkItemHoverBg,
-      // Disabled
-      itemDisabledColor: darkItemDisabledColor,
-      // Danger
-      dangerItemColor: darkDangerItemColor,
-      dangerItemHoverColor: darkDangerItemHoverColor,
-      dangerItemSelectedColor: darkDangerItemSelectedColor,
-      dangerItemActiveBg: darkDangerItemActiveBg,
-      dangerItemSelectedBg: darkDangerItemSelectedBg,
-      menuSubMenuBg: darkSubMenuItemBg,
-      // Horizontal
-      horizontalItemSelectedColor: darkItemSelectedColor,
-      horizontalItemSelectedBg: darkItemSelectedBg
-    });
-    return [
-      // Basic
-      getBaseStyle(menuToken),
-      // Horizontal
-      getHorizontalStyle(menuToken),
-      // Hard code for some light style
-      // Vertical
-      getVerticalStyle(menuToken),
-      // Hard code for some light style
-      // Theme
-      getThemeStyle(menuToken, "light"),
-      getThemeStyle(menuDarkToken, "dark"),
-      // RTL
-      getRTLStyle(menuToken),
-      // Motion
-      genCollapseMotion(menuToken),
-      initSlideMotion(menuToken, "slide-up"),
-      initSlideMotion(menuToken, "slide-down"),
-      initZoomMotion(menuToken, "zoom-big")
-    ];
-  }, prepareComponentToken$4, {
-    deprecatedTokens: [["colorGroupTitle", "groupTitleColor"], ["radiusItem", "itemBorderRadius"], ["radiusSubMenuItem", "subMenuItemBorderRadius"], ["colorItemText", "itemColor"], ["colorItemTextHover", "itemHoverColor"], ["colorItemTextHoverHorizontal", "horizontalItemHoverColor"], ["colorItemTextSelected", "itemSelectedColor"], ["colorItemTextSelectedHorizontal", "horizontalItemSelectedColor"], ["colorItemTextDisabled", "itemDisabledColor"], ["colorDangerItemText", "dangerItemColor"], ["colorDangerItemTextHover", "dangerItemHoverColor"], ["colorDangerItemTextSelected", "dangerItemSelectedColor"], ["colorDangerItemBgActive", "dangerItemActiveBg"], ["colorDangerItemBgSelected", "dangerItemSelectedBg"], ["colorItemBg", "itemBg"], ["colorItemBgHover", "itemHoverBg"], ["colorSubItemBg", "subMenuItemBg"], ["colorItemBgActive", "itemActiveBg"], ["colorItemBgSelectedHorizontal", "horizontalItemSelectedBg"], ["colorActiveBarWidth", "activeBarWidth"], ["colorActiveBarHeight", "activeBarHeight"], ["colorActiveBarBorderSize", "activeBarBorderWidth"], ["colorItemBgSelected", "itemSelectedBg"]],
-    // Dropdown will handle menu style self. We do not need to handle this.
-    injectStyle,
-    unitless: {
-      groupTitleLineHeight: true
-    }
-  });
-  return useStyle2(prefixCls, rootCls);
-};
-const SubMenu = (props) => {
-  const {
-    popupClassName,
-    icon,
-    title,
-    theme: customTheme
-  } = props;
-  const context = reactExports.useContext(MenuContext);
-  const {
-    prefixCls,
-    inlineCollapsed,
-    theme: contextTheme,
-    classNames,
-    styles
-  } = context;
-  const parentPath = useFullPath();
-  let titleNode;
-  if (!icon) {
-    titleNode = inlineCollapsed && !parentPath.length && title && typeof title === "string" ? /* @__PURE__ */ reactExports.createElement("div", {
-      className: `${prefixCls}-inline-collapsed-noicon`
-    }, title.charAt(0)) : /* @__PURE__ */ reactExports.createElement("span", {
-      className: `${prefixCls}-title-content`
-    }, title);
-  } else {
-    const titleIsSpan = /* @__PURE__ */ reactExports.isValidElement(title) && title.type === "span";
-    titleNode = /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, cloneElement(icon, (oriProps) => ({
-      className: clsx(oriProps.className, `${prefixCls}-item-icon`, classNames?.itemIcon),
-      style: {
-        ...oriProps.style,
-        ...styles?.itemIcon
-      }
-    })), titleIsSpan ? title : /* @__PURE__ */ reactExports.createElement("span", {
-      className: `${prefixCls}-title-content`
-    }, title));
-  }
-  const contextValue = reactExports.useMemo(() => ({
-    ...context,
-    firstLevel: false
-  }), [context]);
-  const [zIndex] = useZIndex("Menu");
-  return /* @__PURE__ */ reactExports.createElement(MenuContext.Provider, {
-    value: contextValue
-  }, /* @__PURE__ */ reactExports.createElement(SubMenu$1, {
-    ...omit(props, ["icon"]),
-    title: titleNode,
-    classNames: {
-      list: classNames?.subMenu?.list,
-      listTitle: classNames?.subMenu?.itemTitle
-    },
-    styles: {
-      list: styles?.subMenu?.list,
-      listTitle: styles?.subMenu?.itemTitle
-    },
-    popupClassName: clsx(prefixCls, popupClassName, classNames?.popup?.root, `${prefixCls}-${customTheme || contextTheme}`),
-    popupStyle: {
-      zIndex,
-      // fix: https://github.com/ant-design/ant-design/issues/47826#issuecomment-2360737237
-      ...props.popupStyle,
-      ...styles?.popup?.root
-    }
-  }));
-};
-function isEmptyIcon(icon) {
-  return icon === null || icon === false;
-}
-const MENU_COMPONENTS = {
-  item: MenuItem,
-  submenu: SubMenu,
-  divider: MenuDivider
-};
-const InternalMenu = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
-  const override = reactExports.useContext(OverrideContext);
-  const overrideObj = override || {};
+const InternalPopover = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   const {
     prefixCls: customizePrefixCls,
-    className,
-    style,
-    theme = "light",
-    expandIcon,
-    _internalDisableMenuItemTitleTooltip,
-    tooltip,
-    inlineCollapsed,
-    siderCollapsed,
-    rootClassName,
-    mode,
-    selectable,
-    onClick,
-    overflowedIndicatorPopupClassName,
-    classNames,
+    title,
+    content,
+    overlayClassName,
+    placement = "top",
+    trigger,
+    children,
+    mouseEnterDelay = 0.1,
+    mouseLeaveDelay = 0.1,
+    onOpenChange,
+    overlayStyle = {},
     styles,
+    classNames,
+    motion,
+    arrow: popoverArrow,
     ...restProps
   } = props;
   const {
-    menu
-  } = reactExports.useContext(ConfigContext);
-  const {
     getPrefixCls,
-    getPopupContainer,
-    direction,
     className: contextClassName,
     style: contextStyle,
     classNames: contextClassNames,
-    styles: contextStyles
-  } = useComponentConfig("menu");
+    styles: contextStyles,
+    arrow: contextArrow,
+    trigger: contextTrigger
+  } = useComponentConfig("popover");
+  const prefixCls = getPrefixCls("popover", customizePrefixCls);
+  const [hashId, cssVarCls] = useStyle$a(prefixCls);
   const rootPrefixCls = getPrefixCls();
-  const passedProps = omit(restProps, ["collapsedWidth"]);
-  overrideObj.validator?.({
-    mode
-  });
-  const onItemClick = useEvent((...args) => {
-    onClick?.(...args);
-    overrideObj.onClick?.();
-  });
-  const mergedMode = overrideObj.mode || mode;
-  const mergedSelectable = selectable ?? overrideObj.selectable;
-  const mergedInlineCollapsed = inlineCollapsed ?? siderCollapsed;
+  const mergedArrow = useMergedArrow(popoverArrow, contextArrow);
+  const mergedTrigger = trigger || contextTrigger || "hover";
   const mergedProps = {
     ...props,
-    mode: mergedMode,
-    inlineCollapsed: mergedInlineCollapsed,
-    selectable: mergedSelectable,
-    theme
+    placement,
+    trigger: mergedTrigger,
+    mouseEnterDelay,
+    mouseLeaveDelay,
+    overlayStyle,
+    styles,
+    classNames
   };
   const [mergedClassNames, mergedStyles] = useMergeSemantic([contextClassNames, classNames], [contextStyles, styles], {
     props: mergedProps
-  }, {
-    popup: {
-      _default: "root"
-    },
-    subMenu: {
-      _default: "item"
-    }
   });
-  const defaultMotions = {
-    horizontal: {
-      motionName: `${rootPrefixCls}-slide-up`
-    },
-    inline: initCollapseMotion(rootPrefixCls),
-    other: {
-      motionName: `${rootPrefixCls}-zoom-big`
-    }
+  const rootClassNames = clsx(overlayClassName, hashId, cssVarCls, contextClassName, mergedClassNames.root);
+  const [open2, setOpen] = useControlledState(props.defaultOpen ?? false, props.open);
+  const settingOpen = (value) => {
+    setOpen(value);
+    onOpenChange?.(value);
   };
-  const prefixCls = getPrefixCls("menu", customizePrefixCls || overrideObj.prefixCls);
-  const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$9(prefixCls, rootCls, !override);
-  const menuClassName = clsx(`${prefixCls}-${theme}`, contextClassName, className);
-  const mergedExpandIcon = reactExports.useMemo(() => {
-    if (typeof expandIcon === "function" || isEmptyIcon(expandIcon)) {
-      return expandIcon || null;
-    }
-    if (typeof overrideObj.expandIcon === "function" || isEmptyIcon(overrideObj.expandIcon)) {
-      return overrideObj.expandIcon || null;
-    }
-    if (typeof menu?.expandIcon === "function" || isEmptyIcon(menu?.expandIcon)) {
-      return menu?.expandIcon || null;
-    }
-    const mergedIcon = expandIcon ?? overrideObj?.expandIcon ?? menu?.expandIcon;
-    return cloneElement(mergedIcon, {
-      className: clsx(`${prefixCls}-submenu-expand-icon`, /* @__PURE__ */ reactExports.isValidElement(mergedIcon) ? mergedIcon.props?.className : void 0)
-    });
-  }, [expandIcon, overrideObj?.expandIcon, menu?.expandIcon, prefixCls]);
-  const contextValue = reactExports.useMemo(() => ({
+  const titleNode = getRenderPropValue(title);
+  const contentNode = getRenderPropValue(content);
+  return /* @__PURE__ */ reactExports.createElement(Tooltip, {
+    unique: false,
+    arrow: mergedArrow,
+    placement,
+    trigger: mergedTrigger,
+    mouseEnterDelay,
+    mouseLeaveDelay,
+    ...restProps,
     prefixCls,
-    inlineCollapsed: mergedInlineCollapsed || false,
-    direction,
-    firstLevel: true,
-    theme,
-    mode: mergedMode,
-    disableMenuItemTitleTooltip: _internalDisableMenuItemTitleTooltip,
-    tooltip,
-    classNames: mergedClassNames,
-    styles: mergedStyles
-  }), [prefixCls, mergedInlineCollapsed, direction, _internalDisableMenuItemTitleTooltip, theme, mergedMode, mergedClassNames, mergedStyles, tooltip]);
-  return /* @__PURE__ */ reactExports.createElement(OverrideContext.Provider, {
-    value: null
-  }, /* @__PURE__ */ reactExports.createElement(MenuContext.Provider, {
-    value: contextValue
-  }, /* @__PURE__ */ reactExports.createElement(ExportMenu, {
-    getPopupContainer,
-    overflowedIndicator: /* @__PURE__ */ reactExports.createElement(RefIcon$c, null),
-    overflowedIndicatorPopupClassName: clsx(prefixCls, `${prefixCls}-${theme}`, overflowedIndicatorPopupClassName),
     classNames: {
-      list: mergedClassNames.list,
-      listTitle: mergedClassNames.itemTitle
+      root: rootClassNames,
+      container: mergedClassNames.container,
+      arrow: mergedClassNames.arrow
     },
     styles: {
-      list: mergedStyles.list,
-      listTitle: mergedStyles.itemTitle
+      root: {
+        ...mergedStyles.root,
+        ...contextStyle,
+        ...overlayStyle
+      },
+      container: mergedStyles.container,
+      arrow: mergedStyles.arrow
     },
-    mode: mergedMode,
-    selectable: mergedSelectable,
-    onClick: onItemClick,
-    ...passedProps,
-    inlineCollapsed: mergedInlineCollapsed,
-    style: {
-      ...mergedStyles.root,
-      ...contextStyle,
-      ...style
-    },
-    className: menuClassName,
-    prefixCls,
-    direction,
-    defaultMotions,
-    expandIcon: mergedExpandIcon,
     ref,
-    rootClassName: clsx(rootClassName, hashId, overrideObj.rootClassName, cssVarCls, rootCls, mergedClassNames.root),
-    _internalComponents: MENU_COMPONENTS
-  })));
+    open: open2,
+    onOpenChange: settingOpen,
+    overlay: titleNode || contentNode ? /* @__PURE__ */ reactExports.createElement(Overlay, {
+      prefixCls,
+      title: titleNode,
+      content: contentNode,
+      classNames: mergedClassNames,
+      styles: mergedStyles
+    }) : null,
+    motion: {
+      motionName: getTransitionName(rootPrefixCls, "zoom-big", typeof motion?.motionName === "string" ? motion?.motionName : void 0)
+    },
+    "data-popover-inject": true
+  }, children);
 });
-const Menu = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
-  const menuRef = reactExports.useRef(null);
-  const context = reactExports.useContext(SiderContext);
-  reactExports.useImperativeHandle(ref, () => ({
-    menu: menuRef.current,
-    focus: (options) => {
-      menuRef.current?.focus(options);
-    }
+const Popover = InternalPopover;
+Popover._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$2;
+const AvatarContextProvider = (props) => {
+  const {
+    size,
+    shape
+  } = reactExports.useContext(AvatarContext);
+  const avatarContextValue = reactExports.useMemo(() => ({
+    size: props.size || size,
+    shape: props.shape || shape
+  }), [props.size, props.shape, size, shape]);
+  return /* @__PURE__ */ reactExports.createElement(AvatarContext.Provider, {
+    value: avatarContextValue
+  }, props.children);
+};
+const AvatarGroup = (props) => {
+  const {
+    getPrefixCls,
+    direction
+  } = reactExports.useContext(ConfigContext);
+  const {
+    prefixCls: customizePrefixCls,
+    className,
+    rootClassName,
+    style,
+    maxCount,
+    maxStyle,
+    size,
+    shape,
+    maxPopoverPlacement,
+    maxPopoverTrigger,
+    children,
+    max
+  } = props;
+  const prefixCls = getPrefixCls("avatar", customizePrefixCls);
+  const groupPrefixCls = `${prefixCls}-group`;
+  const rootCls = useCSSVarCls(prefixCls);
+  const [hashId, cssVarCls] = useStyle$c(prefixCls, rootCls);
+  const cls = clsx(groupPrefixCls, {
+    [`${groupPrefixCls}-rtl`]: direction === "rtl"
+  }, cssVarCls, rootCls, className, rootClassName, hashId);
+  const childrenWithProps = toArray$1(children).map((child, index) => cloneElement(child, {
+    // eslint-disable-next-line react/no-array-index-key
+    key: `avatar-key-${index}`
   }));
-  return /* @__PURE__ */ reactExports.createElement(InternalMenu, {
-    ref: menuRef,
-    ...props,
-    ...context
-  });
-});
-Menu.Item = MenuItem;
-Menu.SubMenu = SubMenu;
-Menu.Divider = MenuDivider;
-Menu.ItemGroup = MenuItemGroup;
+  const mergeCount = max?.count || maxCount;
+  const numOfChildren = childrenWithProps.length;
+  if (mergeCount && mergeCount < numOfChildren) {
+    const childrenShow = childrenWithProps.slice(0, mergeCount);
+    const childrenHidden = childrenWithProps.slice(mergeCount, numOfChildren);
+    const mergeStyle = max?.style || maxStyle;
+    const mergePopoverTrigger = max?.popover?.trigger || maxPopoverTrigger || "hover";
+    const mergePopoverPlacement = max?.popover?.placement || maxPopoverPlacement || "top";
+    const popoverProps = {
+      content: childrenHidden,
+      ...max?.popover,
+      placement: mergePopoverPlacement,
+      trigger: mergePopoverTrigger,
+      rootClassName: clsx(`${groupPrefixCls}-popover`, max?.popover?.rootClassName)
+    };
+    childrenShow.push(/* @__PURE__ */ reactExports.createElement(Popover, {
+      key: "avatar-popover-key",
+      destroyOnHidden: true,
+      ...popoverProps
+    }, /* @__PURE__ */ reactExports.createElement(Avatar$1, {
+      style: mergeStyle
+    }, `+${numOfChildren - mergeCount}`)));
+    return /* @__PURE__ */ reactExports.createElement(AvatarContextProvider, {
+      shape,
+      size
+    }, /* @__PURE__ */ reactExports.createElement("div", {
+      className: cls,
+      style
+    }, childrenShow));
+  }
+  return /* @__PURE__ */ reactExports.createElement(AvatarContextProvider, {
+    shape,
+    size
+  }, /* @__PURE__ */ reactExports.createElement("div", {
+    className: cls,
+    style
+  }, childrenWithProps));
+};
+const Avatar = Avatar$1;
+Avatar.Group = AvatarGroup;
 const formItemNameBlackList = ["parentNode"];
 const defaultItemNamePrefixCls = "form_item";
 function toArray(candidate) {
@@ -12650,7 +10824,7 @@ const getRadioButtonStyle = (token) => {
     }
   };
 };
-const prepareComponentToken$3 = (token) => {
+const prepareComponentToken$4 = (token) => {
   const {
     wireframe,
     padding,
@@ -12692,7 +10866,7 @@ const prepareComponentToken$3 = (token) => {
     radioBgColor: wireframe ? colorBgContainer : colorPrimary
   };
 };
-const useStyle$8 = genStyleHooks("Radio", (token) => {
+const useStyle$9 = genStyleHooks("Radio", (token) => {
   const {
     controlOutline,
     controlOutlineWidth
@@ -12704,7 +10878,7 @@ const useStyle$8 = genStyleHooks("Radio", (token) => {
     radioButtonFocusShadow
   });
   return [getGroupRadioStyle(radioToken), getRadioBasicStyle(radioToken), getRadioButtonStyle(radioToken)];
-}, prepareComponentToken$3, {
+}, prepareComponentToken$4, {
   unitless: {
     radioSize: true,
     dotSize: true
@@ -12745,7 +10919,7 @@ const InternalRadio = (props, ref) => {
   const isButtonType = (groupContext?.optionType || radioOptionTypeContext) === "button";
   const prefixCls = isButtonType ? `${radioPrefixCls}-button` : radioPrefixCls;
   const rootCls = useCSSVarCls(radioPrefixCls);
-  const [hashId, cssVarCls] = useStyle$8(radioPrefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$9(radioPrefixCls, rootCls);
   const radioProps = {
     ...restProps
   };
@@ -12853,7 +11027,7 @@ const RadioGroup = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   const prefixCls = getPrefixCls("radio", customizePrefixCls);
   const groupPrefixCls = `${prefixCls}-group`;
   const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$8(prefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$9(prefixCls, rootCls);
   let childrenToRender = children;
   if (options && options.length > 0) {
     childrenToRender = options.map((option) => {
@@ -14007,7 +12181,7 @@ const useSharedStyle = genStyleHooks(["Input", "Shared"], (token) => {
 }, initComponentToken, {
   resetFont: false
 });
-const useStyle$7 = genStyleHooks(["Input", "Component"], (token) => {
+const useStyle$8 = genStyleHooks(["Input", "Component"], (token) => {
   const inputToken = merge$1(token, initInputToken(token));
   return [
     genGroupStyle(inputToken),
@@ -14870,7 +13044,7 @@ const initPanelComponentToken = (token) => {
   };
   return filledToken;
 };
-const prepareComponentToken$2 = (token) => ({
+const prepareComponentToken$3 = (token) => ({
   ...initComponentToken(token),
   ...initPanelComponentToken(token),
   ...getArrowToken(token),
@@ -15358,7 +13532,7 @@ genStyleHooks("DatePicker", (token) => {
       focusElCls: `${token.componentCls}-focused`
     })
   ];
-}, prepareComponentToken$2);
+}, prepareComponentToken$3);
 const genCalendarStyles = (token) => {
   const {
     calendarCls,
@@ -15534,7 +13708,7 @@ const genCalendarStyles = (token) => {
     }
   };
 };
-const prepareComponentToken$1 = (token) => ({
+const prepareComponentToken$2 = (token) => ({
   fullBg: token.colorBgContainer,
   fullPanelBg: token.colorBgContainer,
   itemActiveBg: token.controlItemBgActive,
@@ -15543,7 +13717,7 @@ const prepareComponentToken$1 = (token) => ({
   miniContentHeight: 256,
   ...initPanelComponentToken(token)
 });
-const useStyle$6 = genStyleHooks("Calendar", (token) => {
+const useStyle$7 = genStyleHooks("Calendar", (token) => {
   const calendarCls = `${token.componentCls}-calendar`;
   const calendarToken = merge$1(token, initPickerPanelToken(token), {
     calendarCls,
@@ -15553,7 +13727,7 @@ const useStyle$6 = genStyleHooks("Calendar", (token) => {
     dateContentHeight: token.calc(token.calc(token.fontHeightSM).add(token.marginXS)).mul(3).add(token.calc(token.lineWidth).mul(2)).equal()
   });
   return genCalendarStyles(calendarToken);
-}, prepareComponentToken$1);
+}, prepareComponentToken$2);
 const isSameYear = (date1, date2, config) => {
   const {
     getYear
@@ -15631,7 +13805,7 @@ const generateCalendar = (generateConfig2) => {
     }, [mergedClassNames, mergedStyles]);
     const prefixCls = getPrefixCls("picker", customizePrefixCls);
     const calendarPrefixCls = `${prefixCls}-calendar`;
-    const [hashId, cssVarCls] = useStyle$6(prefixCls, calendarPrefixCls);
+    const [hashId, cssVarCls] = useStyle$7(prefixCls, calendarPrefixCls);
     const today = generateConfig2.getNow();
     const [mergedValue, setMergedValue] = useControlledState(() => defaultValue || generateConfig2.getNow(), value);
     const [mergedMode, setMergedMode] = useControlledState("month", mode);
@@ -16079,7 +14253,7 @@ const genSpaceAddonStyle = (token) => {
     ]
   };
 };
-const useStyle$5 = genStyleHooks(["Space", "Addon"], (token) => [genSpaceAddonStyle(token), genCompactItemStyle(token, {
+const useStyle$6 = genStyleHooks(["Space", "Addon"], (token) => [genSpaceAddonStyle(token), genCompactItemStyle(token, {
   focus: false
 })]);
 const SpaceAddon = /* @__PURE__ */ React.forwardRef((props, ref) => {
@@ -16098,7 +14272,7 @@ const SpaceAddon = /* @__PURE__ */ React.forwardRef((props, ref) => {
     direction: directionConfig
   } = React.useContext(ConfigContext);
   const prefixCls = getPrefixCls("space-addon", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$5(prefixCls);
+  const [hashId, cssVarCls] = useStyle$6(prefixCls);
   const {
     compactItemClassnames,
     compactSize
@@ -16186,7 +14360,7 @@ const Input$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   const inputRef = reactExports.useRef(null);
   const rootCls = useCSSVarCls(prefixCls);
   const [hashId, cssVarCls] = useSharedStyle(prefixCls, rootClassName);
-  useStyle$7(prefixCls, rootCls);
+  useStyle$8(prefixCls, rootCls);
   const {
     compactSize,
     compactItemClassnames
@@ -16383,7 +14557,7 @@ const genSpaceGapStyle = (token) => {
     }
   };
 };
-const useStyle$4 = genStyleHooks("Space", (token) => {
+const useStyle$5 = genStyleHooks("Space", (token) => {
   const spaceToken = merge$1(token, {
     spaceGapSmallSize: token.paddingXS,
     spaceGapMiddleSize: token.padding,
@@ -16435,7 +14609,7 @@ const InternalSpace = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   const mergedAlign = align === void 0 && !mergedVertical ? "center" : align;
   const mergedSeparator = separator ?? split;
   const prefixCls = getPrefixCls("space", customizePrefixCls);
-  const [hashId, cssVarCls] = useStyle$4(prefixCls);
+  const [hashId, cssVarCls] = useStyle$5(prefixCls);
   const mergedProps = {
     ...props,
     size,
@@ -17015,7 +15189,7 @@ const genVerticalStyle = (token) => {
     }
   };
 };
-const prepareComponentToken = (token) => ({
+const prepareComponentToken$1 = (token) => ({
   labelRequiredMarkColor: token.colorError,
   labelColor: token.colorTextHeading,
   labelFontSize: token.fontSize,
@@ -17027,19 +15201,19 @@ const prepareComponentToken = (token) => ({
   verticalLabelMargin: 0,
   inlineItemMarginBottom: 0
 });
-const prepareToken = (token, rootPrefixCls) => {
+const prepareToken$1 = (token, rootPrefixCls) => {
   const formToken = merge$1(token, {
     formItemCls: `${token.componentCls}-item`,
     rootPrefixCls
   });
   return formToken;
 };
-const useStyle$3 = genStyleHooks("Form", (token, {
+const useStyle$4 = genStyleHooks("Form", (token, {
   rootPrefixCls
 }) => {
-  const formToken = prepareToken(token, rootPrefixCls);
+  const formToken = prepareToken$1(token, rootPrefixCls);
   return [genFormStyle(formToken), genFormItemStyle(formToken), genFormValidateMotionStyle(formToken), genHorizontalStyle(formToken), genInlineStyle(formToken), genVerticalStyle(formToken), genCollapseMotion(formToken), zoomIn];
-}, prepareComponentToken, {
+}, prepareComponentToken$1, {
   // Let From style before the Grid
   // ref https://github.com/ant-design/ant-design/issues/44386
   order: -1e3
@@ -17066,7 +15240,7 @@ const ErrorList = ({
   } = reactExports.useContext(FormItemPrefixContext);
   const baseClassName = `${prefixCls}-item-explain`;
   const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$3(prefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$4(prefixCls, rootCls);
   const collapseMotion = reactExports.useMemo(() => initCollapseMotion(prefixCls), [prefixCls]);
   const debounceErrors = useDebounce(errors);
   const debounceWarnings = useDebounce(warnings);
@@ -17186,7 +15360,7 @@ const InternalForm = (props, ref) => {
   };
   const prefixCls = getPrefixCls("form", customizePrefixCls);
   const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$3(prefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$4(prefixCls, rootCls);
   const mergedProps = {
     ...props,
     size: mergedSize,
@@ -17373,7 +15547,7 @@ const genFallbackStyle = (token) => {
 const FallbackCmp = genSubStyleComponent(["Form", "item-item"], (token, {
   rootPrefixCls
 }) => {
-  const formToken = prepareToken(token, rootPrefixCls);
+  const formToken = prepareToken$1(token, rootPrefixCls);
   return genFallbackStyle(formToken);
 });
 const GRID_MAX = 24;
@@ -17534,7 +15708,7 @@ const FormItemLabel = ({
         e2.preventDefault();
       },
       tabIndex: -1
-    }, tooltipProps.icon || tooltipProps.children || /* @__PURE__ */ reactExports.createElement(RefIcon$d, null)));
+    }, tooltipProps.icon || tooltipProps.children || /* @__PURE__ */ reactExports.createElement(RefIcon$9, null)));
     labelChildren = /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, labelChildren, tooltipNode);
   }
   const isOptionalMark = requiredMark === "optional";
@@ -17831,7 +16005,7 @@ function InternalFormItem(props) {
   const hasName = isNonNullable(name);
   const prefixCls = getPrefixCls("form", customizePrefixCls);
   const rootCls = useCSSVarCls(prefixCls);
-  const [hashId, cssVarCls] = useStyle$3(prefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$4(prefixCls, rootCls);
   const listContext = reactExports.useContext(ListContext);
   const fieldKeyPathRef = reactExports.useRef(null);
   const [subFieldErrors, setSubFieldErrors] = useFrameState({});
@@ -18048,7 +16222,7 @@ const Group = (props) => {
   } = props;
   const prefixCls = getPrefixCls("input-group", customizePrefixCls);
   const inputPrefixCls = getPrefixCls("input");
-  const [hashId, cssVarCls] = useStyle$7(inputPrefixCls);
+  const [hashId, cssVarCls] = useStyle$8(inputPrefixCls);
   const cls = clsx(prefixCls, cssVarCls, {
     [`${prefixCls}-lg`]: props.size === "large",
     [`${prefixCls}-sm`]: props.size === "small",
@@ -18121,7 +16295,7 @@ const genOTPStyle = (token) => {
     }
   };
 };
-const useStyle$2 = genStyleHooks(["Input", "OTP"], (token) => {
+const useStyle$3 = genStyleHooks(["Input", "OTP"], (token) => {
   const inputToken = merge$1(token, initInputToken(token));
   return genOTPStyle(inputToken);
 }, initComponentToken);
@@ -18264,7 +16438,7 @@ const OTP = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     data: true,
     attr: true
   });
-  const [hashId, cssVarCls] = useStyle$2(prefixCls);
+  const [hashId, cssVarCls] = useStyle$3(prefixCls);
   const mergedSize = useSize((ctx) => customSize ?? ctx);
   const formContext = reactExports.useContext(FormItemInputContext);
   const mergedStatus = getMergedStatus(formContext.status, customStatus);
@@ -18407,7 +16581,7 @@ const OTP = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     }));
   })));
 });
-const defaultIconRender = (visible) => visible ? /* @__PURE__ */ reactExports.createElement(RefIcon$e, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$f, null);
+const defaultIconRender = (visible) => visible ? /* @__PURE__ */ reactExports.createElement(RefIcon$a, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$b, null);
 const actionMap = {
   click: "onClick",
   hover: "onMouseOver"
@@ -18516,7 +16690,7 @@ const genSearchStyle = (token) => {
     }
   };
 };
-const useStyle$1 = genStyleHooks(["Input", "Search"], (token) => {
+const useStyle$2 = genStyleHooks(["Input", "Search"], (token) => {
   return [genSearchStyle(token)];
 });
 const Search = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
@@ -18561,7 +16735,7 @@ const Search = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   const composedRef = reactExports.useRef(false);
   const prefixCls = getPrefixCls("input-search", customizePrefixCls);
   const inputPrefixCls = getPrefixCls("input", customizeInputPrefixCls);
-  const [hashId, cssVarCls] = useStyle$1(prefixCls);
+  const [hashId, cssVarCls] = useStyle$2(prefixCls);
   const {
     compactSize
   } = useCompactItemContext(prefixCls, direction);
@@ -18777,7 +16951,7 @@ const genTextAreaStyle = (token) => {
     }
   };
 };
-const useStyle = genStyleHooks(["Input", "TextArea"], (token) => {
+const useStyle$1 = genStyleHooks(["Input", "TextArea"], (token) => {
   const inputToken = merge$1(token, initInputToken(token));
   return genTextAreaStyle(inputToken);
 }, initComponentToken, {
@@ -18835,7 +17009,7 @@ const TextArea = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   const prefixCls = getPrefixCls("input", customizePrefixCls);
   const rootCls = useCSSVarCls(prefixCls);
   const [hashId, cssVarCls] = useSharedStyle(prefixCls, rootClassName);
-  useStyle(prefixCls, rootCls);
+  useStyle$1(prefixCls, rootCls);
   const {
     compactSize,
     compactItemClassnames
@@ -18919,126 +17093,6 @@ Input.Search = Search;
 Input.TextArea = TextArea;
 Input.Password = Password;
 Input.OTP = OTP;
-function useHasSider(siders, children, hasSider) {
-  if (typeof hasSider === "boolean") {
-    return hasSider;
-  }
-  if (siders.length) {
-    return true;
-  }
-  const childNodes = toArray$1(children);
-  return childNodes.some((node) => node.type === Sider);
-}
-const generator = ({
-  suffixCls,
-  tagName,
-  displayName
-}) => {
-  return (Component) => {
-    const Adapter = /* @__PURE__ */ reactExports.forwardRef((props, ref) => /* @__PURE__ */ reactExports.createElement(Component, {
-      ref,
-      suffixCls,
-      tagName,
-      ...props
-    }));
-    return Adapter;
-  };
-};
-const Basic = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
-  const {
-    prefixCls: customizePrefixCls,
-    suffixCls,
-    className,
-    tagName: TagName,
-    ...others
-  } = props;
-  const {
-    getPrefixCls
-  } = reactExports.useContext(ConfigContext);
-  const prefixCls = getPrefixCls("layout", customizePrefixCls);
-  const [hashId] = useStyle$b(prefixCls);
-  const prefixWithSuffixCls = suffixCls ? `${prefixCls}-${suffixCls}` : prefixCls;
-  return /* @__PURE__ */ reactExports.createElement(TagName, {
-    className: clsx(customizePrefixCls || prefixWithSuffixCls, className, hashId),
-    ref,
-    ...others
-  });
-});
-const BasicLayout = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
-  const {
-    direction
-  } = reactExports.useContext(ConfigContext);
-  const [siders, setSiders] = reactExports.useState([]);
-  const {
-    prefixCls: customizePrefixCls,
-    className,
-    rootClassName,
-    children,
-    hasSider,
-    tagName: Tag,
-    style,
-    ...others
-  } = props;
-  const passedProps = omit(others, ["suffixCls"]);
-  const {
-    getPrefixCls,
-    className: contextClassName,
-    style: contextStyle
-  } = useComponentConfig("layout");
-  const prefixCls = getPrefixCls("layout", customizePrefixCls);
-  const mergedHasSider = useHasSider(siders, children, hasSider);
-  const [hashId, cssVarCls] = useStyle$b(prefixCls);
-  const classString = clsx(prefixCls, {
-    [`${prefixCls}-has-sider`]: mergedHasSider,
-    [`${prefixCls}-rtl`]: direction === "rtl"
-  }, contextClassName, className, rootClassName, hashId, cssVarCls);
-  const contextValue = reactExports.useMemo(() => ({
-    siderHook: {
-      addSider: (id) => {
-        setSiders((prev) => [].concat(_toConsumableArray(prev), [id]));
-      },
-      removeSider: (id) => {
-        setSiders((prev) => prev.filter((currentId) => currentId !== id));
-      }
-    }
-  }), []);
-  return /* @__PURE__ */ reactExports.createElement(LayoutContext.Provider, {
-    value: contextValue
-  }, /* @__PURE__ */ reactExports.createElement(Tag, {
-    ref,
-    className: classString,
-    style: {
-      ...contextStyle,
-      ...style
-    },
-    ...passedProps
-  }, children));
-});
-const Layout$1 = generator({
-  tagName: "div",
-  displayName: "Layout"
-})(BasicLayout);
-const Header = generator({
-  suffixCls: "header",
-  tagName: "header",
-  displayName: "Header"
-})(Basic);
-const Footer = generator({
-  suffixCls: "footer",
-  tagName: "footer",
-  displayName: "Footer"
-})(Basic);
-const Content = generator({
-  suffixCls: "content",
-  tagName: "main",
-  displayName: "Content"
-})(Basic);
-const Layout = Layout$1;
-Layout.Header = Header;
-Layout.Footer = Footer;
-Layout.Content = Content;
-Layout.Sider = Sider;
-Layout._InternalSiderContext = SiderContext;
 let message = null;
 let act = (callback) => callback();
 let taskQueue = [];
@@ -19251,7 +17305,7 @@ const baseStaticMethods = {
   destroy,
   config: setMessageGlobalConfig,
   useMessage,
-  _InternalPanelDoNotUseOrYouWillBeFired: PurePanel$4
+  _InternalPanelDoNotUseOrYouWillBeFired: PurePanel$5
 };
 const staticMethods = baseStaticMethods;
 methods.forEach((type) => {
@@ -19283,7 +17337,7 @@ const PurePanel = (props) => {
   const rootPrefixCls = getPrefixCls();
   const prefixCls = customizePrefixCls || getPrefixCls("modal");
   const rootCls = useCSSVarCls(rootPrefixCls);
-  const [hashId, cssVarCls] = useStyle$g(prefixCls, rootCls);
+  const [hashId, cssVarCls] = useStyle$e(prefixCls, rootCls);
   const [mergedClassNames, mergedStyles] = useMergeSemantic([contextClassNames, classNames], [contextStyles, styles], {
     props
   });
@@ -19306,7 +17360,7 @@ const PurePanel = (props) => {
     additionalProps = {
       closable: closable ?? true,
       title,
-      footer: footer !== null && /* @__PURE__ */ reactExports.createElement(Footer$1, {
+      footer: footer !== null && /* @__PURE__ */ reactExports.createElement(Footer, {
         ...props
       }),
       children
@@ -19357,15 +17411,547 @@ Modal.destroyAll = function destroyAllFn() {
 };
 Modal.config = modalGlobalConfig;
 Modal._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$1;
+const genBaseStyle = (token) => {
+  const {
+    paddingXXS,
+    lineWidth,
+    tagPaddingHorizontal,
+    componentCls,
+    calc
+  } = token;
+  const paddingInline = calc(tagPaddingHorizontal).sub(lineWidth).equal();
+  const iconMarginInline = calc(paddingXXS).sub(lineWidth).equal();
+  return {
+    // Result
+    [componentCls]: {
+      ...resetComponent(token),
+      display: "inline-block",
+      height: "auto",
+      paddingInline,
+      fontSize: token.tagFontSize,
+      lineHeight: token.tagLineHeight,
+      whiteSpace: "nowrap",
+      backgroundColor: token.defaultBg,
+      border: `${unit(token.lineWidth)} ${token.lineType} ${token.colorBorder}`,
+      borderRadius: token.borderRadiusSM,
+      opacity: 1,
+      transition: `all ${token.motionDurationMid}`,
+      textAlign: "start",
+      position: "relative",
+      // RTL
+      [`&${componentCls}-rtl`]: {
+        direction: "rtl"
+      },
+      "&, a, a:hover": {
+        color: token.defaultColor
+      },
+      [`${componentCls}-close-icon`]: {
+        marginInlineStart: iconMarginInline,
+        fontSize: token.tagIconSize,
+        color: token.colorIcon,
+        cursor: "pointer",
+        transition: `all ${token.motionDurationMid}`,
+        "&:hover": {
+          color: token.colorTextHeading
+        }
+      },
+      "&-checkable": {
+        backgroundColor: "transparent",
+        borderColor: "transparent",
+        cursor: "pointer",
+        [`&:not(${componentCls}-checkable-checked):hover`]: {
+          color: token.colorPrimary,
+          backgroundColor: token.colorFillSecondary
+        },
+        "&:active, &-checked": {
+          color: token.colorTextLightSolid
+        },
+        "&-checked": {
+          backgroundColor: token.colorPrimary,
+          "&:hover": {
+            backgroundColor: token.colorPrimaryHover
+          }
+        },
+        "&:active": {
+          backgroundColor: token.colorPrimaryActive
+        },
+        "&-disabled": {
+          cursor: "not-allowed",
+          [`&:not(${componentCls}-checkable-checked)`]: {
+            color: token.colorTextDisabled,
+            "&:hover": {
+              backgroundColor: "transparent"
+            }
+          },
+          [`&${componentCls}-checkable-checked`]: {
+            color: token.colorTextDisabled,
+            backgroundColor: token.colorBgContainerDisabled
+          },
+          "&:hover, &:active": {
+            backgroundColor: token.colorBgContainerDisabled,
+            color: token.colorTextDisabled
+          },
+          [`&:not(${componentCls}-checkable-checked):hover`]: {
+            color: token.colorTextDisabled
+          }
+        },
+        "&-group": {
+          display: "flex",
+          flexWrap: "wrap",
+          gap: token.paddingXS
+        }
+      },
+      "&-hidden": {
+        display: "none"
+      },
+      // To ensure that a space will be placed between character and `Icon`.
+      [`> ${token.iconCls} + span, > span + ${token.iconCls}`]: {
+        marginInlineStart: paddingInline
+      }
+    },
+    [`&${token.componentCls}-solid`]: {
+      borderColor: "transparent",
+      color: token.colorTextLightSolid,
+      backgroundColor: token.colorBgSolid,
+      [`&${componentCls}-default`]: {
+        color: token.solidTextColor
+      }
+    },
+    [`${componentCls}-filled`]: {
+      borderColor: "transparent",
+      backgroundColor: token.tagBorderlessBg
+    },
+    [`&${componentCls}-disabled`]: {
+      color: token.colorTextDisabled,
+      cursor: "not-allowed",
+      backgroundColor: token.colorBgContainerDisabled,
+      a: {
+        cursor: "not-allowed",
+        pointerEvents: "none",
+        color: token.colorTextDisabled,
+        "&:hover": {
+          color: token.colorTextDisabled
+        }
+      },
+      "a&": {
+        "&:hover, &:active": {
+          color: token.colorTextDisabled
+        }
+      },
+      [`&${componentCls}-outlined`]: {
+        borderColor: token.colorBorderDisabled
+      },
+      [`&${componentCls}-solid, &${componentCls}-filled`]: {
+        color: token.colorTextDisabled,
+        [`${componentCls}-close-icon`]: {
+          color: token.colorTextDisabled
+        }
+      },
+      [`${componentCls}-close-icon`]: {
+        cursor: "not-allowed",
+        color: token.colorTextDisabled,
+        "&:hover": {
+          color: token.colorTextDisabled
+        }
+      }
+    }
+  };
+};
+const prepareToken = (token) => {
+  const {
+    lineWidth,
+    fontSizeIcon,
+    calc
+  } = token;
+  const tagFontSize = token.fontSizeSM;
+  const tagToken = merge$1(token, {
+    tagFontSize,
+    tagLineHeight: unit(calc(token.lineHeightSM).mul(tagFontSize).equal()),
+    tagIconSize: calc(fontSizeIcon).sub(calc(lineWidth).mul(2)).equal(),
+    // Tag icon is much smaller
+    tagPaddingHorizontal: 8,
+    // Fixed padding.
+    tagBorderlessBg: token.defaultBg
+  });
+  return tagToken;
+};
+const prepareComponentToken = (token) => {
+  const solidTextColor = isBright(new AggregationColor(token.colorBgSolid), "#fff") ? "#000" : "#fff";
+  return {
+    defaultBg: new FastColor(token.colorFillTertiary).onBackground(token.colorBgContainer).toHexString(),
+    defaultColor: token.colorText,
+    solidTextColor
+  };
+};
+const useStyle = genStyleHooks("Tag", (token) => {
+  const tagToken = prepareToken(token);
+  return genBaseStyle(tagToken);
+}, prepareComponentToken);
+const CheckableTag = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
+  const {
+    prefixCls: customizePrefixCls,
+    style,
+    className,
+    checked,
+    children,
+    icon,
+    onChange,
+    onClick,
+    disabled: customDisabled,
+    ...restProps
+  } = props;
+  const {
+    getPrefixCls,
+    tag
+  } = reactExports.useContext(ConfigContext);
+  const disabled = reactExports.useContext(DisabledContext);
+  const mergedDisabled = customDisabled ?? disabled;
+  const handleClick = (e2) => {
+    if (mergedDisabled) {
+      return;
+    }
+    onChange?.(!checked);
+    onClick?.(e2);
+  };
+  const prefixCls = getPrefixCls("tag", customizePrefixCls);
+  const [hashId, cssVarCls] = useStyle(prefixCls);
+  const cls = clsx(prefixCls, `${prefixCls}-checkable`, {
+    [`${prefixCls}-checkable-checked`]: checked,
+    [`${prefixCls}-checkable-disabled`]: mergedDisabled
+  }, tag?.className, className, hashId, cssVarCls);
+  return /* @__PURE__ */ reactExports.createElement("span", {
+    ...restProps,
+    ref,
+    style: {
+      ...style,
+      ...tag?.style
+    },
+    className: cls,
+    onClick: handleClick
+  }, icon, /* @__PURE__ */ reactExports.createElement("span", null, children));
+});
+function CheckableTagGroup(props, ref) {
+  const {
+    id,
+    prefixCls: customizePrefixCls,
+    rootClassName,
+    className,
+    style,
+    classNames,
+    styles,
+    disabled,
+    options,
+    value,
+    defaultValue,
+    onChange,
+    multiple,
+    ...restProps
+  } = props;
+  const {
+    getPrefixCls,
+    direction,
+    className: contextClassName,
+    style: contextStyle,
+    classNames: contextClassNames,
+    styles: contextStyles
+  } = useComponentConfig("tag");
+  const prefixCls = getPrefixCls("tag", customizePrefixCls);
+  const groupPrefixCls = `${prefixCls}-checkable-group`;
+  const rootCls = useCSSVarCls(prefixCls);
+  const [hashId, cssVarCls] = useStyle(prefixCls, rootCls);
+  const [mergedClassNames, mergedStyles] = useMergeSemantic([contextClassNames, classNames], [contextStyles, styles], {
+    props
+  });
+  const parsedOptions = reactExports.useMemo(() => (options || []).map((option) => {
+    if (option && typeof option === "object") {
+      return option;
+    }
+    return {
+      value: option,
+      label: option
+    };
+  }), [options]);
+  const [mergedValue, setMergedValue] = useControlledState(defaultValue, value);
+  const handleChange = (checked, option) => {
+    let newValue = null;
+    if (multiple) {
+      const valueList = mergedValue || [];
+      newValue = checked ? [].concat(_toConsumableArray(valueList), [option.value]) : valueList.filter((item) => item !== option.value);
+    } else {
+      newValue = checked ? option.value : null;
+    }
+    setMergedValue(newValue);
+    onChange?.(newValue);
+  };
+  const divRef = React.useRef(null);
+  reactExports.useImperativeHandle(ref, () => ({
+    nativeElement: divRef.current
+  }));
+  const ariaProps = pickAttrs(restProps, {
+    aria: true,
+    data: true
+  });
+  return /* @__PURE__ */ React.createElement("div", {
+    ...ariaProps,
+    className: clsx(groupPrefixCls, contextClassName, rootClassName, {
+      [`${groupPrefixCls}-disabled`]: disabled,
+      [`${groupPrefixCls}-rtl`]: direction === "rtl"
+    }, hashId, cssVarCls, className, mergedClassNames.root),
+    style: {
+      ...contextStyle,
+      ...mergedStyles.root,
+      ...style
+    },
+    id,
+    ref: divRef
+  }, parsedOptions.map((option) => /* @__PURE__ */ React.createElement(CheckableTag, {
+    key: option.value,
+    className: clsx(`${groupPrefixCls}-item`, mergedClassNames.item),
+    style: mergedStyles.item,
+    checked: multiple ? (mergedValue || []).includes(option.value) : mergedValue === option.value,
+    onChange: (checked) => handleChange(checked, option),
+    disabled
+  }, option.label)));
+}
+const ForwardCheckableTagGroup = /* @__PURE__ */ React.forwardRef(CheckableTagGroup);
+function useColor(props, contextVariant) {
+  const {
+    color,
+    variant,
+    bordered
+  } = props;
+  return reactExports.useMemo(() => {
+    const isInverseColor = color?.endsWith("-inverse");
+    let nextVariant;
+    if (variant) {
+      nextVariant = variant;
+    } else if (isInverseColor) {
+      nextVariant = "solid";
+    } else if (bordered === false) {
+      nextVariant = "filled";
+    } else {
+      nextVariant = contextVariant || "filled";
+    }
+    const nextColor = isInverseColor ? color?.replace("-inverse", "") : color;
+    const nextIsPreset = isPresetColor(color);
+    const nextIsStatus = isPresetStatusColor(color);
+    const tagStyle = {};
+    if (!nextIsPreset && !nextIsStatus && nextColor) {
+      if (nextVariant === "solid") {
+        tagStyle.backgroundColor = color;
+      } else {
+        const hsl = new FastColor(nextColor).toHsl();
+        hsl.l = 0.95;
+        tagStyle.backgroundColor = new FastColor(hsl).toHexString();
+        tagStyle.color = color;
+        if (nextVariant === "outlined") {
+          tagStyle.borderColor = color;
+        }
+      }
+    }
+    return [nextVariant, nextColor, nextIsPreset, nextIsStatus, tagStyle];
+  }, [color, variant, bordered, contextVariant]);
+}
+const genPresetStyle = (token) => genPresetColor(token, (colorKey, {
+  textColor,
+  lightBorderColor,
+  lightColor,
+  darkColor
+}) => ({
+  [`${token.componentCls}${token.componentCls}-${colorKey}:not(${token.componentCls}-disabled)`]: {
+    [`&${token.componentCls}-outlined`]: {
+      backgroundColor: lightColor,
+      borderColor: lightBorderColor,
+      color: textColor
+    },
+    [`&${token.componentCls}-solid`]: {
+      backgroundColor: darkColor,
+      borderColor: darkColor,
+      color: token.colorTextLightSolid
+    },
+    [`&${token.componentCls}-filled`]: {
+      backgroundColor: lightColor,
+      color: textColor
+    }
+  }
+}));
+const PresetCmp = genSubStyleComponent(["Tag", "preset"], (token) => {
+  const tagToken = prepareToken(token);
+  return genPresetStyle(tagToken);
+}, prepareComponentToken);
+function capitalize(str) {
+  if (typeof str !== "string") {
+    return str;
+  }
+  const ret = str.charAt(0).toUpperCase() + str.slice(1);
+  return ret;
+}
+const genTagStatusStyle = (token, status, cssVariableType) => {
+  const capitalizedCssVariableType = capitalize(cssVariableType);
+  return {
+    [`${token.componentCls}${token.componentCls}-${status}:not(${token.componentCls}-disabled)`]: {
+      [`&${token.componentCls}-outlined`]: {
+        backgroundColor: token[`color${capitalizedCssVariableType}Bg`],
+        borderColor: token[`color${capitalizedCssVariableType}Border`],
+        color: token[`color${cssVariableType}`]
+      },
+      [`&${token.componentCls}-solid`]: {
+        backgroundColor: token[`color${cssVariableType}`],
+        borderColor: token[`color${cssVariableType}`]
+      },
+      [`&${token.componentCls}-filled`]: {
+        backgroundColor: token[`color${capitalizedCssVariableType}Bg`],
+        color: token[`color${cssVariableType}`]
+      }
+    }
+  };
+};
+const StatusCmp = genSubStyleComponent(["Tag", "status"], (token) => {
+  const tagToken = prepareToken(token);
+  return [genTagStatusStyle(tagToken, "success", "Success"), genTagStatusStyle(tagToken, "processing", "Info"), genTagStatusStyle(tagToken, "error", "Error"), genTagStatusStyle(tagToken, "warning", "Warning")];
+}, prepareComponentToken);
+const InternalTag = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
+  const {
+    prefixCls: customizePrefixCls,
+    className,
+    rootClassName,
+    style,
+    children,
+    icon,
+    color,
+    variant: _variant,
+    onClose,
+    bordered,
+    disabled: customDisabled,
+    href,
+    target,
+    styles,
+    classNames,
+    ...restProps
+  } = props;
+  const {
+    getPrefixCls,
+    direction,
+    className: contextClassName,
+    variant: contextVariant,
+    style: contextStyle,
+    classNames: contextClassNames,
+    styles: contextStyles
+  } = useComponentConfig("tag");
+  const [mergedVariant, mergedColor, isPreset, isStatus, customTagStyle] = useColor(props, contextVariant);
+  const isInternalColor = isPreset || isStatus;
+  const disabled = reactExports.useContext(DisabledContext);
+  const mergedDisabled = customDisabled ?? disabled;
+  const {
+    tag: tagContext
+  } = reactExports.useContext(ConfigContext);
+  const [visible, setVisible] = reactExports.useState(true);
+  const domProps = omit(restProps, ["closeIcon", "closable"]);
+  const mergedProps = {
+    ...props,
+    color: mergedColor,
+    variant: mergedVariant,
+    disabled: mergedDisabled,
+    href,
+    target,
+    icon
+  };
+  const [mergedClassNames, mergedStyles] = useMergeSemantic([contextClassNames, classNames], [contextStyles, styles], {
+    props: mergedProps
+  });
+  const tagStyle = reactExports.useMemo(() => {
+    let nextTagStyle = {
+      ...mergedStyles.root,
+      ...contextStyle,
+      ...style
+    };
+    if (!mergedDisabled) {
+      nextTagStyle = {
+        ...customTagStyle,
+        ...nextTagStyle
+      };
+    }
+    return nextTagStyle;
+  }, [mergedStyles.root, contextStyle, style, customTagStyle, mergedDisabled]);
+  const prefixCls = getPrefixCls("tag", customizePrefixCls);
+  const [hashId, cssVarCls] = useStyle(prefixCls);
+  const tagClassName = clsx(prefixCls, contextClassName, mergedClassNames.root, `${prefixCls}-${mergedVariant}`, {
+    [`${prefixCls}-${mergedColor}`]: isInternalColor,
+    [`${prefixCls}-hidden`]: !visible,
+    [`${prefixCls}-rtl`]: direction === "rtl",
+    [`${prefixCls}-disabled`]: mergedDisabled
+  }, className, rootClassName, hashId, cssVarCls);
+  const handleCloseClick = (e2) => {
+    if (mergedDisabled) {
+      return;
+    }
+    e2.stopPropagation();
+    onClose?.(e2);
+    if (e2.defaultPrevented) {
+      return;
+    }
+    setVisible(false);
+  };
+  const [, mergedCloseIcon] = useClosable(pickClosable(props), pickClosable(tagContext), {
+    closable: false,
+    closeIconRender: (iconNode2) => {
+      const replacement = /* @__PURE__ */ reactExports.createElement("span", {
+        className: `${prefixCls}-close-icon`,
+        onClick: handleCloseClick
+      }, iconNode2);
+      return replaceElement(iconNode2, replacement, (originProps) => ({
+        onClick: (e2) => {
+          originProps?.onClick?.(e2);
+          handleCloseClick(e2);
+        },
+        className: clsx(originProps?.className, `${prefixCls}-close-icon`)
+      }));
+    }
+  });
+  const isNeedWave = typeof restProps.onClick === "function" || children && children.type === "a";
+  const iconNode = cloneElement(icon, {
+    className: clsx(/* @__PURE__ */ reactExports.isValidElement(icon) ? icon.props?.className : "", mergedClassNames.icon),
+    style: mergedStyles.icon
+  });
+  const child = iconNode ? /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, iconNode, children && /* @__PURE__ */ reactExports.createElement("span", {
+    className: mergedClassNames.content,
+    style: mergedStyles.content
+  }, children)) : children;
+  const TagWrapper = href ? "a" : "span";
+  const tagNode = /* @__PURE__ */ reactExports.createElement(TagWrapper, {
+    ...domProps,
+    // @ts-expect-error
+    ref,
+    className: tagClassName,
+    style: tagStyle,
+    href: mergedDisabled ? void 0 : href,
+    target,
+    onClick: mergedDisabled ? void 0 : domProps.onClick,
+    ...href && mergedDisabled ? {
+      "aria-disabled": true
+    } : {}
+  }, child, mergedCloseIcon, isPreset && /* @__PURE__ */ reactExports.createElement(PresetCmp, {
+    key: "preset",
+    prefixCls
+  }), isStatus && /* @__PURE__ */ reactExports.createElement(StatusCmp, {
+    key: "status",
+    prefixCls
+  }));
+  return isNeedWave ? /* @__PURE__ */ reactExports.createElement(Wave, {
+    component: "Tag"
+  }, tagNode) : tagNode;
+});
+const Tag = InternalTag;
+Tag.CheckableTag = CheckableTag;
+Tag.CheckableTagGroup = ForwardCheckableTagGroup;
 export {
+  Avatar as A,
   Button$1 as B,
   Calendar as C,
   Form as F,
   Input as I,
-  Layout as L,
-  Menu as M,
+  Modal as M,
   Select as S,
-  Modal as a,
-  Badge as b,
+  Tag as T,
   staticMethods as s
 };

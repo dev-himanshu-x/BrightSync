@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import type { FormProps } from "antd";
 import { Button, Form, Input, message } from "antd";
 import axios from "axios";
@@ -97,6 +97,13 @@ function Login() {
               </Button>
             </Form.Item>
           </Form>
+
+          <p className="text-center text-gray-400">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-blue-500">
+              Sign Up
+            </Link>
+          </p>
         </div>
       </div>
     </div>

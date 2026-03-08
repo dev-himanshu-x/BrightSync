@@ -97,33 +97,33 @@ const headers = ((m) => function headersRouteRule(event) {
   }
 });
 const assets = {
+  "/assets/styles-D8O7Lw9H.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": '"31fd-FxxN0thm/RwfwueV/NUSaBAn6fo"',
+    "mtime": "2026-03-08T06:45:13.885Z",
+    "size": 12797,
+    "path": "../public/assets/styles-D8O7Lw9H.css"
+  },
   "/image.png": {
     "type": "image/png",
     "etag": '"1e868-k5RbM1FXq5VRCPUGptbm4ja+9IQ"',
-    "mtime": "2026-02-20T13:38:37.037Z",
+    "mtime": "2026-03-08T06:45:14.006Z",
     "size": 125032,
     "path": "../public/image.png"
   },
-  "/assets/_userId-Cx5z8fVd.js": {
+  "/assets/_userId-DAVSp-UW.js": {
     "type": "text/javascript; charset=utf-8",
-    "etag": '"4719b-CxoamVOFhgJE35mXaeFdcVw4Anw"',
-    "mtime": "2026-02-20T13:38:36.918Z",
-    "size": 291227,
-    "path": "../public/assets/_userId-Cx5z8fVd.js"
+    "etag": '"2ca9a-t0Pw0vSiw/txu+t2OE1n4ivHD/o"',
+    "mtime": "2026-03-08T06:45:13.885Z",
+    "size": 182938,
+    "path": "../public/assets/_userId-DAVSp-UW.js"
   },
-  "/assets/styles-BtZvg-Sl.css": {
-    "type": "text/css; charset=utf-8",
-    "etag": '"1be9-yA+JRFsYCb9efD/fKXIVY1hWAx4"',
-    "mtime": "2026-02-20T13:38:36.918Z",
-    "size": 7145,
-    "path": "../public/assets/styles-BtZvg-Sl.css"
-  },
-  "/assets/main-gtdehMP5.js": {
+  "/assets/main-Cv4JfaXw.js": {
     "type": "text/javascript; charset=utf-8",
-    "etag": '"a5ac5-LiE4pXjM4TBbOfY9GAwgGeU5xb4"',
-    "mtime": "2026-02-20T13:38:36.919Z",
-    "size": 678597,
-    "path": "../public/assets/main-gtdehMP5.js"
+    "etag": '"b7b69-TikectfV+ZgZ18pbJl8xPQ8TPtI"',
+    "mtime": "2026-03-08T06:45:13.885Z",
+    "size": 752489,
+    "path": "../public/assets/main-Cv4JfaXw.js"
   }
 };
 function readAsset(id) {
@@ -151,7 +151,7 @@ const EncodingMap = {
   br: ".br",
   zstd: ".zst"
 };
-const _Tg77m1 = defineHandler((event) => {
+const _NYGV7l = defineHandler((event) => {
   if (event.req.method && !METHODS.has(event.req.method)) {
     return;
   }
@@ -222,15 +222,15 @@ const findRouteRules = /* @__PURE__ */ (() => {
     return r;
   };
 })();
-const _lazy_SLtbWX = defineLazyEventHandler(() => import("./_chunks/ssr-renderer.mjs"));
+const _lazy_1oRjHR = defineLazyEventHandler(() => import("./_chunks/ssr-renderer.mjs"));
 const findRoute = /* @__PURE__ */ (() => {
-  const data = { route: "/**", handler: _lazy_SLtbWX };
+  const data = { route: "/**", handler: _lazy_1oRjHR };
   return ((_m, p) => {
     return { data, params: { "_": p.slice(1) } };
   });
 })();
 const globalMiddleware = [
-  toEventHandler(_Tg77m1)
+  toEventHandler(_NYGV7l)
 ].filter(Boolean);
 const APP_ID = "default";
 function useNitroApp() {

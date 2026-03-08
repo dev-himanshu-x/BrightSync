@@ -1,195 +1,182 @@
-Welcome to your new TanStack Start app! 
+# Bright. — Task Management Calendar
 
-# Getting Started
+A role-based task management application with an interactive calendar interface. HR managers can assign, edit, and delete tasks for employees, while employees can self-assign tasks and mark them as completed.
 
-To run this application:
+---
+
+## Features
+
+### Role-Based Access
+
+- **HR Manager** — Assign tasks to any employee, edit/delete tasks, view tasks per employee
+- **Employee** — Self-assign tasks, mark tasks as completed via checkbox
+
+### Calendar
+
+- Interactive calendar powered by Ant Design
+- Click any future date to create a task
+- Tasks displayed as color-coded chips inside calendar cells
+- Past dates are disabled
+
+### Task Color Coding
+
+| Color                | Meaning                        |
+| -------------------- | ------------------------------ |
+| 🟢 Green             | Self-assigned by employee      |
+| 🔵 Blue              | Assigned by HR                 |
+| ⚪ Grey + strikethrough | Completed                   |
+| 🔴 Red               | Overdue (deadline has passed)  |
+
+### Task Management
+
+- Each task includes: **task name**, **assigned date**, **deadline (date + time)**, **status**, and **assigned by**
+- HR can **edit** task title and deadline
+- HR can **delete** tasks with confirmation prompt
+- Employees can **toggle** task completion via checkbox
+- Duplicate task detection prevents creating identical tasks on the same date
+
+### Upcoming Tasks Sidebar
+
+- Displays all tasks (lifetime) for the selected user
+- Color-coded left border matching calendar chip colors
+- Overdue tasks highlighted in red with an "Overdue" tag
+- Completed tasks shown with grey styling and strikethrough text
+- "Today" tag on tasks assigned for the current date
+- Sticky sidebar that stays visible while scrolling
+
+---
+
+## Tech Stack
+
+| Layer       | Technology                                                        |
+| ----------- | ----------------------------------------------------------------- |
+| Framework   | [TanStack Start](https://tanstack.com/start) (React, SPA mode)   |
+| Router      | [TanStack Router](https://tanstack.com/router) (file-based)      |
+| UI Library  | [Ant Design](https://ant.design/) v6                              |
+| Styling     | [Tailwind CSS](https://tailwindcss.com/) v4                       |
+| HTTP Client | [Axios](https://axios-http.com/)                                  |
+| Backend     | [JSON Server](https://github.com/typicode/json-server)            |
+| Build Tool  | [Vite](https://vite.dev/) v7                                      |
+| Language    | TypeScript                                                        |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js v18+
+- npm
+
+### Installation
 
 ```bash
-bun install
-bun --bun run dev
+git clone <repo-url>
+cd tanstack-todo-calendar
+npm install
 ```
 
-# Building For Production
+### Running the App
 
-To build this application for production:
+**1. Start the JSON Server backend** (port 3333):
 
 ```bash
-bun --bun run build
+npx json-server db.json --port 3333
 ```
 
-## Testing
-
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+**2. Start the dev server** (port 3000) in a separate terminal:
 
 ```bash
-bun --bun run test
+npm run dev
 ```
 
-## Styling
+**3. Open** [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+### Build for Production
 
-### Removing Tailwind CSS
-
-If you prefer not to use Tailwind CSS:
-
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Uninstall the packages: `bun install @tailwindcss/vite tailwindcss -D`
-
-
-
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
+```bash
+npm run build
+npm run preview
 ```
 
-Then anywhere in your JSX you can use it like so:
+### Run Tests
 
-```tsx
-<Link to="/about">About</Link>
+```bash
+npm test
 ```
 
-This will create a link that will navigate to the `/about` route.
+---
 
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
+## Project Structure
 
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
+```
+src/
+├── components/
+│   └── calender.tsx            # Calendar with color-coded task rendering
+├── routes/
+│   ├── __root.tsx              # Root HTML layout
+│   ├── index.tsx               # Auth redirect logic
+│   └── _pages/
+│       ├── $userId.tsx         # Dashboard — calendar, sidebar, task modals
+│       ├── signin.tsx          # Sign in page
+│       └── signup.tsx          # Sign up page
+├── router.tsx                  # TanStack Router configuration
+└── styles.css                  # Tailwind + calendar style overrides
+db.json                         # JSON Server database (users + tasks)
 ```
 
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
+---
 
-## Server Functions
+## Data Model
 
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
+### User
 
-```tsx
-import { createServerFn } from '@tanstack/react-start'
+| Field      | Type                        | Description           |
+| ---------- | --------------------------- | --------------------- |
+| `id`       | `string`                    | Unique ID             |
+| `name`     | `string`                    | Display name          |
+| `username` | `string`                    | Login username        |
+| `password` | `string`                    | Login password        |
+| `role`     | `"hr"` \| `"employee"`      | Determines permissions|
 
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
+### Task
 
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
+| Field          | Type                            | Description                              |
+| -------------- | ------------------------------- | ---------------------------------------- |
+| `id`           | `string`                        | Auto-generated by JSON Server            |
+| `task`         | `string`                        | Task title / description                 |
+| `assignedTo`   | `string`                        | Employee user ID                         |
+| `assignedBy`   | `string`                        | User ID of who created the task          |
+| `status`       | `"pending"` \| `"completed"`    | Task completion status                   |
+| `assignedDate` | `string`                        | Date task was assigned (`YYYY-MM-DD`)    |
+| `deadline`     | `string`                        | Deadline with time (`YYYY-MM-DD HH:mm`)  |
 
-## API Routes
+---
 
-You can create API routes by using the `server` property in your route definitions:
+## Default Accounts
 
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
+| Role     | Username        | Password |
+| -------- | --------------- | -------- |
+| HR       | `hr_himanshu`   | `2003`   |
+| Employee | `honours`       | `123`    |
+| Employee | `nitin`         | `123`    |
+| Employee | `kajal`         | `123`    |
 
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
+---
 
-## Data Fetching
+## Workflow
 
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
+### As HR
 
-For example:
+1. Sign in with HR credentials
+2. Select an employee from the dropdown
+3. Click a date on the calendar to assign a task
+4. Fill in the task title and deadline (date + time)
+5. Edit or delete existing tasks using the icons in the sidebar
 
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
+### As Employee
 
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
-# tanstack-todo-calendar
-# tanstack-todo-calendar
+1. Sign in with employee credentials
+2. Click a date on the calendar to self-assign a task
+3. Check the checkbox on a task in the sidebar to mark it as completed
+4. Completed tasks appear greyed out with strikethrough

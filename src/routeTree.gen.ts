@@ -9,9 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as PagesSignupRouteImport } from './routes/_pages/signup'
 import { Route as PagesSigninRouteImport } from './routes/_pages/signin'
 import { Route as PagesUserIdRouteImport } from './routes/_pages/$userId'
 
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesSignupRoute = PagesSignupRouteImport.update({
+  id: '/_pages/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PagesSigninRoute = PagesSigninRouteImport.update({
   id: '/_pages/signin',
   path: '/signin',
@@ -24,33 +36,55 @@ const PagesUserIdRoute = PagesUserIdRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/$userId': typeof PagesUserIdRoute
   '/signin': typeof PagesSigninRoute
+  '/signup': typeof PagesSignupRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/$userId': typeof PagesUserIdRoute
   '/signin': typeof PagesSigninRoute
+  '/signup': typeof PagesSignupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/_pages/$userId': typeof PagesUserIdRoute
   '/_pages/signin': typeof PagesSigninRoute
+  '/_pages/signup': typeof PagesSignupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/$userId' | '/signin'
+  fullPaths: '/' | '/$userId' | '/signin' | '/signup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/$userId' | '/signin'
-  id: '__root__' | '/_pages/$userId' | '/_pages/signin'
+  to: '/' | '/$userId' | '/signin' | '/signup'
+  id: '__root__' | '/' | '/_pages/$userId' | '/_pages/signin' | '/_pages/signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   PagesUserIdRoute: typeof PagesUserIdRoute
   PagesSigninRoute: typeof PagesSigninRoute
+  PagesSignupRoute: typeof PagesSignupRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_pages/signup': {
+      id: '/_pages/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof PagesSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_pages/signin': {
       id: '/_pages/signin'
       path: '/signin'
@@ -69,8 +103,10 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   PagesUserIdRoute: PagesUserIdRoute,
   PagesSigninRoute: PagesSigninRoute,
+  PagesSignupRoute: PagesSignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

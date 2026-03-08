@@ -1,0 +1,4 @@
+const tsrStartManifest = () => ({ "routes": { "__root__": { "filePath": "/Users/himanshu/Erp/tanstack-todo-calendar/src/routes/__root.tsx", "children": ["/", "/_pages/$userId", "/_pages/signin", "/_pages/signup"], "preloads": ["/assets/main-Cv4JfaXw.js"], "assets": [] }, "/": { "filePath": "/Users/himanshu/Erp/tanstack-todo-calendar/src/routes/index.tsx" }, "/_pages/$userId": { "filePath": "/Users/himanshu/Erp/tanstack-todo-calendar/src/routes/_pages/$userId.tsx", "assets": [], "preloads": ["/assets/_userId-DAVSp-UW.js"] }, "/_pages/signin": { "filePath": "/Users/himanshu/Erp/tanstack-todo-calendar/src/routes/_pages/signin.tsx" }, "/_pages/signup": { "filePath": "/Users/himanshu/Erp/tanstack-todo-calendar/src/routes/_pages/signup.tsx" } }, "clientEntry": "/assets/main-Cv4JfaXw.js" });
+export {
+  tsrStartManifest
+};

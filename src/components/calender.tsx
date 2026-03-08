@@ -1,14 +1,17 @@
 import React from "react";
-import { Badge, Calendar } from "antd";
-import type { BadgeProps, CalendarProps } from "antd";
+import { Calendar } from "antd";
+import type { CalendarProps } from "antd";
+import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
 
 type Task = {
   id?: string;
-  title: string;
+  task: string;
   assignedTo: string;
-  completed: boolean;
-  dueDate: string;
+  assignedBy?: string;
+  status: "pending" | "completed";
+  assignedDate: string;
+  deadline?: string;
 };
 
 type Props = {
@@ -16,38 +19,87 @@ type Props = {
   onSelectDate?: (date: Dayjs) => void;
 };
 
-const Calender: React.FC<Props> = ({ tasks, onSelectDate }) => {
-  const getListData = (
-    value: Dayjs
-  ): { type: BadgeProps["status"]; content: string }[] => {
-    const formattedDate = value.format("YYYY-MM-DD");
+const SELF_ASSIGNED_COLOR = { bg: "#d1fae5", text: "#047857", border: "#6ee7b7" }; // green
+const HR_ASSIGNED_COLOR = { bg: "#dbeafe", text: "#1d4ed8", border: "#93c5fd" }; // blue
+const COMPLETED_COLOR = { bg: "#f3f4f6", text: "#9ca3af", border: "#d1d5db" }; // grey
+const OVERDUE_COLOR = { bg: "#fee2e2", text: "#b91c1c", border: "#fca5a5" }; // red
 
-    return tasks
-      .filter((task) => task.dueDate === formattedDate)
-      .map((task) => ({
-        type: task.completed ? "success" : "warning",
-        content: task.title,
-      }));
+function getColorForTask(task: Task) {
+  // Completed tasks are always grey
+  if (task.status === "completed") {
+    return COMPLETED_COLOR;
+  }
+  // Overdue: deadline has passed and not completed
+  if (task.deadline && dayjs(task.deadline).isBefore(dayjs())) {
+    return OVERDUE_COLOR;
+  }
+  // Self-assigned: assignedBy equals assignedTo (employee assigned to themselves)
+  if (task.assignedBy && task.assignedBy === task.assignedTo) {
+    return SELF_ASSIGNED_COLOR;
+  }
+  // HR-assigned or fallback
+  return HR_ASSIGNED_COLOR;
+}
+
+const Calender: React.FC<Props> = ({ tasks, onSelectDate }) => {
+  const getListData = (value: Dayjs) => {
+    const formattedDate = value.format("YYYY-MM-DD");
+    return tasks.filter((task) => task.assignedDate === formattedDate);
   };
 
   const cellRender: CalendarProps<Dayjs>["cellRender"] = (current, info) => {
     if (info.type === "date") {
-      const listData = getListData(current);
+      const dayTasks = getListData(current);
 
       return (
-        <ul style={{ padding: 0 }}>
-          {listData.map((item, index) => (
-            <li key={index}>
-              <Badge status={item.type} text={item.content} />
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col gap-0.5">
+          {dayTasks.map((task, index) => {
+            const color = getColorForTask(task);
+            return (
+              <div
+                key={task.id || index}
+                style={{
+                  backgroundColor: color.bg,
+                  color: color.text,
+                  borderLeft: `3px solid ${color.border}`,
+                  padding: "1px 6px",
+                  borderRadius: "0 4px 4px 0",
+                  fontSize: 11,
+                  lineHeight: "18px",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  fontWeight: 500,
+                  textDecoration: task.status === "completed" ? "line-through" : "none",
+                }}
+              >
+                {task.task}
+              </div>
+            );
+          })}
+        </div>
       );
     }
     return info.originNode;
   };
 
-  return <Calendar cellRender={cellRender} onSelect={onSelectDate} className="calender"/>;
+  const disabledDate = (current: Dayjs) => {
+    return current.isBefore(dayjs(), "day");
+  };
+
+  const handleSelect = (date: Dayjs) => {
+    if (disabledDate(date)) return;
+    onSelectDate?.(date);
+  };
+
+  return (
+    <Calendar
+      cellRender={cellRender}
+      onSelect={handleSelect}
+      disabledDate={disabledDate}
+      className="calender"
+    />
+  );
 };
 
 export default Calender;

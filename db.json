@@ -31,130 +31,13 @@
   ],
   "tasks": [
     {
-      "id": "0005",
-      "title": "himanshu",
+      "id": "5d62",
+      "task": "yo man",
       "assignedTo": "emp1",
-      "completed": false,
-      "dueDate": "2026-02-04"
-    },
-    {
-      "id": "059b",
-      "title": "hi kajal",
-      "assignedTo": "emp2",
-      "completed": false,
-      "dueDate": "2026-02-19"
-    },
-    {
-      "id": "b32c",
-      "title": "hi kajal",
-      "assignedTo": "emp1",
-      "completed": false,
-      "dueDate": "2026-02-04"
-    },
-    {
-      "id": "c6ce",
-      "title": "himanshu",
-      "assignedTo": "emp3",
-      "completed": false,
-      "dueDate": "2026-02-11"
-    },
-    {
-      "id": "4d21",
-      "title": "himanshu",
-      "assignedTo": "emp2",
-      "completed": false,
-      "dueDate": "2026-02-19"
-    },
-    {
-      "id": "836e",
-      "title": "new task",
-      "assignedTo": "emp1",
-      "completed": false,
-      "dueDate": "2026-02-04"
-    },
-    {
-      "id": "8f6d",
-      "title": "kkkk",
-      "assignedTo": "emp3",
-      "completed": false,
-      "dueDate": "2026-02-18"
-    },
-    {
-      "id": "3c1e",
-      "title": "kkkk",
-      "assignedTo": "emp1",
-      "completed": false,
-      "dueDate": "2026-02-04"
-    },
-    {
-      "id": "9ed2",
-      "title": "ad",
-      "assignedTo": "emp2",
-      "completed": false,
-      "dueDate": "2013-01-08"
-    },
-    {
-      "id": "d555",
-      "title": "kkkk",
-      "assignedTo": "emp1",
-      "completed": false,
-      "dueDate": "2026-02-10"
-    },
-    {
-      "id": "c205",
-      "title": "hi himanshu",
-      "assignedTo": "emp1",
-      "completed": false,
-      "dueDate": "2026-02-16"
-    },
-    {
-      "id": "588b",
-      "title": "hi ",
-      "assignedTo": "emp2",
-      "completed": false,
-      "dueDate": "2026-02-11"
-    },
-    {
-      "id": "65b9",
-      "title": "hi",
-      "assignedTo": "emp2",
-      "completed": false,
-      "dueDate": "2026-02-11"
-    },
-    {
-      "id": "a412",
-      "title": "hi",
-      "assignedTo": "emp2",
-      "completed": false,
-      "dueDate": "2026-02-17"
-    },
-    {
-      "id": "1f23",
-      "title": "himanshu",
-      "assignedTo": "emp2",
-      "completed": false,
-      "dueDate": "2026-02-02"
-    },
-    {
-      "id": "95f7",
-      "title": "himanshu",
-      "assignedTo": "emp3",
-      "completed": false,
-      "dueDate": "2026-02-02"
-    },
-    {
-      "id": "762c",
-      "title": "himanshu",
-      "assignedTo": "emp3",
-      "completed": false,
-      "dueDate": "2025-01-27"
-    },
-    {
-      "id": "b4c2",
-      "title": "hi kajal",
-      "assignedTo": "emp3",
-      "completed": false,
-      "dueDate": "2026-02-04"
+      "assignedBy": "hr1",
+      "status": "pending",
+      "assignedDate": "2026-03-11",
+      "deadline": "2026-01-12 03:03"
     }
   ]
 }

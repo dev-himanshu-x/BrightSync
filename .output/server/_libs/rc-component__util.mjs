@@ -701,16 +701,6 @@ const KeyCode = {
    * ESC
    */
   ESC: 27,
-  // also NUM_SOUTH_EAST
-  /**
-   * END
-   */
-  END: 35,
-  // also NUM_SOUTH_WEST
-  /**
-   * HOME
-   */
-  HOME: 36,
   // also NUM_NORTH_WEST
   /**
    * LEFT
@@ -988,7 +978,6 @@ export {
   useLockFocus as G,
   contains as H,
   mergeWith as I,
-  getFocusNodeList as J,
   KeyCode as K,
   unmount as a,
   useEvent as b,
