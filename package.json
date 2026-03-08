@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "tanstack-todo-calendar",
   "private": true,
   "type": "module",
   "scripts": {
