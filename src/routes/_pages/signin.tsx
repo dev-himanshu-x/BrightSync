@@ -17,7 +17,7 @@ function Login() {
   const navigate = useNavigate();
   useEffect(() => {
     let isAuth = JSON.parse(localStorage.getItem("user") || "{}");
-    if (isAuth && isAuth !== null) {
+    if (isAuth && isAuth.id) {
       navigate({
         to: "/$userId",
         params: {
@@ -28,7 +28,7 @@ function Login() {
   }, []);
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     axios
-      .get("http://localhost:3333/users", {
+      .get("https://backend-brightsync-1.onrender.com/users", {
         params: {
           username: values.username,
         },
@@ -36,6 +36,10 @@ function Login() {
       .then((response) => {
         if (response.data.length > 0) {
           const user = response.data[0];
+          if (user.password !== values.password) {
+            message.error("Incorrect password");
+            return;
+          }
           localStorage.setItem("user", JSON.stringify(user));
           message.success("Login successful");
           navigate({

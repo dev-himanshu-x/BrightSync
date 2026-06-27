@@ -30,7 +30,7 @@ function Signup() {
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     axios
-      .get("http://localhost:3333/users", {
+      .get("https://backend-brightsync-1.onrender.com/users", {
         params: { username: values.username },
       })
       .then((response) => {
@@ -46,7 +46,7 @@ function Signup() {
           role: values.role,
         };
 
-        axios.post("http://localhost:3333/users", newUser).then((res) => {
+        axios.post("https://backend-brightsync-1.onrender.com/users", newUser).then((res) => {
           localStorage.setItem("user", JSON.stringify(res.data));
           message.success("Account created successfully");
           navigate({
